@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- App details -->
+    <string name="app_name">Friggly</string>
+
+    <!-- Content Description -->
+
+    <!-- Empty -->
+
+    <!-- OnBoarding -->
+    <string name="title_on_boarding_first_slide">स्वागत हैं</string>
+    <string name="description_on_boarding_first_slide">जवाब देने से पहले जानिए कौन कौल कर रहा है!</string>
+    <string name="title_on_boarding_second_slide">SPAMS hindi</string>
+    <string name="description_on_boarding_second_slide">स्पैम से खुद को सुरक्षित रखें</string>
+    <string name="title_on_boarding_third_slide">SMS hindi</string>
+    <string name="description_on_boarding_third_slide">आपका एसएमएस इनबॉक्स हाइलाइट, स्पैम और बहुत कुछ में वर्गीकृत है</string>
+    <string name="title_button_get_started">शुरू करें</string>
+    <string name="terms_and_services">
+        <font fgcolor='#808080'>यदि आप यूरोपीय संघ, ईईए या स्विट्ज़रलैंड में रहते हैं तो आरंभ करें क्लिक करके आप स्वीकार करते हैं यह</font>
+        <font fgcolor='#000000'>Terms of service </font>
+        <font fgcolor='#808080'>और यदि आप किसी अन्य देश में रहते हैं तो आप गोपनीयता नीति स्वीकार करते हैं यह</font>
+        <font fgcolor='#000000'>Terms of service </font>
+        <font fgcolor='#808080'>और </font>
+        <font fgcolor='#000000'>Privacy Policy. </font></string>
+    <string name="change_language_to">भाषा को करें </string>
+
+    <!--  Custom Dialog-->
+
+    <string name="no_data">No Data</string>
+    <string name="search_by_name">Search by name</string>
+    <string name="search_error">there is no such recipe name</string>
+    <string name="recipe_details_preview">this is the recipes details, some text to test the appearance of
+        the view It\'s time for a truly uncompromising smartphone. One that was designed and
+        manufactured by technical enthusiasts - in close coordination with the future users. A
+        smartphone that perfectly combines fascinating technology, groundbreaking design and
+        breakthrough innovation. It is time for the OnePlus 3. But do not rely on our word. Convince
+        yourself.
+    </string>
+    <string name="recipe_title_preview">this is the recipe name</string>
+    <string name="recipe">Recipes</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="network_error">Network error, could get data,please try again!</string>
+    <string name="refresh">refresh</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_recipes">Recipes</string>
+    <string name="title_activity_recipe_details">Recipe Details</string>
+    <string name="continue_bold">CONTINUE</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >4 characters</string>
+    <string name="invalid_username_and_password">please check your username and password</string>
+    <string name="add_to_favorite">Add to favorite</string>
+    <string name="prompt_number">Enter your phone number..</string>
+    <string name="prompt_country">Please select your country</string>
+    <string name="EnterNumber_details">Select your country and enter your phone number</string>
+    <string name="EnterNumber_title">Enter phone number</string>
+    <string name="Profile_CreateProfile">Create your profile</string>
+    <string name="Profile_ManualInput">TYPE NAME MAUNALLY</string>
+    <string name="Profile_AddPhoto">Add Profile Photo</string>
+    <string name="Profile_Email">Enter your email..</string>
+    <string name="Profile_LastName">Enter last name</string>
+    <string name="Profile_FirstName">Enter first name</string>
+    <string name="verify">VERIFY OTP</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+    <string name="Profile_gender">Select Gender</string>
+    <string name="Profile_age">Your Age</string>
+
+    <string name="app_launcher_name">SMS Messenger</string>
+    <string name="type_a_message">Type a message…</string>
+    <string name="message_not_sent_short">Message not sent</string>
+    <string name="message_not_sent_touch_retry">Not sent. Touch to retry.</string>
+    <string name="message_sending_error">Your message to \'%s\' has not been sent</string>
+    <string name="add_person">Add Person</string>
+    <string name="attachment">Attachment</string>
+    <string name="no_conversations_found">No stored conversations have been found</string>
+    <string name="start_conversation">Start a conversation</string>
+    <string name="reply">Reply</string>
+    <string name="show_character_counter">Show a character counter at writing messages</string>
+    <string name="loading_messages">Loading messages…</string>
+    <string name="no_reply_support">Sender doesn\'t support replies</string>
+    <string name="draft">Draft</string>
+    <string name="sending">Sending…</string>
+    <string name="pin_conversation">Pin to the top</string>
+    <string name="unpin_conversation">Unpin</string>
+    <string name="forward_message">Forward</string>
+    <string name="compress_error">Unable to compress image to selected size</string>
+    <!-- vCard-->
+    <plurals name="and_other_contacts">
+        <item quantity="one">and %d other</item>
+        <item quantity="other">and %d others</item>
+    </plurals>
+    <!-- New conversation -->
+    <string name="new_conversation">New conversation</string>
+    <string name="add_contact_or_number">Add Contact or Number…</string>
+    <string name="suggestions">Suggestions</string>
+    <!-- Schedule send -->
+    <string name="scheduled_message">Scheduled message</string>
+    <string name="schedule_send">Schedule send</string>
+    <string name="cancel_schedule_send">Cancel schedule send</string>
+    <string name="must_pick_time_in_the_future">You must pick a time in the future</string>
+    <string name="schedule_send_warning">Keep the phone on and make sure there is nothing killing the app in background</string>
+    <string name="update_message">Update message</string>
+    <string name="send_now">Send now</string>
+    <!-- Notifications -->
+    <string name="channel_received_sms">Received SMS</string>
+    <string name="new_message">New message</string>
+    <string name="mark_as_read">Mark as Read</string>
+    <string name="mark_as_unread">Mark as Unread</string>
+    <string name="me">Me</string>
+    <!-- Confirmation dialog -->
+    <string name="delete_whole_conversation_confirmation">Are you sure you want to delete all messages of this conversation\?</string>
+    <!-- Are you sure you want to delete 5 conversations? -->
+    <plurals name="delete_conversations">
+        <item quantity="one">%d conversation</item>
+        <item quantity="other">%d conversations</item>
+    </plurals>
+    <!-- Are you sure you want to delete 5 messages? -->
+    <plurals name="delete_messages">
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="lock_screen_visibility">Lock screen notification visibility</string>
+    <string name="sender_and_message">Sender and message</string>
+    <string name="sender_only">Sender only</string>
+    <string name="enable_delivery_reports">Enable delivery reports</string>
+    <string name="use_simple_characters">Remove accents and diacritics at sending messages</string>
+    <string name="mms_file_size_limit">Resize sent MMS images</string>
+    <string name="mms_file_size_limit_none">No limit</string>
+    <string name="outgoing_messages">Outgoing messages</string>
+    <string name="group_message_mms">Send group messages as MMS</string>
+    <string name="send_long_message_mms">Send long messages as MMS</string>
+    <!-- Export / Import -->
+    <string name="messages">Messages</string>
+    <string name="export_messages">Export messages</string>
+    <string name="export_sms">Export SMS</string>
+    <string name="export_mms">Export MMS</string>
+    <string name="import_messages">Import messages</string>
+    <string name="import_sms">Import SMS</string>
+    <string name="import_mms">Import MMS</string>
+    <string name="no_option_selected">You have to select at least one item</string>
+    <!-- FAQ -->
+    <string name="faq_1_title">Why does the app require access to the internet\?</string>
+    <string name="faq_1_text">Sadly it is needed for sending MMS attachments. Not being able to send MMS would be a really huge disadvantage compared to other apps, so we decided to go this way. However, as usually, there are no ads, tracking or analytics whatsoever, the internet is used only for sending MMS.</string>
+    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it\?</string>
+    <string name="faq_2_text">MMS size is limited by carriers, you can try setting a smaller limit in the app settings.</string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+</resources>

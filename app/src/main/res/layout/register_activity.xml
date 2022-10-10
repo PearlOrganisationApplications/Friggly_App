@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/frameLayout"
+        tools:context=".me.ui.component.register.RegisterActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_16x"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/space_16x"
+                    android:layout_height="96.0dip">
+
+                    <ImageView
+                        android:id="@+id/headerBackgroundImageView"
+                        android:layout_width="96.0dip"
+                        android:layout_height="96.0dip"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/wizard_anim_circular_background" />
+
+                    <ImageView
+                        android:id="@+id/photo"
+                        android:layout_width="40.0dip"
+                        android:layout_height="40.0dip"
+                        android:layout_alignTop="@+id/headerBackgroundImageView"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:src="@drawable/wizard_ic_profile" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/headerTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8x"
+                    android:text="@string/Profile_CreateProfile"
+                    android:textSize="24.0sp" />
+
+                <LinearLayout
+                    android:id="@+id/socialContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_8x"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="@dimen/space_16x"
+                        android:layout_marginBottom="2.0dip"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:id="@+id/facebook_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#3F51B5">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_facebook" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:text="@string/facebook"
+                                android:textAllCaps="true"
+                                android:textColor="@color/color_white"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="2.0dip"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <RelativeLayout
+                            android:id="@+id/google_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#304FFE">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="10dp"
+                                android:src="@drawable/ic_google" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:text="@string/google"
+                                android:textAllCaps="true"
+                                android:textColor="@color/color_white"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2.0dip"
+                        app:cardElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <Button
+                            android:id="@+id/manual_login"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color_transparent"
+                            android:drawableStart="@drawable/wizard_ic_manual_input"
+                            android:paddingStart="13.0dip"
+                            android:paddingEnd="26.0dip"
+                            android:text="@string/Profile_ManualInput"
+                            android:textColor="#ff657c8a" />
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/space_16x"
+                            android:background="@drawable/wizard_btn_photo"
+                            android:contentDescription="@string/Profile_AddPhoto" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_16x"
+                        android:paddingLeft="@dimen/space_16x"
+                        android:paddingRight="@dimen/space_16x">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start|bottom|center"
+                            android:layout_marginBottom="@dimen/space_16x"
+                            android:src="@drawable/wizard_ic_man" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_48x"
+                            android:hint="@string/Profile_FirstName">
+
+                            <EditText
+                                android:id="@+id/firstName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapWords"
+                                android:paddingTop="0.0dip" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </FrameLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                style="@style/Wizard.ContinueButton"
+                android:visibility="gone" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

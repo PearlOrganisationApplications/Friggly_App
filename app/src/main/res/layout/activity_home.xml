@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+     app:cardUseCompatPadding="true"
+      app:cardCornerRadius="10dp"
+      app:cardElevation="10dp"
+      tools:ignore="MissingConstraints"
+      tools:layout_editor_absoluteX="21dp"
+      tools:layout_editor_absoluteY="9dp">
+
+    <EditText
+        android:padding="10dp"
+        android:background="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+      android:drawableStart="@drawable/ic_baseline_person_24"
+        android:hint=" search name,number and more" />
+  </androidx.cardview.widget.CardView>
+
+  <fragment
+      android:id="@+id/mainContainer"
+      android:name="androidx.navigation.fragment.NavHostFragment"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1"
+      app:defaultNavHost="true"
+      app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.5"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="0.5"
+      app:navGraph="@navigation/nav_graph"
+      tools:ignore="MissingConstraints" />
+
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:id="@+id/navigation_bar"
+      app:itemIconTint="@color/colorPrimary"
+      app:itemTextColor="@color/black"
+      android:layout_width="match_parent"
+      android:layout_height="?actionBarSize"
+      android:background="@color/white"
+      app:menu="@menu/bottom_nav_menu"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent" />
+
+</LinearLayout>

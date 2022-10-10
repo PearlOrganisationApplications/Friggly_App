@@ -1,0 +1,120 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.rank.me"
+        minSdkVersion 23
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0.0"
+        setProperty("archivesBaseName", "sms-messenger")
+    }
+
+    signingConfigs {
+        if (keystorePropertiesFile.exists()) {
+            release {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            }
+        }
+    }
+    //enable DataBinding
+    buildFeatures {
+        dataBinding true
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (keystorePropertiesFile.exists()) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation 'com.github.SimpleMobileTools:Simple-Commons:f74a128e2e'
+    implementation 'org.greenrobot:eventbus:3.3.1'
+    implementation 'com.github.tibbi:IndicatorFastScroll:4524cd0b61'
+    implementation 'com.github.tibbi:android-smsmms:875a46a9c4'
+    implementation "me.leolin:ShortcutBadger:1.1.22"
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'com.googlecode.ez-vcard:ez-vcard:0.11.3'
+
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.7.20")
+
+    //navigation ui
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.activity:activity-ktx:1.2.3'
+    implementation 'androidx.fragment:fragment-ktx:1.3.3'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.42"
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.4.0'
+    kapt "com.google.dagger:hilt-compiler:2.42"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.42"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.42"
+
+
+    // retrofit
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation "com.squareup.moshi:moshi:1.14.0"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.13.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    implementation("com.github.bumptech.glide:glide:4.13.2") {
+        exclude group: "com.android.support"
+    }
+
+
+    kapt "androidx.room:room-compiler:2.4.3"
+    implementation "androidx.room:room-runtime:2.4.3"
+    annotationProcessor "androidx.room:room-compiler:2.4.3"
+
+    //Image pick
+    implementation 'io.github.sangcomz:fishbun:1.1.0'
+    //Image laod
+    implementation "com.squareup.picasso:picasso:2.71828"   // .. PICASSO
+    implementation 'io.coil-kt:coil:0.11.0'                                     // .. COIL
+    //Page Indicator
+    implementation 'com.github.zhpanvip:viewpagerindicator:1.2.1'
+    //lottie Animations
+    implementation "com.airbnb.android:lottie:3.4.0"
+    //Blur View (for dialogs too)
+    implementation 'com.github.Dimezis:BlurView:version-2.0.2'
+    //country picker
+    implementation 'com.hbb20:android-country-picker:0.0.7'
+    //ExpandableLayout for privacy page
+    implementation "com.github.skydoves:expandablelayout:1.0.7"
+
+}

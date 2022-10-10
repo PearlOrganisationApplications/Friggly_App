@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/call"
+        android:icon="@drawable/call"
+        android:title="Call" />
+    <item
+        android:id="@+id/msg"
+        android:icon="@drawable/message"
+        android:title="Message" />
+    <item
+        android:id="@+id/contacts"
+        android:icon="@drawable/ic_baseline_contact_phone_24"
+        android:title="Contacts" />
+    <item
+        android:id="@+id/premium"
+        android:icon="@drawable/premium"
+        android:title="Premium" />
+    <item
+        android:id="@+id/blocking"
+        android:icon="@drawable/block"
+        android:title="Blocking" />
+</menu>

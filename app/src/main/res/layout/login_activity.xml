@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".me.ui.component.login.LoginActivity"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/phone_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/username"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.45" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:paddingBottom="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/background"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/wizard_anim_circular_background" />
+
+                        <ImageView
+                            android:id="@+id/handle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@id/background"
+                            android:layout_alignTop="@id/background"
+                            android:layout_alignEnd="@id/background"
+                            android:layout_alignBottom="@id/background"
+                            android:layout_marginBottom="50.0dip"
+                            android:scaleType="center"
+                            android:src="@drawable/wizard_anim_phone_handle" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@id/background"
+                            android:layout_alignTop="@id/background"
+                            android:layout_alignEnd="@id/background"
+                            android:layout_alignBottom="@id/background"
+                            android:scaleType="center"
+                            android:src="@drawable/wizard_anim_phone_body" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:textSize="24sp"
+                        android:textColor="@color/color_black"
+                        android:text="@string/EnterNumber_title" />
+
+                    <TextView
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.45"
+                        android:gravity="start"
+                        android:text="@string/EnterNumber_details" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@android:color/secondary_text_dark"
+                    android:drawableStart="@drawable/wizard_ic_location"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:ellipsize="end"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none"
+                    android:hint="@string/prompt_country"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="+91"
+                    android:textColorHint="@android:color/secondary_text_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/password"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24x"
+                    android:layout_marginBottom="@dimen/space_24x"
+                    android:backgroundTint="@android:color/secondary_text_dark"
+                    android:drawableStart="@drawable/wizard_ic_phone"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:hint="@string/prompt_number"
+                    android:text="1234567890"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="phone"
+                    android:selectAllOnFocus="true"
+                    android:textColorHint="@android:color/secondary_text_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/login"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/continue_bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <RelativeLayout
+                    android:id="@+id/loader_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" />
+                </RelativeLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/opt_lyt"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:paddingBottom="10dp"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/background1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/wizard_anim_circular_background" />
+
+                        <ImageView
+                            android:id="@+id/handle1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@id/background1"
+                            android:layout_alignTop="@id/background1"
+                            android:layout_alignEnd="@id/background1"
+                            android:layout_alignBottom="@id/background1"
+                            android:layout_marginBottom="50.0dip"
+                            android:scaleType="center"
+                            android:src="@drawable/wizard_anim_phone_handle" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignStart="@id/background1"
+                            android:layout_alignTop="@id/background1"
+                            android:layout_alignEnd="@id/background1"
+                            android:layout_alignBottom="@id/background1"
+                            android:scaleType="center"
+                            android:src="@drawable/wizard_anim_phone_body" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:textSize="24sp"
+                        android:textColor="@color/color_black"
+                        android:text="@string/EnterNumber_title" />
+
+                    <TextView
+                        android:textSize="20sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.45"
+                        android:gravity="start"
+                        android:text="@string/EnterNumber_details" />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/otp_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:backgroundTint="@android:color/secondary_text_dark"
+                    android:drawableStart="@drawable/ic_phonelink_lock"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/colorPrimaryDark"
+                    android:ellipsize="end"
+                    android:hint="@string/prompt_country"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:text="+91"
+                    android:textColorHint="@android:color/secondary_text_dark"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toTopOf="@+id/verify"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/verify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/verify"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+</layout>

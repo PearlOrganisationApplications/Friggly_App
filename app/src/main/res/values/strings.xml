@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Friggly</string>
+    <string name="app_launcher_name">SMS Messenger</string>
+    <string name="type_a_message">Type a message…</string>
+    <string name="message_not_sent_short">Message not sent</string>
+    <string name="message_not_sent_touch_retry">Not sent. Touch to retry.</string>
+    <string name="message_sending_error">Your message to \'%s\' has not been sent</string>
+    <string name="add_person">Add Person</string>
+    <string name="attachment">Attachment</string>
+    <string name="no_conversations_found">No stored conversations have been found</string>
+    <string name="start_conversation">Start a conversation</string>
+    <string name="reply">Reply</string>
+    <string name="show_character_counter">Show a character counter at writing messages</string>
+    <string name="loading_messages">Loading messages…</string>
+    <string name="no_reply_support">Sender doesn\'t support replies</string>
+    <string name="draft">Draft</string>
+    <string name="sending">Sending…</string>
+    <string name="pin_conversation">Pin to the top</string>
+    <string name="unpin_conversation">Unpin</string>
+    <string name="forward_message">Forward</string>
+    <string name="compress_error">Unable to compress image to selected size</string>
+    <!-- vCard-->
+    <plurals name="and_other_contacts">
+        <item quantity="one">and %d other</item>
+        <item quantity="other">and %d others</item>
+    </plurals>
+    <!-- New conversation -->
+    <string name="new_conversation">New conversation</string>
+    <string name="add_contact_or_number">Add Contact or Number…</string>
+    <string name="suggestions">Suggestions</string>
+    <!-- Schedule send -->
+    <string name="scheduled_message">Scheduled message</string>
+    <string name="schedule_send">Schedule send</string>
+    <string name="cancel_schedule_send">Cancel schedule send</string>
+    <string name="must_pick_time_in_the_future">You must pick a time in the future</string>
+    <string name="schedule_send_warning">Keep the phone on and make sure there is nothing killing the app in background</string>
+    <string name="update_message">Update message</string>
+    <string name="send_now">Send now</string>
+    <!-- Notifications -->
+    <string name="channel_received_sms">Received SMS</string>
+    <string name="new_message">New message</string>
+    <string name="mark_as_read">Mark as Read</string>
+    <string name="mark_as_unread">Mark as Unread</string>
+    <string name="me">Me</string>
+    <!-- Confirmation dialog -->
+    <string name="delete_whole_conversation_confirmation">Are you sure you want to delete all messages of this conversation?</string>
+    <!-- Are you sure you want to delete 5 conversations? -->
+    <plurals name="delete_conversations">
+        <item quantity="one">%d conversation</item>
+        <item quantity="other">%d conversations</item>
+    </plurals>
+    <!-- Are you sure you want to delete 5 messages? -->
+    <plurals name="delete_messages">
+        <item quantity="one">%d message</item>
+        <item quantity="other">%d messages</item>
+    </plurals>
+    <!-- Settings -->
+    <string name="lock_screen_visibility">Lock screen notification visibility</string>
+    <string name="sender_and_message">Sender and message</string>
+    <string name="sender_only">Sender only</string>
+    <string name="enable_delivery_reports">Enable delivery reports</string>
+    <string name="use_simple_characters">Remove accents and diacritics at sending messages</string>
+    <string name="mms_file_size_limit">Resize sent MMS images</string>
+    <string name="mms_file_size_limit_none">No limit</string>
+    <string name="outgoing_messages">Outgoing messages</string>
+    <string name="group_message_mms">Send group messages as MMS</string>
+    <string name="send_long_message_mms">Send long messages as MMS</string>
+    <!-- Export / Import -->
+    <string name="messages">Messages</string>
+    <string name="export_messages">Export messages</string>
+    <string name="export_sms">Export SMS</string>
+    <string name="export_mms">Export MMS</string>
+    <string name="import_messages">Import messages</string>
+    <string name="import_sms">Import SMS</string>
+    <string name="import_mms">Import MMS</string>
+    <string name="no_option_selected">You have to select at least one item</string>
+    <!-- FAQ -->
+    <string name="faq_1_title">Why does the app require access to the internet?</string>
+    <string name="faq_1_text">Sadly it is needed for sending MMS attachments. Not being able to send MMS would be a really huge disadvantage compared to other apps, so we decided to go this way.
+    However, as usually, there are no ads, tracking or analytics whatsoever, the internet is used only for sending MMS.</string>
+    <string name="faq_2_title">The other end is not receiving my MMS, is there anything I can do about it?</string>
+    <string name="faq_2_text">MMS size is limited by carriers, you can try setting a smaller limit in the app settings.</string>
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/SimpleMobileTools/Simple-Commons/tree/master/commons/src/main/res
+    -->
+
+    <!-- OnBoarding -->
+    <string name="title_on_boarding_first_slide">Welcome</string>
+    <string name="description_on_boarding_first_slide">Know who is calling before you answer!</string>
+    <string name="title_on_boarding_second_slide">SPAMS</string>
+    <string name="description_on_boarding_second_slide">Protect yourself from spam</string>
+    <string name="title_on_boarding_third_slide">SMS</string>
+    <string name="description_on_boarding_third_slide">Your SMS inbox categorized into highlights, spam and more</string>
+    <string name="title_on_boarding_fourth_slide">RATE</string>
+    <string name="description_on_boarding_fourth_slide">Get your ratings. see other\'s ratings, info and more</string>
+    <string name="title_button_get_started">Get Started</string>
+    <string name="terms_and_services">
+        <font fgcolor='#808080'>By clicking Get Started if you reside in the EU, EEA or Switzerland you accept the </font>
+        <font fgcolor='#000000'>Terms of service </font>
+        <font fgcolor='#808080'>and if you reside in any other country you accepts the  and Privacy Policy</font>
+        <font fgcolor='#000000'>Terms of Service </font>
+        <font fgcolor='#000000'>Terms of service </font><font fgcolor='#808080'>and </font>
+        <font fgcolor='#000000'>Privacy Policy. </font></string>
+
+    <!--  Languages-->
+    <string name="hindi" translatable="false">" हिन्दी"</string>
+    <string name="english" translatable="false">" English"</string>
+    <string name="change_language_to">Change Language to</string>
+
+    <!--  Custom Dialog-->
+
+
+    <string name="no_data">No Data</string>
+    <string name="search_by_name">Search by name</string>
+    <string name="search_error">there is some issue or data is empty</string>
+    <string name="recipe_details_preview">this is the recipes details, some text to test the appearance of
+        the view It\'s time for a truly uncompromising smartphone. One that was designed and
+        manufactured by technical enthusiasts - in close coordination with the future users. A
+        smartphone that perfectly combines fascinating technology, groundbreaking design and
+        breakthrough innovation. It is time for the OnePlus 3. But do not rely on our word. Convince
+        yourself.
+    </string>
+    <string name="recipe_title_preview">this is the recipe name</string>
+    <string name="recipe">Recipes</string>
+    <string name="no_internet">Please check your internet connection</string>
+    <string name="network_error">Network error, could get data,please try again!</string>
+    <string name="refresh">refresh</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_recipes">Recipes</string>
+    <string name="title_activity_recipe_details">Recipe Details</string>
+    <string name="continue_bold">CONTINUE</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >4 characters</string>
+    <string name="invalid_username_and_password">please check your username and password</string>
+    <string name="add_to_favorite">Add to favorite</string>
+    <string name="prompt_number">Enter your phone number..</string>
+    <string name="prompt_country">Please select your country</string>
+    <string name="verify">VERIFY OTP</string>
+    <string name="facebook">Facebook</string>
+    <string name="google">Google</string>
+
+    <string name="ConsentRefreshMoreInfo">More info</string>
+    <string name="EnterNumber_details">Select your country and enter your phone number</string>
+    <string name="EnterNumber_title">Enter phone number</string>
+    <string name="Privacy_agree_continue_button">Agree &amp; Continue</string>
+    <string name="Privacy_data_title">Data we process</string>
+    <string name="Privacy_text">Please take time to review the key points of our &lt;a href=%1$s>Privacy Policy&lt;/a> and &lt;a href=%2$s>Terms of Service&lt;/a> below</string>
+    <string name="Privacy_title">Your privacy is important to us</string>
+    <string name="Privacy_usage_title">How we use your data</string>
+    <string name="Privacy_process_text">We are committed to the privacy of our users and care deeply about the data you share with us. We securely handle and process your data as per our Privacy Policy.&lt;br>The data we process depends on how you use our app. We only require your phone number and name to create your profile. We have optional features which, if used by you, require us to collect additional information. When you start using our app, we will also collect information about your interaction with our app and devices you use to access our app including information about installed apps, IP address, device location and unique identifiers.</string>
+    <string name="Profile_AddPhoto">Add photo</string>
+    <string name="Profile_CreateProfile">Create your profile</string>
+    <string name="Profile_Email">Email</string>
+    <string name="Profile_FirstName">First name</string>
+    <string name="Profile_LastName">Last name</string>
+    <string name="Profile_ManualInput">Type name manually</string>
+    <string name="StrContinue">Continue</string>
+    <string name="abc_action_bar_home_description">Navigate home</string>
+    <string name="abc_action_bar_up_description">Navigate up</string>
+    <string name="abc_action_menu_overflow_description">More options</string>
+    <string name="abc_action_mode_done">Done</string>
+    <string name="abc_activity_chooser_view_see_all">See all</string>
+    <string name="abc_activitychooserview_choose_application">Choose an app</string>
+    <string name="abc_capital_off">OFF</string>
+    <string name="abc_capital_on">ON</string>
+    <string name="abc_menu_alt_shortcut_label">Alt+</string>
+    <string name="abc_menu_ctrl_shortcut_label">Ctrl+</string>
+    <string name="abc_menu_delete_shortcut_label">delete</string>
+    <string name="abc_menu_enter_shortcut_label">enter</string>
+    <string name="abc_menu_function_shortcut_label">Function+</string>
+    <string name="abc_menu_meta_shortcut_label">Meta+</string>
+    <string name="abc_menu_shift_shortcut_label">Shift+</string>
+    <string name="abc_menu_space_shortcut_label">space</string>
+    <string name="abc_menu_sym_shortcut_label">Sym+</string>
+    <string name="abc_prepend_shortcut_label">Menu+</string>
+    <string name="abc_search_hint">Search…</string>
+    <string name="abc_searchview_description_clear">Clear query</string>
+    <string name="abc_searchview_description_query">Search query</string>
+    <string name="abc_searchview_description_search">Search</string>
+    <string name="abc_searchview_description_submit">Submit query</string>
+    <string name="abc_searchview_description_voice">Voice search</string>
+    <string name="abc_shareactionprovider_share_with">Share with</string>
+    <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
+    <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="bottom_sheet_behavior">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
+    <string name="bottomsheet_action_expand_halfway">Expand halfway</string>
+    <string name="character_counter_content_description">Characters entered %1$d of %2$d</string>
+    <string name="character_counter_overflowed_content_description">Character limit exceeded %1$d of %2$d</string>
+    <string name="character_counter_pattern">%1$d/%2$d</string>
+    <string name="chip_text">Chip text</string>
+    <string name="clear_text_end_icon_content_description">Clear text</string>
+    <string name="default_web_client_id">22378802832-ufuk88rrj23nrjvtve8eggve2j3p3ts9.apps.googleusercontent.com</string>
+    <string name="error_icon_content_description">Error</string>
+    <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
+    <string name="fab_transformation_scrim_behavior">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
+    <string name="fab_transformation_sheet_behavior">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
+    <string name="firebase_database_url">https://truecallerapis.firebaseio.com</string>
+    <string name="gcm_defaultSenderId">22378802832</string>
+    <string name="google_api_key">AIzaSyB-U1NIB36__pxbjuXECXX28S8PK6l672g</string>
+    <string name="google_app_id">1:22378802832:android:d040f8b97ff358e8</string>
+    <string name="google_crash_reporting_api_key">AIzaSyB-U1NIB36__pxbjuXECXX28S8PK6l672g</string>
+    <string name="google_storage_bucket">truecallerapis.appspot.com</string>
+    <string name="hide_bottom_view_on_scroll_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
+    <string name="icon_content_description">Dialog Icon</string>
+    <string name="item_view_role_description">Tab</string>
+    <string name="material_clock_display_divider">:</string>
+    <string name="material_clock_toggle_content_description">Select AM or PM</string>
+    <string name="material_hour_selection">Select hour</string>
+    <string name="material_hour_suffix">"%1$s o'clock"</string>
+    <string name="material_minute_selection">Select minutes</string>
+    <string name="material_minute_suffix">%1$s minutes</string>
+    <string name="material_motion_easing_accelerated">cubic-bezier(0.4, 0.0, 1.0, 1.0)</string>
+    <string name="material_motion_easing_decelerated">cubic-bezier(0.0, 0.0, 0.2, 1.0)</string>
+    <string name="material_motion_easing_emphasized">path(M 0,0 C 0.05, 0, 0.133333, 0.06, 0.166666, 0.4 C 0.208333, 0.82, 0.25, 1, 1, 1)</string>
+    <string name="material_motion_easing_linear">cubic-bezier(0.0, 0.0, 1.0, 1.0)</string>
+    <string name="material_motion_easing_standard">cubic-bezier(0.4, 0.0, 0.2, 1.0)</string>
+    <string name="material_slider_range_end">Range end,</string>
+    <string name="material_slider_range_start">Range start,</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">Switch to clock mode for the time input.</string>
+    <string name="material_timepicker_hour">Hour</string>
+    <string name="material_timepicker_minute">Minute</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">Select time</string>
+    <string name="material_timepicker_text_input_mode_description">Switch to text input mode for the time input.</string>
+    <string name="mtrl_badge_numberless_content_description">New notification</string>
+    <string name="mtrl_chip_close_icon_content_description">Remove %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description">More than %1$d new notifications</string>
+    <string name="mtrl_exceed_max_badge_number_suffix">%1$d%2$s</string>
+    <string name="mtrl_picker_a11y_next_month">Change to next month</string>
+    <string name="mtrl_picker_a11y_prev_month">Change to previous month</string>
+    <string name="mtrl_picker_announce_current_selection">Current selection: %1$s</string>
+    <string name="mtrl_picker_cancel">@android:string/cancel</string>
+    <string name="mtrl_picker_confirm">@android:string/ok</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Select Date</string>
+    <string name="mtrl_picker_date_header_unselected">Selected date</string>
+    <string name="mtrl_picker_day_of_week_column_header">Column of days: %1$s</string>
+    <string name="mtrl_picker_invalid_format">Invalid format.</string>
+    <string name="mtrl_picker_invalid_format_example">Example: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Use: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Invalid range.</string>
+    <string name="mtrl_picker_navigate_to_year_description">Navigate to year %1$s</string>
+    <string name="mtrl_picker_out_of_range">Out of range: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Start date – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – End date</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Select Range</string>
+    <string name="mtrl_picker_range_header_unselected">Start date – End date</string>
+    <string name="mtrl_picker_save">Save</string>
+    <string name="mtrl_picker_text_input_date_hint">Date</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">End date</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Start date</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">y</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Switch to calendar input mode</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Tap to switch to selecting a day</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Switch to text input mode</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Tap to switch to selecting a year</string>
+    <string name="password_toggle_content_description">Show password</string>
+    <string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+    <string name="search_menu_title">Search</string>
+    <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="Privacy_usage_text_v2">Privacy is integral to our culture and processes at Truecaller. We continuously evaluate the privacy implications of all our features. Your data is only used for the purposes set out in our Privacy Policy including:&lt;br>&lt;br> - Displaying profile data when another user searches for your number (for a limited number of searches to keep your information safe).&lt;br> - Providing, improving, analysing and personalising our services to ensure that you have a positive experience on our app.&lt;br> - Complying with local laws and protecting your rights.&lt;br> - Creating reports using aggregated and anonymised data for statistical and analytical purposes to improve our services. We collect only as much information as is required for providing our services.</string>
+    <string name="Privacy_control_title">We empower you on how to be seen on Truecaller</string>
+    <string name="Privacy_data_text">We process your profile data (name, phone number etc.) and information about your activity on our app including device info, IP address and location.</string>
+    <string name="Privacy_data_text_wizard">We process your profile data (name, phone number etc.), apps installed information as well as information about your activity on our app including device info, IP address and location.</string>
+    <string name="Privacy_permissions_text">"The world of communication is getting more complex day by day, but we are diligently making your communication smarter, safer, and more efficient. Therefore, we want to make sure that you fully understand the permissions we need to make Truecaller function how you want.&lt;br>&lt;br> It's vital that you are clear on how we use your data. You can choose to provide a few optional permissions (such as location, camera, and microphone) depending on the features you intend to use. Also, always deactivate these permissions in the app or on your device anytime."</string>
+    <string name="Privacy_permissions_title">Unnecessary permissions? We never ask for it</string>
+    <string name="Privacy_private_text">Privacy is a core value at Truecaller. Our search feature displays names against telephone numbers and your profile details are private by default. This way, your identity remains private. To ensure optimum privacy, we allow only restricted attempts of such searches per day to avoid misuse of your information.</string>
+    <string name="Privacy_private_title">Your number is always confidential</string>
+    <string name="Privacy_process_title">How is your data processed</string>
+    <string name="Privacy_sign_agree_continue_button">Sign, Agree &amp; Continue</string>
+    <string name="Privacy_control_text">We entrust you with the power to control and protect. You can decide how your personal information is displayed to others in the community. You can edit your profile in the app anytime or deactivate your account in the Privacy Center. If there is any reason you do not want your information to be on Truecaller, you may &lt;a href=%1$s>unlist&lt;/a> yourself.</string>
+    <string name="Profile_gender">Select Gender</string>
+    <string name="Profile_age">Your Age</string>
+    <string name="enable_passcode_lock">Enable Passcode Lock</string>
+    <string name="enable_passcode_lock_desc">Secure all your messages by setting up a Passcorde lock</string>
+    <string name="enable_notification_promotion"><![CDATA[Keep up to date with the latest discounts & offers]]></string>
+    <string name="enable_notification_promotion_desc"><![CDATA[Turn on notifications for all your Promotional messages by going to Settings > Messaging]]></string>
+    <string name="enable_block_premium">Enable Advanced Blocking</string>
+    <string name="enable_block_premium_desc">Unlock Premium for stronger offline and auto-block spammers</string>
+
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        android:weightSum="1.0">
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/space_24x"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_privacy_img" />
+
+                <TextView
+                    style="@style/Wizard.TextViewLegalTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16x"
+                    android:gravity="start"
+                    android:text="@string/Privacy_title" />
+
+                <TextView
+                    android:id="@+id/reminderText"
+                    style="@style/Wizard.TextViewLegal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_1x"
+                    android:gravity="start"
+                    android:text="@string/Privacy_text" />
+
+                <!-- Base CardView -->
+                <include
+                    android:id="@+id/consent_first"
+                    layout="@layout/lyt_consent_first" />
+
+                <include
+                    android:id="@+id/consent_second"
+                    layout="@layout/lyt_consent_second" />
+
+                <include
+                    android:id="@+id/consent_third"
+                    layout="@layout/lyt_consent_third" />
+
+                <include
+                    android:id="@+id/consent_fourth"
+                    layout="@layout/lyt_consent_fourth" />
+
+                <include
+                    android:id="@+id/consent_fifth"
+                    layout="@layout/lyt_consent_fifth" />
+            </LinearLayout>
+        </ScrollView>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="6.0dip"
+            android:layout_marginTop="-6.0dip"
+            android:background="@drawable/wizard_shadow_top" />
+
+        <TextView
+            android:id="@+id/legalFooterText"
+            style="@style/Wizard.TextViewLegalSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/space_1x" />
+
+        <Button
+            android:id="@+id/moreInfoButton"
+            style="@style/Wizard.Button.Borderless"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ConsentRefreshMoreInfo"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/agreeButton"
+            style="@style/Wizard.ContinueButton"
+            android:text="@string/Privacy_agree_continue_button" />
+    </LinearLayout>
+</layout>

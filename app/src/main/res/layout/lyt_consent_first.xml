@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white">
+
+        <!-- Base CardView -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/base_cardview"
+            style="@style/Base.CardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            app:cardUseCompatPadding="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- This is a ConstraintLayout for the entire CardView including the expandable portion -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/toggle_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <!-- This is a ConstraintLayout for the fixed portion of the CardView. The elements that
+                lie within the fixed portion of the CardView can be constrained to this layout -->
+                <LinearLayout
+                    android:id="@+id/fixed_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        app:tint="@color/colorPrimaryDark"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_arrow_down"
+                        app:layout_constraintBottom_toBottomOf="@id/fixed_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/list_of_subjects" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/Privacy_data_title"
+                        android:textColor="@color/color_black"
+                        android:textSize="16dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/fixed_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.878"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <!-- This is ImageButton for the expansion icon -->
+                    <ImageView
+                        android:id="@+id/arrow"
+                        android:layout_width="30dp"
+                        app:tint="@color/colorPrimaryDark"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/mtrl_ic_arrow_drop_down"
+                        app:layout_constraintBottom_toBottomOf="@id/fixed_layout"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.802"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/list_of_subjects"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </LinearLayout>
+
+                <!-- The following is the expandable portion whose visibility is initially set to 'gone'
+                The parent LinearLayout contains 3 child LinearLayouts that hold a subject name and an icon each -->
+                <LinearLayout
+                    android:id="@+id/hidden_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fixed_layout">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="@string/Privacy_process_text"
+                        android:textColor="@color/color_grey"
+                        android:textSize="16dp" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
