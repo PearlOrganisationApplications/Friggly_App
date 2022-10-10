@@ -7,9 +7,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rank.me.R
+import com.rank.me.ui.base.SimpleActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : SimpleActivity() {
     private lateinit var navController:NavController
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
