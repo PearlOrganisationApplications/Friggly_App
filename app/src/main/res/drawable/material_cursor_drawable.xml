@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <padding android:top="@dimen/material_cursor_inset_top" android:bottom="@dimen/material_cursor_inset_bottom" />
     <size android:width="@dimen/material_cursor_width" />
-    <solid android:color="?colorPrimary" />
+    <solid android:color="@color/colorPrimary" />
 </shape>

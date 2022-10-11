@@ -18,6 +18,7 @@
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="10dp"
             app:cardElevation="10dp"
+            app:cardBackgroundColor="@color/white"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="21dp"
             tools:layout_editor_absoluteY="9dp">
@@ -50,16 +51,13 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation_bar"
-            app:itemIconTint="@color/colorPrimary"
-            app:itemTextColor="@color/black"
+            app:itemIconTint="@color/mtrl_tabs_icon_color_selector"
+            app:itemTextColor="@color/mtrl_tabs_icon_color_selector"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/white"
-            app:menu="@menu/bottom_nav_menu"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="60dp"
+            app:itemPaddingTop="5dp"
+            app:itemPaddingBottom="5dp"
+            app:menu="@menu/bottom_nav_menu" />
 
     </LinearLayout>
 </layout>

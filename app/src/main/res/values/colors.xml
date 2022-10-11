@@ -24,9 +24,9 @@
     <color name="dark_gray">#8A8A8A</color><!--深灰-->
     <color name="search_gray">#EAEAEA</color><!--搜索框灰色-->
 
-    <color name="green">#2EAD4D</color><!--要想代码过得去，主题就要带点绿-->
+    <color name="green">#31b6a5</color><!--要想代码过得去，主题就要带点绿-->
 
-    <color name="theme_color">#2EAD4D</color><!--主题颜色  用于标题栏、状态栏、导航栏、启动页背景-->
+    <color name="theme_color">#31b6a5</color><!--主题颜色  用于标题栏、状态栏、导航栏、启动页背景-->
     <color name="theme_color_secondary">@color/white</color><!--次主题颜色-->
 
     <color name="color_primary">@color/theme_color</color>
@@ -165,5 +165,5 @@
     <color name="tooltip_background_light">#e6ffffff</color>
     <color name="wizard_dark">#ff05283c</color>
     <color name="wizard_gray_medium">#ff5f7d8c</color>
-    <color name="wizard_green_dark">#ff00a740</color>
+    <color name="wizard_green_dark">#31b6a5</color>
 </resources>
