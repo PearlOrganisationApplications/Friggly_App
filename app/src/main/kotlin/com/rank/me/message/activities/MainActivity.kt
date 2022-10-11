@@ -31,6 +31,7 @@ import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.extensions.*
 import com.rank.me.message.models.Conversation
 import com.rank.me.message.models.Events
+import com.simplemobiletools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_message_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -43,7 +44,7 @@ class MainActivity : SimpleActivity() {
     private val MAKE_DEFAULT_APP_REQUEST = 1
     private val PICK_IMPORT_SOURCE_INTENT = 11
     private val PICK_EXPORT_FILE_INTENT = 21
-
+    var cachedContacts = ArrayList<SimpleContact>()
     private var storedTextColor = 0
     private var storedFontSize = 0
     private var bus: EventBus? = null
@@ -473,6 +474,13 @@ class MainActivity : SimpleActivity() {
         arrayListOf<Release>().apply {
             add(Release(48, R.string.release_48))
             checkWhatsNew(this, BuildConfig.VERSION_CODE)
+        }
+    }
+    fun cacheContacts(contacts: List<SimpleContact>) {
+        try {
+            cachedContacts.clear()
+            cachedContacts.addAll(contacts)
+        } catch (e: Exception) {
         }
     }
 }
