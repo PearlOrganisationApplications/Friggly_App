@@ -15,8 +15,6 @@ private const val ARG_PARAM2 = "param2"
 class MessagePromotionFragment : BaseFragment<PromotionFragmentBinding>(PromotionFragmentBinding::inflate) {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
-    private lateinit var demoCollectionAdapter: MessageSubAdapter
-    private lateinit var viewPager: ViewPager2
 
     private var param1: String? = null
     private var param2: String? = null
@@ -33,7 +31,6 @@ class MessagePromotionFragment : BaseFragment<PromotionFragmentBinding>(Promotio
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
-//            textView.text = getInt(ARG_OBJECT).toString()
         }
     }
 

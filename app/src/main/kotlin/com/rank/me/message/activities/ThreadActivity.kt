@@ -55,6 +55,7 @@ import com.rank.me.message.helpers.*
 import com.rank.me.message.models.*
 import com.rank.me.message.receivers.SmsStatusDeliveredReceiver
 import com.rank.me.message.receivers.SmsStatusSentReceiver
+import com.rank.me.ui.component.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_thread.*
 import kotlinx.android.synthetic.main.item_attachment.view.*
 import kotlinx.android.synthetic.main.item_selected_contact.view.*
@@ -213,7 +214,7 @@ class ThreadActivity : SimpleActivity() {
 
     private fun onHomePressed() {
         hideKeyboard()
-        Intent(this, MainActivity::class.java).apply {
+        Intent(this, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(this)
         }

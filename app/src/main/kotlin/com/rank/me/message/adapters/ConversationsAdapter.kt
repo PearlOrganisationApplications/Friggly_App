@@ -23,10 +23,11 @@ import com.rank.me.message.activities.SimpleActivity
 import com.rank.me.message.helpers.refreshMessages
 import com.rank.me.message.extensions.*
 import com.rank.me.message.models.Conversation
+import com.rank.me.ui.component.home.HomeActivity
 import kotlinx.android.synthetic.main.item_conversation.view.*
 
 class ConversationsAdapter(
-    activity: SimpleActivity, var conversations: ArrayList<Conversation>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit
+    activity : HomeActivity, var conversations: ArrayList<Conversation>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit
 ) : MyRecyclerViewAdapter(activity, recyclerView, itemClick), RecyclerViewFastScroller.OnPopupTextUpdate {
     private var fontSize = activity.getTextSize()
     private var drafts = HashMap<Long, String?>()

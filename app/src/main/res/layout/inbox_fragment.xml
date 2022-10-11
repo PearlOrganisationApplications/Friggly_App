@@ -4,6 +4,14 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.rank.me.ui.component.home.message.OrderViewModel" />
+
+        <variable
+            name="inboxFragment"
+            type="com.rank.me.ui.component.home.message.inbox.MessageInboxFragment" />
+
     </data>
 
     <LinearLayout
@@ -12,7 +20,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/linearLayout"
+            android:id="@+id/pass_code_lyt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -50,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:id="@+id/enable_lock"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -61,7 +69,7 @@
                         android:text="Enable"
                         android:textColor="@color/colorPrimary" />
 
-                    <Button
+                    <TextView
                         android:id="@+id/later"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -94,7 +102,11 @@
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/main_coordinator_wrapper"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp">
 
                 <RelativeLayout
                     android:id="@+id/main_holder"
@@ -132,7 +144,9 @@
                     <com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
                         android:id="@+id/conversations_fastscroller"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="0dp">
 
                         <com.simplemobiletools.commons.views.MyRecyclerView
                             android:id="@+id/conversations_list"
@@ -146,22 +160,13 @@
 
                     </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
                 </RelativeLayout>
-
-                <com.simplemobiletools.commons.views.MyFloatingActionButton
-                    android:id="@+id/conversations_fab"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|end"
-                    android:layout_margin="@dimen/activity_margin"
-                    android:src="@drawable/ic_plus_vector" />
-
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/pass_code_lyt"
             android:orientation="vertical">
 
             <ImageView
@@ -183,4 +188,5 @@
                 android:text="Promotional messages will appear here" />
         </LinearLayout>
     </LinearLayout>
+
 </layout>

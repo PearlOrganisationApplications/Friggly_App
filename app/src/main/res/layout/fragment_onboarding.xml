@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <TextView
             android:id="@+id/text_onboarding_title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -19,12 +19,12 @@
             android:layout_marginRight="30dp"
             android:gravity="center"
             android:text="@string/title_on_boarding_first_slide"
-            android:textColor="?android:textColor"
+            android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
             android:visibility="gone" />
 
-        <androidx.appcompat.widget.AppCompatTextView
+       <TextView
             android:id="@+id/text_onboarding_description"
             android:layout_width="match_parent"
             android:layout_height="?android:actionBarSize"
@@ -34,7 +34,6 @@
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
-
 
     </RelativeLayout>
 </layout>

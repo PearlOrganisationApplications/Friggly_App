@@ -14,7 +14,7 @@
         android:background="@color/highlighted_text_material_dark"
         tools:context=".me.ui.component.onboarding.OnBoardingActivity">
 
-        <androidx.appcompat.widget.AppCompatTextView
+       <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                 android:textAllCaps="true"
                 android:textColor="@color/color_white" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+           <TextView
                 android:id="@+id/text_policy_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

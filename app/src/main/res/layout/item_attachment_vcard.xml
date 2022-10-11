@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Bob" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+   <TextView
         android:id="@+id/vcard_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
         tools:text="and 6 others"
         tools:visibility="visible" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+   <TextView
         android:id="@+id/view_contact_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

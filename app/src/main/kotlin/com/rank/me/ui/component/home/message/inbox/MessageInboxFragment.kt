@@ -12,16 +12,17 @@ import android.graphics.drawable.LayerDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LiveData
+import com.rank.me.BuildConfig
 import com.rank.me.R
 import com.rank.me.databinding.InboxFragmentBinding
-import com.rank.me.message.activities.NewConversationActivity
-import com.rank.me.message.activities.SearchActivity
-import com.rank.me.message.activities.SettingsActivity
-import com.rank.me.message.activities.ThreadActivity
+import com.rank.me.message.activities.*
 import com.rank.me.message.adapters.ConversationsAdapter
 import com.rank.me.message.dialogs.ExportMessagesDialog
 import com.rank.me.message.dialogs.ImportMessagesDialog
@@ -32,16 +33,16 @@ import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.models.Conversation
 import com.rank.me.message.models.Events
-import com.rank.me.ui.base.BaseFragment
 import com.rank.me.ui.component.home.HomeActivity
+import com.rank.me.ui.component.home.message.OrderViewModel
 import com.rank.me.utils.livedatapermission.PermissionManager
 import com.rank.me.utils.livedatapermission.model.PermissionResult
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.Release
-import kotlinx.android.synthetic.main.activity_message_main.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -54,10 +55,15 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBinding::inflate) , PermissionManager.PermissionObserver {
+class MessageInboxFragment : Fragment(), PermissionManager.PermissionObserver {
     private var param1: String? = null
     private var param2: String? = null
     private val ARG_OBJECT = "object"
+
+    private var binding: InboxFragmentBinding? = null
+
+    // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
+    private val sharedViewModel: OrderViewModel by activityViewModels()
 
     private val MAKE_DEFAULT_APP_REQUEST = 1
     private val PICK_IMPORT_SOURCE_INTENT = 11
@@ -81,17 +87,35 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
         }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val fragmentBinding = InboxFragmentBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         arguments?.takeIf { it.containsKey(ARG_OBJECT) }?.apply {
 //            textView.text = getInt(ARG_OBJECT).toString()
+        }
+        binding?.apply {
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+
+            // Assign the view model to a property in the binding class
+            viewModel = sharedViewModel
+
+            // Assign the fragment
+            inboxFragment = this@MessageInboxFragment
         }
         PermissionManager.requestPermissions(
             this,
             4,
             Manifest.permission.READ_SMS
         )
-
         if (isQPlus()) {
             val roleManager = requireActivity().getSystemService(RoleManager::class.java)
             if (roleManager!!.isRoleAvailable(RoleManager.ROLE_SMS)) {
@@ -102,8 +126,8 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                     startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
                 }
             } else {
-                requireActivity(). toast(R.string.unknown_error_occurred)
-                requireActivity(). finish()
+                requireActivity().toast(R.string.unknown_error_occurred)
+                requireActivity().finish()
             }
         } else {
             if (Telephony.Sms.getDefaultSmsPackage(requireActivity()) == requireActivity().packageName) {
@@ -114,21 +138,27 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                 startActivityForResult(intent, MAKE_DEFAULT_APP_REQUEST)
             }
         }
-
         requireActivity().clearAllMessagesIfNeeded()
+        handlePassCodeFeature();
+    }
 
+    private fun handlePassCodeFeature() {
+        binding?.later?.setOnClickListener {
+            binding!!.passCodeLyt.visibility = View.GONE
+
+        }
     }
 
     // while SEND_SMS and READ_SMS permissions are mandatory, READ_CONTACTS is optional. If we don't have it, we just won't be able to show the contact name in some cases
     private fun askPermissions() {
         (activity as HomeActivity).handlePermission(PERMISSION_READ_SMS) {
             if (it) {
-                (activity as HomeActivity). handlePermission(PERMISSION_SEND_SMS) {
+                (activity as HomeActivity).handlePermission(PERMISSION_SEND_SMS) {
                     if (it) {
-                        (activity as HomeActivity). handlePermission(PERMISSION_READ_CONTACTS) {
-                            handleNotificationPermission { granted ->
+                        (activity as HomeActivity).handlePermission(PERMISSION_READ_CONTACTS) {
+                            (activity as HomeActivity).handleNotificationPermission { granted ->
                                 if (!granted) {
-                                    toast(R.string.no_post_notifications_permissions)
+                                    requireActivity().toast(R.string.no_post_notifications_permissions)
                                 }
                             }
 
@@ -154,11 +184,7 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
         storeStateVariables()
         getCachedConversations()
 
-        no_conversations_placeholder_2.setOnClickListener {
-            launchNewConversation()
-        }
-
-        conversations_fab.setOnClickListener {
+        binding?.noConversationsPlaceholder2?.setOnClickListener {
             launchNewConversation()
         }
     }
@@ -185,7 +211,7 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
             val privateContacts = MyContactsContentProvider.getSimpleContacts(requireActivity(), privateCursor)
             val conversations = requireActivity().getConversations(privateContacts = privateContacts)
 
-            requireActivity(). runOnUiThread {
+            requireActivity().runOnUiThread {
                 setupConversations(conversations)
             }
 
@@ -227,39 +253,40 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                 .thenByDescending { it.date }
         ).toMutableList() as ArrayList<Conversation>
 
-        conversations_fastscroller.beVisibleIf(hasConversations)
-        no_conversations_placeholder.beGoneIf(hasConversations)
-        no_conversations_placeholder_2.beGoneIf(hasConversations)
+        binding?.conversationsFastscroller?.beVisibleIf(hasConversations)
+        binding?.noConversationsPlaceholder?.beGoneIf(hasConversations)
+        binding?.noConversationsPlaceholder2?.beGoneIf(hasConversations)
 
         if (!hasConversations && requireActivity().config.appRunCount == 1) {
-            no_conversations_placeholder.text = getString(R.string.loading_messages)
-            no_conversations_placeholder_2.beGone()
+            binding?.noConversationsPlaceholder?.text = getString(R.string.loading_messages)
+            binding?.noConversationsPlaceholder2?.beGone()
         }
 
-        val currAdapter = conversations_list.adapter
+
+        val currAdapter = binding?.conversationsList?.adapter
         if (currAdapter == null) {
             requireActivity().hideKeyboard()
-            ConversationsAdapter(requireActivity()., sortedConversations, conversations_list) {
-                Intent(this, ThreadActivity::class.java).apply {
-                    putExtra(THREAD_ID, (it as Conversation).threadId)
-                    putExtra(THREAD_TITLE, it.title)
-                    startActivity(this)
-                }
+            ConversationsAdapter((activity as HomeActivity), sortedConversations, binding!!.conversationsList) {
+
+                val intent = Intent(requireContext(), ThreadActivity::class.java)
+                    .putExtra(THREAD_ID, (it as Conversation).threadId)
+                    .putExtra(THREAD_TITLE, it.title)
+                startActivity(intent)
             }.apply {
-                conversations_list.adapter = this
+                binding?.conversationsList?.adapter = this
             }
 
-            if (areSystemAnimationsEnabled) {
-                conversations_list.scheduleLayoutAnimation()
+            if (requireActivity().areSystemAnimationsEnabled) {
+                binding?.conversationsList?.scheduleLayoutAnimation()
             }
         } else {
             try {
                 (currAdapter as ConversationsAdapter).updateConversations(sortedConversations)
                 if (currAdapter.conversations.isEmpty()) {
-                    conversations_fastscroller.beGone()
-                    no_conversations_placeholder.text = getString(R.string.no_conversations_found)
-                    no_conversations_placeholder.beVisible()
-                    no_conversations_placeholder_2.beVisible()
+                    binding?.conversationsFastscroller?.beGone()
+                    binding?.noConversationsPlaceholder?.text = getString(R.string.no_conversations_found)
+                    binding?.noConversationsPlaceholder?.beVisible()
+                    binding?.noConversationsPlaceholder2?.beVisible()
                 }
             } catch (ignored: Exception) {
             }
@@ -267,22 +294,21 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
     }
 
     private fun launchNewConversation() {
-        hideKeyboard()
-        Intent(this, NewConversationActivity::class.java).apply {
-            startActivity(this)
-        }
+        requireActivity().hideKeyboard()
+        val intent = Intent(requireContext(), NewConversationActivity::class.java)
+        startActivity(intent)
     }
 
     @SuppressLint("NewApi")
     private fun checkShortcut() {
-        val appIconColor = config.appIconColor
-        if (isNougatMR1Plus() && config.lastHandledShortcutColor != appIconColor) {
+        val appIconColor = requireActivity().config.appIconColor
+        if (isNougatMR1Plus() && requireActivity().config.lastHandledShortcutColor != appIconColor) {
             val newConversation = getCreateNewContactShortcut(appIconColor)
 
-            val manager = getSystemService(ShortcutManager::class.java)
+            val manager = requireActivity().getSystemService(ShortcutManager::class.java)
             try {
                 manager.dynamicShortcuts = Arrays.asList(newConversation)
-                config.lastHandledShortcutColor = appIconColor
+                requireActivity().config.lastHandledShortcutColor = appIconColor
             } catch (ignored: Exception) {
             }
         }
@@ -295,9 +321,9 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
         (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
         val bmp = drawable.convertToBitmap()
 
-        val intent = Intent(this, NewConversationActivity::class.java)
+        val intent = Intent(requireContext(), NewConversationActivity::class.java)
         intent.action = Intent.ACTION_VIEW
-        return ShortcutInfo.Builder(this, "new_conversation")
+        return ShortcutInfo.Builder(requireContext(), "new_conversation")
             .setShortLabel(newEvent)
             .setLongLabel(newEvent)
             .setIcon(Icon.createWithBitmap(bmp))
@@ -306,13 +332,13 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
     }
 
     private fun launchSearch() {
-        hideKeyboard()
-        startActivity(Intent(applicationContext, SearchActivity::class.java))
+        requireActivity().hideKeyboard()
+        startActivity(Intent(requireContext(), SearchActivity::class.java))
     }
 
     private fun launchSettings() {
-        hideKeyboard()
-        startActivity(Intent(applicationContext, SettingsActivity::class.java))
+        requireActivity().hideKeyboard()
+        startActivity(Intent(requireContext(), SettingsActivity::class.java))
     }
 
     private fun launchAbout() {
@@ -328,12 +354,12 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
             faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
         }
 
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+        (activity as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
 
     private fun tryToExportMessages() {
         if (isQPlus()) {
-            ExportMessagesDialog(this, config.lastExportPath, true) { file ->
+            ExportMessagesDialog(activity as SimpleActivity, requireActivity().config.lastExportPath, true) { file ->
                 Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
                     type = EXPORT_MIME_TYPE
                     putExtra(Intent.EXTRA_TITLE, file.name)
@@ -342,17 +368,17 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                     try {
                         startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
                     } catch (e: ActivityNotFoundException) {
-                        toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                        requireActivity().toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
                     } catch (e: Exception) {
-                        showErrorToast(e)
+                        requireActivity().showErrorToast(e)
                     }
                 }
             }
         } else {
-            handlePermission(PERMISSION_WRITE_STORAGE) {
+            (activity as HomeActivity).handlePermission(PERMISSION_WRITE_STORAGE) {
                 if (it) {
-                    ExportMessagesDialog(this, config.lastExportPath, false) { file ->
-                        getFileOutputStream(file.toFileDirItem(this), true) { outStream ->
+                    ExportMessagesDialog(activity as SimpleActivity, requireActivity().config.lastExportPath, false) { file ->
+                        (activity as HomeActivity).getFileOutputStream(file.toFileDirItem(requireContext()), true) { outStream ->
                             exportMessagesTo(outStream)
                         }
                     }
@@ -362,7 +388,7 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
     }
 
     private fun exportMessagesTo(outputStream: OutputStream?) {
-        toast(R.string.exporting)
+        requireActivity().toast(R.string.exporting)
         ensureBackgroundThread {
             smsExporter.exportMessages(outputStream) {
                 val toastId = when (it) {
@@ -370,7 +396,7 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                     else -> R.string.exporting_failed
                 }
 
-                toast(toastId)
+                requireActivity().toast(toastId)
             }
         }
     }
@@ -384,13 +410,13 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
                 try {
                     startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
                 } catch (e: ActivityNotFoundException) {
-                    toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    requireActivity().toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
                 } catch (e: Exception) {
-                    showErrorToast(e)
+                    requireActivity().showErrorToast(e)
                 }
             }
         } else {
-            handlePermission(PERMISSION_READ_STORAGE) {
+            (activity as HomeActivity).handlePermission(PERMISSION_READ_STORAGE) {
                 if (it) {
                     importEvents()
                 }
@@ -399,35 +425,35 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
     }
 
     private fun importEvents() {
-        FilePickerDialog(this) {
+        FilePickerDialog(activity as BaseSimpleActivity) {
             showImportEventsDialog(it)
         }
     }
 
     private fun showImportEventsDialog(path: String) {
-        ImportMessagesDialog(this, path)
+        ImportMessagesDialog(activity as SimpleActivity, path)
     }
 
     private fun tryImportMessagesFromFile(uri: Uri) {
         when (uri.scheme) {
             "file" -> showImportEventsDialog(uri.path!!)
             "content" -> {
-                val tempFile = getTempFile("messages", "backup.json")
+                val tempFile = (activity as HomeActivity).getTempFile("messages", "backup.json")
                 if (tempFile == null) {
-                    toast(R.string.unknown_error_occurred)
+                    requireActivity().toast(R.string.unknown_error_occurred)
                     return
                 }
 
                 try {
-                    val inputStream = contentResolver.openInputStream(uri)
+                    val inputStream = requireActivity().contentResolver.openInputStream(uri)
                     val out = FileOutputStream(tempFile)
                     inputStream!!.copyTo(out)
                     showImportEventsDialog(tempFile.absolutePath)
                 } catch (e: Exception) {
-                    showErrorToast(e)
+                    requireActivity().showErrorToast(e)
                 }
             }
-            else -> toast(R.string.invalid_file_format)
+            else -> requireActivity().toast(R.string.invalid_file_format)
         }
     }
 
@@ -439,7 +465,7 @@ class MessageInboxFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBin
     private fun checkWhatsNewDialog() {
         arrayListOf<Release>().apply {
             add(Release(48, R.string.release_48))
-            checkWhatsNew(this, BuildConfig.VERSION_CODE)
+            (activity as HomeActivity).checkWhatsNew(this, BuildConfig.VERSION_CODE)
         }
     }
 
