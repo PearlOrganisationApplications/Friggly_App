@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Basit SMS Messenger</string>
-    <string name="app_launcher_name">SMS Messenger</string>
+    <string name="app_name">Basit Friggly</string>
+    <string name="app_launcher_name">Friggly</string>
     <string name="type_a_message">Bir mesaj yazın…</string>
     <string name="message_not_sent_short">Mesaj gönderilmedi</string>
     <string name="message_not_sent_touch_retry">Gönderilmedi. Yeniden denemek için dokunun.</string>

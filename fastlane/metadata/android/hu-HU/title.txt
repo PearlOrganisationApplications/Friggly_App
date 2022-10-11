@@ -1,1 +1,1 @@
-Egyszerű SMS Messenger
+Egyszerű Friggly

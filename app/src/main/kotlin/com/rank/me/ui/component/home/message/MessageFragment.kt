@@ -2,12 +2,15 @@ package com.rank.me.ui.component.home.message
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rank.me.R
 import com.rank.me.databinding.FragmentMsgBinding
+import com.rank.me.databinding.InboxFragmentBinding
 import com.rank.me.message.activities.NewConversationActivity
 import com.simplemobiletools.commons.extensions.hideKeyboard
 
@@ -46,6 +49,15 @@ class MessageFragment : Fragment() {
         }
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        val fragmentBinding = FragmentMsgBinding.inflate(inflater, container, false)
+        binding = fragmentBinding
+        return fragmentBinding.root
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         messageSubAdapter = MessageSubAdapter(this)
@@ -71,6 +83,9 @@ class MessageFragment : Fragment() {
                     }
                 }
             }.attach()
+        }
+        binding?.messageFab?.setOnClickListener {
+            openThread()
         }
     }
 
