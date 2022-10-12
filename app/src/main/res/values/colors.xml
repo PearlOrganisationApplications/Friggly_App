@@ -166,4 +166,5 @@
     <color name="wizard_dark">#ff05283c</color>
     <color name="wizard_gray_medium">#ff5f7d8c</color>
     <color name="wizard_green_dark">#31b6a5</color>
+    <color name="ripple_foreground">#33FFFFFF</color>
 </resources>

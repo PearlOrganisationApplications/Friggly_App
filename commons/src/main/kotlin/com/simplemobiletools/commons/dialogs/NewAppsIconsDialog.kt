@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.dialog_new_apps_icons.view.*
 class NewAppsIconsDialog(val activity: Activity) {
     init {
         val view = activity.layoutInflater.inflate(R.layout.dialog_new_apps_icons, null).apply {
-            val dialerUrl = "https://play.google.com/store/apps/details?id=com.simplemobiletools.dialer"
+            val dialerUrl = "https://play.google.com/store/apps/details?id=com.rank.me.dialer"
             val smsMessengerUrl = "https://play.google.com/store/apps/details?id=com.simplemobiletools.smsmessenger"
             val voiceRecorderUrl = "https://play.google.com/store/apps/details?id=com.simplemobiletools.voicerecorder"
 

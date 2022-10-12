@@ -8,10 +8,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.rank.me.R
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.message.OrderViewModel
+import com.simplemobiletools.commons.models.SimpleContact
 
 class HomeActivity : SimpleActivity() {
     private lateinit var navController:NavController
     private lateinit var sharedViewModel: OrderViewModel
+    var cachedContacts = ArrayList<SimpleContact>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +22,15 @@ class HomeActivity : SimpleActivity() {
         navController=navHostFragment.navController
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.navigation_bar)
         setupWithNavController(bottomNavigationView,navController)
-
     }
+
+
+    fun cacheContacts(contacts: List<SimpleContact>) {
+        try {
+            cachedContacts.clear()
+            cachedContacts.addAll(contacts)
+        } catch (e: Exception) {
+        }
+    }
+
 }

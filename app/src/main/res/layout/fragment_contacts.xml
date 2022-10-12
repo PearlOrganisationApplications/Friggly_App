@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<com.rank.me.dialer.fragments.ContactsFragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/contacts_fragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Contacts">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="No Contact data"
-        android:textSize="30sp"
-        android:gravity="center"/>
+    <include layout="@layout/fragment_letters_layout" />
 
-</FrameLayout>
+</com.rank.me.dialer.fragments.ContactsFragment>

@@ -35,7 +35,7 @@ class ContactsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_contacts, container, false)
+        return inflater.inflate(R.layout.fragment_contacts_main, container, false)
     }
 
     companion object {

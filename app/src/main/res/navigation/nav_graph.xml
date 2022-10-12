@@ -19,7 +19,7 @@
         android:id="@+id/contacts"
         android:name="com.rank.me.ui.component.home.contact.ContactsFragment"
         android:label="fragment_contacts"
-        tools:layout="@layout/fragment_contacts" />
+        tools:layout="@layout/fragment_contacts_main" />
     <fragment
         android:id="@+id/premium"
         android:name="com.rank.me.ui.component.home.premium.PremiumFragment"

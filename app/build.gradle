@@ -116,5 +116,6 @@ dependencies {
     implementation 'com.hbb20:android-country-picker:0.0.7'
     //ExpandableLayout for privacy page
     implementation "com.github.skydoves:expandablelayout:1.0.7"
+    implementation 'me.grantland:autofittextview:0.2.1'
 
 }
