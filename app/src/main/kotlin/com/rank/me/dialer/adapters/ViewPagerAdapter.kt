@@ -38,7 +38,7 @@ class ViewPagerAdapter(val activity: SimpleActivity) : PagerAdapter() {
         val showTabs = activity.config.showTabs
         val fragments = arrayListOf<Int>()
         if (showTabs and TAB_CONTACTS > 0) {
-            fragments.add(R.layout.fragment_contacts_main)
+            fragments.add(R.layout.fragment_contacts)
         }
 
         if (showTabs and TAB_FAVORITES > 0) {

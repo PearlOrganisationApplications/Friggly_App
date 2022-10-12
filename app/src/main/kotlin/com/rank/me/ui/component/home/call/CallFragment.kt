@@ -5,6 +5,7 @@ import android.app.SearchManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ShortcutInfo
+import android.content.res.Configuration
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.Icon
 import android.graphics.drawable.LayerDrawable
@@ -34,7 +35,6 @@ import com.rank.me.dialer.fragments.MyViewPagerFragment
 import com.rank.me.dialer.helpers.OPEN_DIAL_PAD_AT_LAUNCH
 import com.rank.me.dialer.helpers.RecentsHelper
 import com.rank.me.dialer.helpers.tabsList
-import com.rank.me.message.activities.NewConversationActivity
 import com.rank.me.ui.component.home.HomeActivity
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
@@ -42,9 +42,6 @@ import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.main_holder
-import kotlinx.android.synthetic.main.activity_message_main.*
 import kotlinx.android.synthetic.main.fragment_contacts.*
 import kotlinx.android.synthetic.main.fragment_favorites.*
 import kotlinx.android.synthetic.main.fragment_recents.*
@@ -69,7 +66,7 @@ class CallFragment : Fragment() {
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     private val sharedViewModel: CallViewModel by activityViewModels()
-    private var binding: FragmentCallBinding? = null
+    private lateinit var binding: FragmentCallBinding
 
     private var isSearchOpen = false
     private var launchedDialer = false
@@ -84,16 +81,6 @@ class CallFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-        binding?.apply {
-            // Specify the fragment as the lifecycle owner
-            lifecycleOwner = viewLifecycleOwner
-
-            // Assign the view model to a property in the binding class
-            viewModel = sharedViewModel
-
-            // Assign the fragment
-            callFragment = this@CallFragment
-        }
     }
 
     override fun onCreateView(
@@ -107,34 +94,46 @@ class CallFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
 
-        launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
+            // Assign the view model to a property in the binding class
+            viewModel = sharedViewModel
+
+            // Assign the fragment
+            callFragment = this@CallFragment
+        }
 //        setupOptionsMenu()
-//        refreshMenuItems()
-        if (requireContext().isDefaultDialer()) {
+        refreshMenuItems()
+        launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
+
+        if (requireActivity().isDefaultDialer()) {
             checkContactPermissions()
 
-            if (!requireContext().config.wasOverlaySnackbarConfirmed && !Settings.canDrawOverlays(requireContext())) {
-                val snackbar = Snackbar.make(main_holder, R.string.allow_displaying_over_other_apps, Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok) {
-                    requireContext().config.wasOverlaySnackbarConfirmed = true
+            if (!requireActivity().config.wasOverlaySnackbarConfirmed && !Settings.canDrawOverlays(requireActivity())) {
+                val snackbar = Snackbar.make(binding.root, R.string.allow_displaying_over_other_apps, Snackbar.LENGTH_INDEFINITE).setAction(R.string.ok) {
+                    requireActivity().config.wasOverlaySnackbarConfirmed = true
                     startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION))
                 }
 
-                snackbar.setBackgroundTint(requireContext().getProperBackgroundColor().darkenColor())
-                snackbar.setTextColor(requireContext().getProperTextColor())
-                snackbar.setActionTextColor(requireContext().getProperTextColor())
+                snackbar.setBackgroundTint(requireActivity().getProperBackgroundColor().darkenColor())
+                snackbar.setTextColor(requireActivity().getProperTextColor())
+                snackbar.setActionTextColor(requireActivity().getProperTextColor())
                 snackbar.show()
             }
 
-            (activity as HomeActivity).handleNotificationPermission { granted ->
+            (requireActivity() as HomeActivity).handleNotificationPermission { granted ->
                 if (!granted) {
-                    (activity as HomeActivity).toast(R.string.no_post_notifications_permissions)
+                    requireActivity().toast(R.string.no_post_notifications_permissions)
                 }
             }
         } else {
-            (activity as HomeActivity).launchSetDefaultDialerIntent()
+            (requireActivity() as HomeActivity).launchSetDefaultDialerIntent()
         }
-        SimpleContact.sorting = requireContext().config.sorting
+
+        setupTabs()
+        SimpleContact.sorting = requireActivity().config.sorting
     }
 
     companion object {
@@ -157,27 +156,73 @@ class CallFragment : Fragment() {
             }
     }
 
-    fun openThread() {
-        requireActivity().hideKeyboard()
-        val intent = Intent(requireActivity(), NewConversationActivity::class.java)
-        startActivity(intent)
+    override fun onResume() {
+        super.onResume()
+        val properPrimaryColor = (requireActivity() as HomeActivity).getProperPrimaryColor()
+        val dialpadIcon = resources.getColoredDrawableWithColor(R.drawable.ic_dialpad_vector, properPrimaryColor.getContrastColor())
+        binding.mainDialpadButton.setImageDrawable(dialpadIcon)
+
+        setupTabColors()
+//        (requireActivity() as HomeActivity).setupToolbar(main_toolbar, searchMenuItem = mSearchMenuItem)
+        (requireActivity() as HomeActivity).updateTextColors(binding.mainHolder)
+
+        getAllFragments().forEach {
+            it?.setupColors(requireActivity().getProperTextColor(), requireActivity().getProperPrimaryColor(), requireActivity().getProperPrimaryColor())
+        }
+
+        if (!isSearchOpen) {
+            if (storedShowTabs != requireActivity().config.showTabs) {
+                System.exit(0)
+                return
+            }
+            refreshItems(true)
+        }
+
+        checkShortcuts()
+        Handler().postDelayed({
+            recents_fragment?.refreshItems()
+        }, 2000)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        storedShowTabs = requireActivity().config.showTabs
+        requireActivity().config.lastUsedViewPagerPage = binding.viewPager.currentItem
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, resultData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, resultData)
+        // we dont really care about the result, the app can work without being the default Dialer too
+        if (requestCode == REQUEST_CODE_SET_DEFAULT_DIALER) {
+            checkContactPermissions()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(OPEN_DIAL_PAD_AT_LAUNCH, launchedDialer)
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        refreshItems()
     }
 
     private fun refreshMenuItems() {
         val currentFragment = getCurrentFragment()
-        (activity as HomeActivity).main_toolbar.menu.apply {
-            findItem(R.id.clear_call_history).isVisible = currentFragment == recents_fragment
-            findItem(R.id.sort).isVisible = currentFragment != recents_fragment
-            findItem(R.id.create_new_contact).isVisible = currentFragment == contacts_fragment
-        }
+//        main_toolbar.menu.apply {
+//            findItem(R.id.clear_call_history).isVisible = currentFragment == recents_fragment
+//            findItem(R.id.sort).isVisible = currentFragment != recents_fragment
+//            findItem(R.id.create_new_contact).isVisible = currentFragment == contacts_fragment
+//        }
     }
 
     private fun setupOptionsMenu() {
-        setupSearch((activity as HomeActivity).main_toolbar.menu)
-        (activity as HomeActivity).main_toolbar.setOnMenuItemClickListener { menuItem ->
+        setupSearch(main_toolbar.menu)
+        main_toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.clear_call_history -> clearCallHistory()
-                R.id.create_new_contact -> (activity as HomeActivity).launchCreateNewContactIntent()
+                R.id.create_new_contact ->( requireActivity() as HomeActivity).launchCreateNewContactIntent()
                 R.id.sort -> showSortingDialog(showCustomSorting = getCurrentFragment() is FavoritesFragment)
                 R.id.settings -> launchSettings()
                 R.id.about -> launchAbout()
@@ -188,13 +233,13 @@ class CallFragment : Fragment() {
     }
 
     private fun checkContactPermissions() {
-        (activity as HomeActivity).handlePermission(PERMISSION_READ_CONTACTS) {
+        (requireActivity() as HomeActivity).handlePermission(PERMISSION_READ_CONTACTS) {
             initFragments()
         }
     }
 
     private fun setupSearch(menu: Menu) {
-        val searchManager = context?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager = requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
         mSearchMenuItem = menu.findItem(R.id.search)
         (mSearchMenuItem!!.actionView as SearchView).apply {
             setSearchableInfo(searchManager.getSearchableInfo(requireActivity().componentName))
@@ -216,7 +261,7 @@ class CallFragment : Fragment() {
         MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
             override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
                 isSearchOpen = true
-                main_dialpad_button.beGone()
+                binding.mainDialpadButton.beGone()
                 return true
             }
 
@@ -226,19 +271,17 @@ class CallFragment : Fragment() {
                 }
 
                 isSearchOpen = false
-                main_dialpad_button.beVisible()
+                binding.mainDialpadButton.beVisible()
                 return true
             }
         })
     }
 
     private fun clearCallHistory() {
-        activity?.let {
-            ConfirmationDialog(it, "", R.string.clear_history_confirmation) {
-                RecentsHelper(it).removeAllRecentCalls(activity as HomeActivity) {
-                    it.runOnUiThread {
-                        recents_fragment?.refreshItems()
-                    }
+        ConfirmationDialog(requireActivity(), "", R.string.clear_history_confirmation) {
+            RecentsHelper(requireActivity()).removeAllRecentCalls(requireActivity() as HomeActivity) {
+                requireActivity().runOnUiThread {
+                    recents_fragment?.refreshItems()
                 }
             }
         }
@@ -246,15 +289,13 @@ class CallFragment : Fragment() {
 
     @SuppressLint("NewApi")
     private fun checkShortcuts() {
-        val appIconColor = activity?.config?.appIconColor
-        if (isNougatMR1Plus() && activity?.config?.lastHandledShortcutColor != appIconColor) {
-            val launchDialpad = appIconColor?.let { getLaunchDialpadShortcut(it) }
+        val appIconColor = requireActivity().config.appIconColor
+        if (isNougatMR1Plus() && requireActivity().config.lastHandledShortcutColor != appIconColor) {
+            val launchDialpad = getLaunchDialpadShortcut(appIconColor)
 
             try {
-                activity?.shortcutManager?.dynamicShortcuts = listOf(launchDialpad)
-                if (appIconColor != null) {
-                    this.activity?.config?.lastHandledShortcutColor = appIconColor
-                }
+                requireActivity().shortcutManager.dynamicShortcuts = listOf(launchDialpad)
+                requireActivity().config.lastHandledShortcutColor = appIconColor
             } catch (ignored: Exception) {
             }
         }
@@ -267,9 +308,9 @@ class CallFragment : Fragment() {
         (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_dialpad_background).applyColorFilter(appIconColor)
         val bmp = drawable.convertToBitmap()
 
-        val intent = Intent(context, DialpadActivity::class.java)
+        val intent = Intent(requireActivity(), DialpadActivity::class.java)
         intent.action = Intent.ACTION_VIEW
-        return ShortcutInfo.Builder(context, "launch_dialpad")
+        return ShortcutInfo.Builder(requireActivity(), "launch_dialpad")
             .setShortLabel(newEvent)
             .setLongLabel(newEvent)
             .setIcon(Icon.createWithBitmap(bmp))
@@ -278,32 +319,30 @@ class CallFragment : Fragment() {
     }
 
     private fun setupTabColors() {
-        val activeView = main_tabs_holder.getTabAt(view_pager.currentItem)?.customView
-        context?.updateBottomTabItemColors(activeView, true)
+        val activeView = binding.mainTabsHolder.getTabAt(binding.viewPager.currentItem)?.customView
+        requireActivity().updateBottomTabItemColors(activeView, true)
 
-        getInactiveTabIndexes(view_pager.currentItem).forEach { index ->
-            val inactiveView = main_tabs_holder.getTabAt(index)?.customView
-            activity?.updateBottomTabItemColors(inactiveView, false)
+        getInactiveTabIndexes(binding.viewPager.currentItem).forEach { index ->
+            val inactiveView = binding.mainTabsHolder.getTabAt(index)?.customView
+            requireActivity().updateBottomTabItemColors(inactiveView, false)
         }
 
-        val bottomBarColor = context?.getBottomNavigationBackgroundColor()
-        if (bottomBarColor != null) {
-            main_tabs_holder.setBackgroundColor(bottomBarColor)
-            (activity as HomeActivity).updateNavigationBarColor(bottomBarColor)
-        }
+        val bottomBarColor = requireActivity().getBottomNavigationBackgroundColor()
+        binding.mainTabsHolder.setBackgroundColor(bottomBarColor)
+        (requireActivity() as HomeActivity).updateNavigationBarColor(bottomBarColor)
     }
 
     private fun getInactiveTabIndexes(activeIndex: Int) = (0 until tabsList.size).filter { it != activeIndex }
 
     private fun initFragments() {
-        view_pager.offscreenPageLimit = 2
-        view_pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+        binding.viewPager.offscreenPageLimit = 2
+        binding.viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {}
 
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) {
-                main_tabs_holder.getTabAt(position)?.select()
+                binding.mainTabsHolder.getTabAt(position)?.select()
                 getAllFragments().forEach {
                     it?.finishActMode()
                 }
@@ -312,66 +351,65 @@ class CallFragment : Fragment() {
         })
 
         // selecting the proper tab sometimes glitches, add an extra selector to make sure we have it right
-        main_tabs_holder.onGlobalLayout {
+        binding.mainTabsHolder.onGlobalLayout {
             Handler().postDelayed({
                 var wantedTab = getDefaultTab()
 
                 // open the Recents tab if we got here by clicking a missed call notification
-                if (activity != null) {
-                    if (requireActivity().intent.action == Intent.ACTION_VIEW && requireActivity().config.showTabs and TAB_CALL_HISTORY > 0) {
-                        wantedTab = main_tabs_holder.tabCount - 1
+                if (requireActivity().intent.action == Intent.ACTION_VIEW && requireActivity().config.showTabs and TAB_CALL_HISTORY > 0) {
+                    wantedTab = binding.mainTabsHolder.tabCount - 1
 
-                        ensureBackgroundThread {
-                            clearMissedCalls()
-                        }
+                    ensureBackgroundThread {
+                        clearMissedCalls()
                     }
                 }
-                main_tabs_holder.getTabAt(wantedTab)?.select()
+
+                binding.mainTabsHolder.getTabAt(wantedTab)?.select()
                 refreshMenuItems()
             }, 100L)
         }
 
-        main_dialpad_button.setOnClickListener {
+        binding.mainDialpadButton.setOnClickListener {
             launchDialpad()
         }
 
-        view_pager.onGlobalLayout {
+        binding.viewPager.onGlobalLayout {
             refreshMenuItems()
         }
 
-        if (activity?.config?.openDialPadAtLaunch == true && !launchedDialer) {
+        if (requireActivity().config.openDialPadAtLaunch && !launchedDialer) {
             launchDialpad()
             launchedDialer = true
         }
     }
 
     private fun setupTabs() {
-        view_pager.adapter = null
-        main_tabs_holder.removeAllTabs()
+        binding.viewPager.adapter = null
+        binding.mainTabsHolder.removeAllTabs()
         tabsList.forEachIndexed { index, value ->
-            if ((activity?.config?.showTabs?.and(value) ?: 0) != 0) {
-                main_tabs_holder.newTab().setCustomView(R.layout.bottom_tablayout_item).apply {
+            if (requireActivity().config.showTabs and value != 0) {
+                binding.mainTabsHolder.newTab().setCustomView(R.layout.bottom_tablayout_item).apply {
                     customView?.findViewById<ImageView>(R.id.tab_item_icon)?.setImageDrawable(getTabIcon(index))
                     customView?.findViewById<TextView>(R.id.tab_item_label)?.text = getTabLabel(index)
                     AutofitHelper.create(customView?.findViewById(R.id.tab_item_label))
-                    main_tabs_holder.addTab(this)
+                    binding.mainTabsHolder.addTab(this)
                 }
             }
         }
 
-        main_tabs_holder.onTabSelectionChanged(
+        binding.mainTabsHolder.onTabSelectionChanged(
             tabUnselectedAction = {
-                activity?.updateBottomTabItemColors(it.customView, false)
+                requireActivity().updateBottomTabItemColors(it.customView, false)
             },
             tabSelectedAction = {
                 closeSearch()
-                view_pager.currentItem = it.position
-                activity?.updateBottomTabItemColors(it.customView, true)
+                binding.viewPager.currentItem = it.position
+                requireActivity().updateBottomTabItemColors(it.customView, true)
             }
         )
 
-        main_tabs_holder.beGoneIf(main_tabs_holder.tabCount == 1)
-        storedShowTabs = activity?.config?.showTabs
+        binding.mainTabsHolder.beGoneIf(binding.mainTabsHolder.tabCount == 1)
+        storedShowTabs = requireActivity().config.showTabs
     }
 
     private fun getTabIcon(position: Int): Drawable {
@@ -380,6 +418,7 @@ class CallFragment : Fragment() {
             1 -> R.drawable.ic_star_vector
             else -> R.drawable.ic_clock_vector
         }
+
         return resources.getColoredDrawableWithColor(drawableId, requireActivity().getProperTextColor())
     }
 
@@ -394,26 +433,23 @@ class CallFragment : Fragment() {
     }
 
     private fun refreshItems(openLastTab: Boolean = false) {
-        if (activity?.isDestroyed != false || activity?.isFinishing != false) {
+        if (requireActivity().isDestroyed || requireActivity().isFinishing) {
             return
         }
 
-        if (activity != null) {
-
-            if (view_pager.adapter == null) {
-                view_pager.adapter = ViewPagerAdapter(activity as HomeActivity)
-                view_pager.currentItem = if (openLastTab) requireActivity().config.lastUsedViewPagerPage else getDefaultTab()
-                view_pager.onGlobalLayout {
-                    refreshFragments()
-                }
-            } else {
+        if (binding.viewPager.adapter == null) {
+            binding.viewPager.adapter = ViewPagerAdapter(requireActivity() as HomeActivity)
+            binding.viewPager.currentItem = if (openLastTab) requireActivity().config.lastUsedViewPagerPage else getDefaultTab()
+            binding.viewPager.onGlobalLayout {
                 refreshFragments()
             }
+        } else {
+            refreshFragments()
         }
     }
 
     private fun launchDialpad() {
-        Intent(context, DialpadActivity::class.java).apply {
+        Intent(requireActivity(), DialpadActivity::class.java).apply {
             startActivity(this)
         }
     }
@@ -425,57 +461,51 @@ class CallFragment : Fragment() {
     }
 
     private fun getAllFragments(): ArrayList<MyViewPagerFragment?> {
-        val showTabs = activity?.config?.showTabs
+        val showTabs = requireActivity().config.showTabs
         val fragments = arrayListOf<MyViewPagerFragment?>()
 
-        if (showTabs != null) {
-            if (showTabs and TAB_CONTACTS > 0) {
-                fragments.add(contacts_fragment)
-            }
-
-            if (showTabs and TAB_FAVORITES > 0) {
-                fragments.add(favorites_fragment)
-            }
-
-            if (showTabs and TAB_CALL_HISTORY > 0) {
-                fragments.add(recents_fragment)
-            }
-
+        if (showTabs and TAB_CONTACTS > 0) {
+            fragments.add(contacts_fragment)
         }
+
+        if (showTabs and TAB_FAVORITES > 0) {
+            fragments.add(favorites_fragment)
+        }
+
+        if (showTabs and TAB_CALL_HISTORY > 0) {
+            fragments.add(recents_fragment)
+        }
+
         return fragments
     }
 
-    private fun getCurrentFragment(): MyViewPagerFragment? = getAllFragments().getOrNull(view_pager.currentItem)
+    private fun getCurrentFragment(): MyViewPagerFragment? = getAllFragments().getOrNull(binding.viewPager.currentItem)
 
     private fun getDefaultTab(): Int {
-        if (activity != null) {
-            val showTabsMask = requireActivity().config.showTabs
-            return when (requireActivity().config.defaultTab) {
-                TAB_LAST_USED -> if (requireActivity().config.lastUsedViewPagerPage < main_tabs_holder.tabCount) requireActivity().config.lastUsedViewPagerPage else 0
-                TAB_CONTACTS -> 0
-                TAB_FAVORITES -> if (showTabsMask and TAB_CONTACTS > 0) 1 else 0
-                else -> {
-                    if (showTabsMask and TAB_CALL_HISTORY > 0) {
-                        if (showTabsMask and TAB_CONTACTS > 0) {
-                            if (showTabsMask and TAB_FAVORITES > 0) {
-                                2
-                            } else {
-                                1
-                            }
+        val showTabsMask = requireActivity().config.showTabs
+        return when (requireActivity().config.defaultTab) {
+            TAB_LAST_USED -> if (requireActivity().config.lastUsedViewPagerPage < binding.mainTabsHolder.tabCount) requireActivity().config.lastUsedViewPagerPage else 0
+            TAB_CONTACTS -> 0
+            TAB_FAVORITES -> if (showTabsMask and TAB_CONTACTS > 0) 1 else 0
+            else -> {
+                if (showTabsMask and TAB_CALL_HISTORY > 0) {
+                    if (showTabsMask and TAB_CONTACTS > 0) {
+                        if (showTabsMask and TAB_FAVORITES > 0) {
+                            2
                         } else {
-                            if (showTabsMask and TAB_FAVORITES > 0) {
-                                1
-                            } else {
-                                0
-                            }
+                            1
                         }
                     } else {
-                        0
+                        if (showTabsMask and TAB_FAVORITES > 0) {
+                            1
+                        } else {
+                            0
+                        }
                     }
+                } else {
+                    0
                 }
             }
-        } else {
-            return 0
         }
     }
 
@@ -485,15 +515,15 @@ class CallFragment : Fragment() {
             // notification cancellation triggers MissedCallNotifier.clearMissedCalls() which, in turn,
             // should update the database and reset the cached missed call count in MissedCallNotifier.java
             // https://android.googlesource.com/platform/packages/services/Telecomm/+/master/src/com/android/server/telecom/ui/MissedCallNotifierImpl.java#170
-            activity?.telecomManager?.cancelMissedCallsNotification()
+            requireActivity().telecomManager.cancelMissedCallsNotification()
         } catch (ignored: Exception) {
         }
     }
 
     private fun launchSettings() {
         closeSearch()
-        activity?.hideKeyboard()
-        startActivity(Intent(context, SettingsActivity::class.java))
+        requireActivity().hideKeyboard()
+        startActivity(Intent( requireActivity(), SettingsActivity::class.java))
     }
 
     private fun launchAbout() {
@@ -510,11 +540,11 @@ class CallFragment : Fragment() {
             faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
         }
 
-        (activity as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+        (requireActivity() as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
     }
 
     private fun showSortingDialog(showCustomSorting: Boolean) {
-        ChangeSortingDialog(activity as HomeActivity, showCustomSorting) {
+        ChangeSortingDialog(requireActivity() as HomeActivity, showCustomSorting) {
             favorites_fragment?.refreshItems {
                 if (isSearchOpen) {
                     getCurrentFragment()?.onSearchQueryChanged(searchQuery)
