@@ -359,6 +359,16 @@
     <string name="disable_proximity_sensor">Disable proximity sensor during calls</string>
     <string name="disable_swipe_to_answer">Replace swiping at responding to incoming calls with clicking</string>
     <string name="show_incoming_calls_full_screen">Always display incoming calls on full screen</string>
+    <string name="premium_blocking_option">Premium blocking options</string>
+    <string name="automatically_update_top_spammers">Automatically update top \n spammers</string>
+    <string name="extended_top_spammer_list">Extended top spammer list</string>
+    <string name="block_140_series">Block 140 series telemarkers</string>
+    <string name="block_settings">Block settings</string>
+    <string name="how_to_block_calls">How to block calls</string>
+    <string name="notification_for_blocked_Calls">Notification for block calls</string>
+    <string name="block_someone_manually">Block someone manually</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="message_sender_name">    Message sender name</string>
 
     <!--    //CALLS STRINGS//-->
 </resources>
