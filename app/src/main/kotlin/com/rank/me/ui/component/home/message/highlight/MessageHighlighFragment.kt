@@ -2,10 +2,8 @@ package com.rank.me.ui.component.home.message.highlight
 
 import android.os.Bundle
 import android.view.View
-import androidx.viewpager2.widget.ViewPager2
 import com.rank.me.databinding.InboxFragmentBinding
 import com.rank.me.ui.base.BaseFragment
-import com.rank.me.ui.component.home.message.MessageSubAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,8 +13,6 @@ private const val ARG_PARAM2 = "param2"
 class MessageHighlighFragment : BaseFragment<InboxFragmentBinding>(InboxFragmentBinding::inflate) {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
-    private lateinit var demoCollectionAdapter: MessageSubAdapter
-    private lateinit var viewPager: ViewPager2
 
     private var param1: String? = null
     private var param2: String? = null

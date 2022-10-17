@@ -1,12 +1,11 @@
-package com.rank.me.ui.component.home.message
+package com.rank.me.ui.component.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Locale
+import java.util.*
 
 /** Price for a single cupcake */
 private const val PRICE_PER_CUPCAKE = 2.00
@@ -15,10 +14,10 @@ private const val PRICE_PER_CUPCAKE = 2.00
 private const val PRICE_FOR_SAME_DAY_PICKUP = 3.00
 
 /**
- * [OrderViewModel] holds information about a cupcake order in terms of quantity, flavor, and
+ * [HomeViewModel] holds information about a cupcake order in terms of quantity, flavor, and
  * pickup date. It also knows how to calculate the total price based on these order details.
  */
-class OrderViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     // Quantity of cupcakes in this order
     private val _quantity = MutableLiveData<Int>()
@@ -119,3 +118,4 @@ class OrderViewModel : ViewModel() {
         return options
     }
 }
+

@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black">
 
         <LinearLayout
             android:background="@drawable/border_plain"
@@ -30,7 +31,7 @@
                     android:id="@+id/text_view"
                     android:fontFamily="@font/roboto_bold"
                     android:textSize="16sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/enable_notification_promotion" />
@@ -39,7 +40,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp"
                     android:text="@string/enable_notification_promotion_desc" />
 

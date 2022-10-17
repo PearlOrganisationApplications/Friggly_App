@@ -5,7 +5,6 @@ import android.view.View
 import androidx.viewpager2.widget.ViewPager2
 import com.rank.me.databinding.PromotionFragmentBinding
 import com.rank.me.ui.base.BaseFragment
-import com.rank.me.ui.component.home.message.MessageSubAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -1,6 +1,5 @@
 package com.rank.me.ui.component.home.message.inbox
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.app.role.RoleManager
 import android.content.ActivityNotFoundException
@@ -18,7 +17,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LiveData
 import com.rank.me.BuildConfig
 import com.rank.me.R
 import com.rank.me.databinding.InboxFragmentBinding
@@ -34,9 +32,7 @@ import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.models.Conversation
 import com.rank.me.message.models.Events
 import com.rank.me.ui.component.home.HomeActivity
-import com.rank.me.ui.component.home.message.OrderViewModel
-import com.rank.me.utils.livedatapermission.PermissionManager
-import com.rank.me.utils.livedatapermission.model.PermissionResult
+import com.rank.me.ui.component.home.HomeViewModel
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
@@ -55,7 +51,7 @@ import java.util.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MessageInboxFragment : Fragment(), PermissionManager.PermissionObserver {
+class MessageInboxFragment : Fragment(){
     private var param1: String? = null
     private var param2: String? = null
     private val ARG_OBJECT = "object"
@@ -63,7 +59,7 @@ class MessageInboxFragment : Fragment(), PermissionManager.PermissionObserver {
     private var binding: InboxFragmentBinding? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
-    private val sharedViewModel: OrderViewModel by activityViewModels()
+    private val sharedViewModel: HomeViewModel by activityViewModels()
 
     private val MAKE_DEFAULT_APP_REQUEST = 1
     private val PICK_IMPORT_SOURCE_INTENT = 11
@@ -111,11 +107,6 @@ class MessageInboxFragment : Fragment(), PermissionManager.PermissionObserver {
             // Assign the fragment
             inboxFragment = this@MessageInboxFragment
         }
-        PermissionManager.requestPermissions(
-            this,
-            4,
-            Manifest.permission.READ_SMS
-        )
         if (isQPlus()) {
             val roleManager = requireActivity().getSystemService(RoleManager::class.java)
             if (roleManager!!.isRoleAvailable(RoleManager.ROLE_SMS)) {
@@ -466,56 +457,6 @@ class MessageInboxFragment : Fragment(), PermissionManager.PermissionObserver {
         arrayListOf<Release>().apply {
             add(Release(48, R.string.release_48))
             (activity as HomeActivity).checkWhatsNew(this, BuildConfig.VERSION_CODE)
-        }
-    }
-
-    override fun setupObserver(permissionResultLiveData: LiveData<PermissionResult>) {
-        permissionResultLiveData.observe(this) {
-            when (it) {
-                is PermissionResult.PermissionGranted -> {
-                    Toast.makeText(requireContext(), "Permission Granted", Toast.LENGTH_SHORT)
-                        .show()
-                }
-                is PermissionResult.PermissionDenied -> {
-                    Toast.makeText(requireContext(), "Permission Denied", Toast.LENGTH_SHORT).show()
-                }
-                is PermissionResult.ShowRational -> when (it.requestCode) {
-                    1 -> {
-                        PermissionManager.requestPermissions(
-                            this,
-                            1,
-                            Manifest.permission.ACCESS_FINE_LOCATION
-                        )
-                    }
-                    2 -> {
-                        PermissionManager.requestPermissions(
-                            this,
-                            2,
-                            Manifest.permission.READ_CONTACTS
-                        )
-                    }
-                    3 -> {
-                        PermissionManager.requestPermissions(
-                            this,
-                            3,
-                            Manifest.permission.CAMERA
-                        )
-                    }
-                    4 -> {
-                        PermissionManager.requestPermissions(
-                            this,
-                            4,
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.READ_CONTACTS,
-                            Manifest.permission.CAMERA
-                        )
-                    }
-                }
-                is PermissionResult.PermissionDeniedPermanently -> {
-                    Toast.makeText(requireContext(), "Denied permanently", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
         }
     }
 

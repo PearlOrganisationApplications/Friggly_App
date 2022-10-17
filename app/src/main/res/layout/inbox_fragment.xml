@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.rank.me.ui.component.home.message.OrderViewModel" />
+            type="com.rank.me.ui.component.home.HomeViewModel" />
 
         <variable
             name="inboxFragment"
@@ -17,7 +17,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/black">
 
         <LinearLayout
             android:id="@+id/pass_code_lyt"
@@ -42,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/enable_passcode_lock"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <TextView
@@ -50,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
                     android:text="@string/enable_passcode_lock_desc"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
 
                 <LinearLayout

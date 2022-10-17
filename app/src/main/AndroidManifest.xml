@@ -82,12 +82,10 @@
         <activity
             android:name=".ui.component.login.LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ui.component.register.RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_login"
             android:theme="@style/AppTheme" />
 
         <activity
@@ -103,7 +101,6 @@
         <activity
             android:name=".ui.component.home.HomeActivity"
             android:exported="false"
-            android:label="@string/title_activity_recipes"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.app.searchable"

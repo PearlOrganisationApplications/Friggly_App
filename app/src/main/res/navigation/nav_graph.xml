@@ -7,27 +7,33 @@
 
     <fragment
         android:id="@+id/call"
-        android:name="com.rank.me.ui.component.home.call.CallFragment"
+        android:name="com.rank.me.ui.component.home.call.RecentsFragment"
         android:label="fragment_call"
-        tools:layout="@layout/fragment_call" />
+        tools:layout="@layout/fragment_recents" />
+
     <fragment
         android:id="@+id/msg"
         android:name="com.rank.me.ui.component.home.message.MessageFragment"
         android:label="fragment_msg"
         tools:layout="@layout/fragment_msg" />
+
     <fragment
         android:id="@+id/contacts"
         android:name="com.rank.me.ui.component.home.contact.ContactsFragment"
         android:label="fragment_contacts"
         tools:layout="@layout/fragment_contacts_main" />
+
     <fragment
         android:id="@+id/premium"
         android:name="com.rank.me.ui.component.home.premium.PremiumFragment"
         android:label="fragment_premium"
         tools:layout="@layout/fragment_premium" />
+
     <fragment
         android:id="@+id/blocking"
         android:name="com.rank.me.ui.component.home.block.BlockingFragment"
         android:label="fragment_blocking"
         tools:layout="@layout/fragment_blocking" />
+
+
 </navigation>

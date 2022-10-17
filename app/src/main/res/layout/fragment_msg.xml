@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.rank.me.ui.component.home.message.OrderViewModel" />
+            type="com.rank.me.ui.component.home.HomeViewModel" />
 
         <variable
             name="messageFragment"
@@ -25,7 +25,12 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/black"
+            app:tabIndicatorColor="@color/color_accent"
+            app:tabIconTint="@color/mtrl_tabs_icon_color_selector"
+           app:tabTextColor="@color/mtrl_tabs_icon_color_selector"
+            />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
@@ -36,16 +41,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.simplemobiletools.commons.views.MyFloatingActionButton
             android:id="@+id/message_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/activity_margin"
+            android:layout_marginEnd="@dimen/bigger_margin"
+            android:contentDescription="@string/dialpad"
+            android:elevation="@dimen/medium_margin"
+            android:padding="@dimen/activity_margin"
             android:src="@drawable/message"
-            android:tint="@color/white"
-            android:layout_margin="20dp"
-            android:elevation="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/colorAccent"
+            app:rippleColor="@color/colorPrimary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -12,42 +12,9 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/main_app_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/main_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/color_primary"
-                app:menu="@menu/menu"
-                app:title="@string/app_launcher_name"
-                app:titleTextAppearance="@style/AppTheme.ActionBar.TitleTextStyle" />
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardBackgroundColor="@color/white"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="21dp"
-            tools:layout_editor_absoluteY="9dp">
-
-            <EditText
-                android:padding="10dp"
-                android:background="@null"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:drawableStart="@drawable/ic_baseline_person_24"
-                android:hint=" search name,number and more" />
-        </androidx.cardview.widget.CardView>
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_home"/>
 
         <fragment
             android:id="@+id/mainContainer"
@@ -58,15 +25,13 @@
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:navGraph="@navigation/nav_graph"
-            tools:ignore="MissingConstraints" />
+            app:navGraph="@navigation/nav_graph" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation_bar"
+            android:background="@color/black"
             app:itemIconTint="@color/mtrl_tabs_icon_color_selector"
             app:itemTextColor="@color/mtrl_tabs_icon_color_selector"
             android:layout_width="match_parent"
