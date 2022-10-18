@@ -3,11 +3,14 @@ package com.rank.me.ui.component.home.call
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
+import android.widget.Toast
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
 import com.rank.me.R
 import com.rank.me.databinding.FragmentRecentsBinding
 import com.rank.me.dialer.activities.DialpadActivity
@@ -104,6 +107,54 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
             (requireActivity() as HomeActivity).launchSetDefaultDialerIntent()
         }
         SimpleContact.sorting = requireActivity().config.sorting
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.menu, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                Log.e("TAG", "onMenuItemSelected: $menuItem")
+                // Handle the menu selection
+                return when (menuItem.itemId) {
+                    R.id.search -> {
+                        Toast.makeText(context, "Menu call search", Toast.LENGTH_SHORT ).show()
+                        // clearCompletedTasks()
+                        true
+                    }
+                    R.id.sort -> {
+                        Toast.makeText(context, "Menu call sort", Toast.LENGTH_SHORT ).show()
+                        // loadTasks(true)
+                        true
+                    }
+                    R.id.create_new_contact -> {
+                        Toast.makeText(context, "create_new_contact", Toast.LENGTH_SHORT ).show()
+                        // loadTasks(true)
+                        true
+                    }
+                    R.id.clear_call_history -> {
+                        Toast.makeText(context, "clear_call_history", Toast.LENGTH_SHORT ).show()
+                        // loadTasks(true)
+                        true
+                    }
+                    R.id.settings -> {
+                        Toast.makeText(context, "Menu call settings", Toast.LENGTH_SHORT ).show()
+                        // loadTasks(true)
+                        true
+                    }
+                    R.id.about -> {
+                        Toast.makeText(context, "Menu call about", Toast.LENGTH_SHORT ).show()
+                        // loadTasks(true)
+                        true
+                    }
+                    else -> false
+                }
+                // Handle the menu selection
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
