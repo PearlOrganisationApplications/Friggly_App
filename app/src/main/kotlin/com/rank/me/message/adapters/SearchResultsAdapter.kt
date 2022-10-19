@@ -5,14 +5,14 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.rank.me.R
+import com.rank.me.message.models.SearchResult
+import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.getTextSize
 import com.simplemobiletools.commons.extensions.highlightTextPart
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.views.MyRecyclerView
-import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
-import com.rank.me.message.models.SearchResult
 import kotlinx.android.synthetic.main.item_search_result.view.*
 
 class SearchResultsAdapter(

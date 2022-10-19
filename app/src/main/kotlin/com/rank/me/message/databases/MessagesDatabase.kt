@@ -14,8 +14,8 @@ import com.rank.me.message.interfaces.MessageAttachmentsDao
 import com.rank.me.message.interfaces.MessagesDao
 import com.rank.me.message.models.Attachment
 import com.rank.me.message.models.Conversation
-import com.rank.me.message.models.MessageAttachment
 import com.rank.me.message.models.Message
+import com.rank.me.message.models.MessageAttachment
 
 @Database(entities = [Conversation::class, Attachment::class, MessageAttachment::class, Message::class], version = 4)
 @TypeConverters(Converters::class)

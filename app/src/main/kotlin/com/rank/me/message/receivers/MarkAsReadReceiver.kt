@@ -3,14 +3,14 @@ package com.rank.me.message.receivers
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import com.simplemobiletools.commons.extensions.notificationManager
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.message.extensions.conversationsDB
-import com.rank.me.message.extensions.markThreadMessagesRead
-import com.rank.me.message.extensions.updateUnreadCountBadge
+import com.rank.me.extensions.conversationsDB
+import com.rank.me.extensions.markThreadMessagesRead
+import com.rank.me.extensions.updateUnreadCountBadge
 import com.rank.me.message.helpers.MARK_AS_READ
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.refreshMessages
+import com.simplemobiletools.commons.extensions.notificationManager
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class MarkAsReadReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

@@ -10,7 +10,7 @@
 
         <variable
             name="callFragment"
-            type="com.rank.me.ui.component.home.call.RecentsFragment" />
+            type="com.rank.me.ui.component.home.call.CallsFragment" />
 
     </data>
 

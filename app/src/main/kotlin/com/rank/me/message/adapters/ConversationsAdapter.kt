@@ -10,6 +10,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller
+import com.rank.me.R
+import com.rank.me.extensions.*
+import com.rank.me.message.helpers.refreshMessages
+import com.rank.me.message.models.Conversation
+import com.rank.me.ui.component.home.HomeActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
@@ -18,12 +23,6 @@ import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.helpers.isNougatPlus
 import com.simplemobiletools.commons.views.MyRecyclerView
-import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
-import com.rank.me.message.helpers.refreshMessages
-import com.rank.me.message.extensions.*
-import com.rank.me.message.models.Conversation
-import com.rank.me.ui.component.home.HomeActivity
 import kotlinx.android.synthetic.main.item_conversation.view.*
 
 class ConversationsAdapter(

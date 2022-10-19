@@ -11,10 +11,10 @@ import android.widget.PopupMenu
 import com.bumptech.glide.Glide
 import com.rank.me.R
 import com.rank.me.dialer.dialogs.ShowGroupedCallsDialog
-import com.rank.me.dialer.extensions.*
 import com.rank.me.dialer.helpers.RecentsHelper
 import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.dialer.models.RecentCall
+import com.rank.me.extensions.*
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter

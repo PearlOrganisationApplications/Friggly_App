@@ -19,10 +19,10 @@ import android.view.View
 import android.view.ViewConfiguration
 import com.rank.me.R
 import com.rank.me.dialer.adapters.ContactsAdapter
-import com.rank.me.dialer.extensions.*
 import com.rank.me.dialer.helpers.DIALPAD_TONE_LENGTH_MS
 import com.rank.me.dialer.helpers.ToneGeneratorHelper
 import com.rank.me.dialer.models.SpeedDial
+import com.rank.me.extensions.*
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import com.simplemobiletools.commons.extensions.*

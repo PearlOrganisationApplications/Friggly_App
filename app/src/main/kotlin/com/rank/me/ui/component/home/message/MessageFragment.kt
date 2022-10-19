@@ -1,7 +1,10 @@
 package com.rank.me.ui.component.home.message
 
 import android.Manifest
+import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -15,7 +18,17 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.rank.me.R
 import com.rank.me.databinding.FragmentMsgBinding
+import com.rank.me.extensions.config
+import com.rank.me.extensions.conversationsDB
 import com.rank.me.message.activities.NewConversationActivity
+import com.rank.me.message.activities.SettingsActivity
+import com.rank.me.message.dialogs.ExportMessagesDialog
+import com.rank.me.message.dialogs.ImportMessagesDialog
+import com.rank.me.message.helpers.EXPORT_MIME_TYPE
+import com.rank.me.message.helpers.MessagesExporter
+import com.rank.me.message.models.Conversation
+import com.rank.me.ui.base.SimpleActivity
+import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
 import com.rank.me.ui.component.home.message.highlight.MessageHighlighFragment
 import com.rank.me.ui.component.home.message.inbox.MessageInboxFragment
@@ -23,7 +36,14 @@ import com.rank.me.ui.component.home.message.promotion.MessagePromotionFragment
 import com.rank.me.ui.component.home.message.spam.MessageSpamFragment
 import com.rank.me.utils.livedatapermission.PermissionManager
 import com.rank.me.utils.livedatapermission.model.PermissionResult
-import com.simplemobiletools.commons.extensions.hideKeyboard
+import com.simplemobiletools.commons.dialogs.FilePickerDialog
+import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.Release
+import org.greenrobot.eventbus.EventBus
+import java.io.FileOutputStream
+import java.io.OutputStream
+import java.util.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,6 +57,15 @@ class MessageFragment : Fragment() , PermissionManager.PermissionObserver {
     private lateinit var messageSubAdapter: MessageSubAdapter
     private var param1: String? = null
     private var param2: String? = null
+    private val smsExporter by lazy { MessagesExporter(requireContext()) }
+
+    private val MAKE_DEFAULT_APP_REQUEST = 1
+    private val PICK_IMPORT_SOURCE_INTENT = 11
+    private val PICK_EXPORT_FILE_INTENT = 21
+
+    private var storedTextColor = 0
+    private var storedFontSize = 0
+    private var bus: EventBus? = null
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     private val sharedViewModel: HomeViewModel by activityViewModels()
@@ -115,21 +144,27 @@ class MessageFragment : Fragment() , PermissionManager.PermissionObserver {
                 // Handle the menu selection
                 return when (menuItem.itemId) {
                     R.id.import_messages -> {
+                        tryImportMessages()
+                        //TODO shift this Permission request to somewhere else maybe
                         Toast.makeText(context, "Menu msg import", Toast.LENGTH_SHORT ).show()
                         // clearCompletedTasks()
                         true
                     }
                     R.id.export_messages -> {
+                        tryToExportMessages()
                         Toast.makeText(context, "Menu msg export", Toast.LENGTH_SHORT ).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.settings -> {
+                        requireActivity().hideKeyboard()
+                        startActivity(Intent(requireContext(), SettingsActivity::class.java))
                         Toast.makeText(context, "Menu msg settings", Toast.LENGTH_SHORT ).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.about -> {
+                        //TODO about actiivty should be made already
                         Toast.makeText(context, "Menu msg about", Toast.LENGTH_SHORT ).show()
                         // loadTasks(true)
                         true
@@ -139,6 +174,7 @@ class MessageFragment : Fragment() , PermissionManager.PermissionObserver {
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
+
 
     class MessageSubAdapter (fragment: Fragment) : FragmentStateAdapter(fragment) {
         private val ARG_OBJECT = "object"
@@ -170,6 +206,104 @@ class MessageFragment : Fragment() , PermissionManager.PermissionObserver {
         }
     }
 
+    private fun tryImportMessages() {
+        if (isQPlus()) {
+            Intent(Intent.ACTION_GET_CONTENT).apply {
+                addCategory(Intent.CATEGORY_OPENABLE)
+                type = EXPORT_MIME_TYPE
+
+                try {
+                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
+                } catch (e: ActivityNotFoundException) {
+                    requireActivity().toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                } catch (e: Exception) {
+                    requireActivity().showErrorToast(e)
+                }
+            }
+        } else {
+            (activity as HomeActivity).handlePermission(PERMISSION_READ_STORAGE) {
+                if (it) {
+                    importEvents()
+                }
+            }
+        }
+    }
+
+    private fun importEvents() {
+        FilePickerDialog(activity as HomeActivity) {
+            showImportEventsDialog(it)
+        }
+    }
+
+    private fun showImportEventsDialog(path: String) {
+        ImportMessagesDialog((activity as HomeActivity), path)
+    }
+
+    private fun tryImportMessagesFromFile(uri: Uri) {
+        when (uri.scheme) {
+            "file" -> showImportEventsDialog(uri.path!!)
+            "content" -> {
+                val tempFile = (activity as HomeActivity).getTempFile("messages", "backup.json")
+                if (tempFile == null) {
+                    (activity as HomeActivity).toast(R.string.unknown_error_occurred)
+                    return
+                }
+
+                try {
+                    val inputStream = requireActivity().contentResolver.openInputStream(uri)
+                    val out = FileOutputStream(tempFile)
+                    inputStream!!.copyTo(out)
+                    showImportEventsDialog(tempFile.absolutePath)
+                } catch (e: Exception) {
+                    requireActivity().showErrorToast(e)
+                }
+            }
+            else -> requireActivity().toast(R.string.invalid_file_format)
+        }
+    }
+
+    private fun tryToExportMessages() {
+        if (isQPlus()) {
+            ExportMessagesDialog((activity as SimpleActivity), (activity as HomeActivity).config.lastExportPath, true) { file ->
+                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                    type = EXPORT_MIME_TYPE
+                    putExtra(Intent.EXTRA_TITLE, file.name)
+                    addCategory(Intent.CATEGORY_OPENABLE)
+
+                    try {
+                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
+                    } catch (e: ActivityNotFoundException) {
+                        (activity as HomeActivity).toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
+                    } catch (e: Exception) {
+                        (activity as HomeActivity).showErrorToast(e)
+                    }
+                }
+            }
+        } else {
+            (activity as HomeActivity).handlePermission(PERMISSION_WRITE_STORAGE) {
+                if (it) {
+                    ExportMessagesDialog((activity as SimpleActivity), (activity as HomeActivity).config.lastExportPath, false) { file ->
+                        (activity as HomeActivity).getFileOutputStream(file.toFileDirItem((activity as HomeActivity)), true) { outStream ->
+                            exportMessagesTo(outStream)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun exportMessagesTo(outputStream: OutputStream?) {
+        (activity as HomeActivity).toast(R.string.exporting)
+        ensureBackgroundThread {
+            smsExporter.exportMessages(outputStream) {
+                val toastId = when (it) {
+                    MessagesExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
+                    else -> R.string.exporting_failed
+                }
+                (activity as HomeActivity).toast(toastId)
+            }
+        }
+    }
 
     companion object {
         /**

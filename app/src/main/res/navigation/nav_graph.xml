@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/call"
-        android:name="com.rank.me.ui.component.home.call.RecentsFragment"
+        android:name="com.rank.me.ui.component.home.call.CallsFragment"
         android:label="fragment_call"
-        tools:layout="@layout/fragment_recents" />
+        tools:layout="@layout/fragment_calls" />
 
     <fragment
         android:id="@+id/msg"

@@ -4,9 +4,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
 import com.rank.me.R
-import com.rank.me.dialer.extensions.config
 import com.rank.me.dialer.fragments.MyViewPagerFragment
 import com.rank.me.dialer.helpers.tabsList
+import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.helpers.TAB_CALL_HISTORY
 import com.simplemobiletools.commons.helpers.TAB_CONTACTS
@@ -46,7 +46,7 @@ class ViewPagerAdapter(val activity: SimpleActivity) : PagerAdapter() {
         }
 
         if (showTabs and TAB_CALL_HISTORY > 0) {
-            fragments.add(R.layout.fragment_recents)
+            fragments.add(R.layout.fragment_calls)
         }
 
         return if (position < fragments.size) fragments[position] else fragments.last()

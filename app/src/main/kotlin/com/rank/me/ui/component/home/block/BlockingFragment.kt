@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.rank.me.R
 import com.rank.me.databinding.FragmentBlockingBinding
 
 

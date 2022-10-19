@@ -5,8 +5,8 @@ import android.view.Menu
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.rank.me.R
-import com.rank.me.dialer.extensions.hasCapability
 import com.rank.me.dialer.helpers.getCallContact
+import com.rank.me.extensions.hasCapability
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.toast

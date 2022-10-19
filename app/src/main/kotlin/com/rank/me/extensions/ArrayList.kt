@@ -1,4 +1,4 @@
-package com.rank.me.message.extensions
+package com.rank.me.extensions
 
 import android.text.TextUtils
 import com.simplemobiletools.commons.models.SimpleContact

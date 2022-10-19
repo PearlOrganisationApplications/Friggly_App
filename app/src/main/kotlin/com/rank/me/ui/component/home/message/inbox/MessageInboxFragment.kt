@@ -1,50 +1,29 @@
 package com.rank.me.ui.component.home.message.inbox
 
-import android.annotation.SuppressLint
 import android.app.role.RoleManager
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.ShortcutInfo
-import android.content.pm.ShortcutManager
-import android.graphics.drawable.Icon
-import android.graphics.drawable.LayerDrawable
-import android.net.Uri
 import android.os.Bundle
 import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.rank.me.BuildConfig
 import com.rank.me.R
 import com.rank.me.databinding.InboxFragmentBinding
-import com.rank.me.message.activities.*
+import com.rank.me.extensions.*
+import com.rank.me.message.activities.NewConversationActivity
+import com.rank.me.message.activities.ThreadActivity
 import com.rank.me.message.adapters.ConversationsAdapter
-import com.rank.me.message.dialogs.ExportMessagesDialog
-import com.rank.me.message.dialogs.ImportMessagesDialog
-import com.rank.me.message.extensions.*
-import com.rank.me.message.helpers.EXPORT_MIME_TYPE
 import com.rank.me.message.helpers.MessagesExporter
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.models.Conversation
-import com.rank.me.message.models.Events
 import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.FAQItem
-import com.simplemobiletools.commons.models.Release
 import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
-import java.io.FileOutputStream
-import java.io.OutputStream
-import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -171,7 +150,6 @@ class MessageInboxFragment : Fragment(){
     }
 
     private fun initMessenger() {
-        checkWhatsNewDialog()
         storeStateVariables()
         getCachedConversations()
 
@@ -288,176 +266,6 @@ class MessageInboxFragment : Fragment(){
         requireActivity().hideKeyboard()
         val intent = Intent(requireContext(), NewConversationActivity::class.java)
         startActivity(intent)
-    }
-
-    @SuppressLint("NewApi")
-    private fun checkShortcut() {
-        val appIconColor = requireActivity().config.appIconColor
-        if (isNougatMR1Plus() && requireActivity().config.lastHandledShortcutColor != appIconColor) {
-            val newConversation = getCreateNewContactShortcut(appIconColor)
-
-            val manager = requireActivity().getSystemService(ShortcutManager::class.java)
-            try {
-                manager.dynamicShortcuts = Arrays.asList(newConversation)
-                requireActivity().config.lastHandledShortcutColor = appIconColor
-            } catch (ignored: Exception) {
-            }
-        }
-    }
-
-    @SuppressLint("NewApi")
-    private fun getCreateNewContactShortcut(appIconColor: Int): ShortcutInfo {
-        val newEvent = getString(R.string.new_conversation)
-        val drawable = resources.getDrawable(R.drawable.shortcut_plus)
-        (drawable as LayerDrawable).findDrawableByLayerId(R.id.shortcut_plus_background).applyColorFilter(appIconColor)
-        val bmp = drawable.convertToBitmap()
-
-        val intent = Intent(requireContext(), NewConversationActivity::class.java)
-        intent.action = Intent.ACTION_VIEW
-        return ShortcutInfo.Builder(requireContext(), "new_conversation")
-            .setShortLabel(newEvent)
-            .setLongLabel(newEvent)
-            .setIcon(Icon.createWithBitmap(bmp))
-            .setIntent(intent)
-            .build()
-    }
-
-    private fun launchSearch() {
-        requireActivity().hideKeyboard()
-        startActivity(Intent(requireContext(), SearchActivity::class.java))
-    }
-
-    private fun launchSettings() {
-        requireActivity().hideKeyboard()
-        startActivity(Intent(requireContext(), SettingsActivity::class.java))
-    }
-
-    private fun launchAbout() {
-        val licenses = LICENSE_EVENT_BUS or LICENSE_SMS_MMS or LICENSE_INDICATOR_FAST_SCROLL
-
-        val faqItems = arrayListOf(
-            FAQItem(R.string.faq_2_title, R.string.faq_2_text),
-            FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
-        )
-
-        if (!resources.getBoolean(R.bool.hide_google_relations)) {
-            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
-            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
-        }
-
-        (activity as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
-    }
-
-    private fun tryToExportMessages() {
-        if (isQPlus()) {
-            ExportMessagesDialog(activity as SimpleActivity, requireActivity().config.lastExportPath, true) { file ->
-                Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    type = EXPORT_MIME_TYPE
-                    putExtra(Intent.EXTRA_TITLE, file.name)
-                    addCategory(Intent.CATEGORY_OPENABLE)
-
-                    try {
-                        startActivityForResult(this, PICK_EXPORT_FILE_INTENT)
-                    } catch (e: ActivityNotFoundException) {
-                        requireActivity().toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
-                    } catch (e: Exception) {
-                        requireActivity().showErrorToast(e)
-                    }
-                }
-            }
-        } else {
-            (activity as HomeActivity).handlePermission(PERMISSION_WRITE_STORAGE) {
-                if (it) {
-                    ExportMessagesDialog(activity as SimpleActivity, requireActivity().config.lastExportPath, false) { file ->
-                        (activity as HomeActivity).getFileOutputStream(file.toFileDirItem(requireContext()), true) { outStream ->
-                            exportMessagesTo(outStream)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun exportMessagesTo(outputStream: OutputStream?) {
-        requireActivity().toast(R.string.exporting)
-        ensureBackgroundThread {
-            smsExporter.exportMessages(outputStream) {
-                val toastId = when (it) {
-                    MessagesExporter.ExportResult.EXPORT_OK -> R.string.exporting_successful
-                    else -> R.string.exporting_failed
-                }
-
-                requireActivity().toast(toastId)
-            }
-        }
-    }
-
-    private fun tryImportMessages() {
-        if (isQPlus()) {
-            Intent(Intent.ACTION_GET_CONTENT).apply {
-                addCategory(Intent.CATEGORY_OPENABLE)
-                type = EXPORT_MIME_TYPE
-
-                try {
-                    startActivityForResult(this, PICK_IMPORT_SOURCE_INTENT)
-                } catch (e: ActivityNotFoundException) {
-                    requireActivity().toast(R.string.system_service_disabled, Toast.LENGTH_LONG)
-                } catch (e: Exception) {
-                    requireActivity().showErrorToast(e)
-                }
-            }
-        } else {
-            (activity as HomeActivity).handlePermission(PERMISSION_READ_STORAGE) {
-                if (it) {
-                    importEvents()
-                }
-            }
-        }
-    }
-
-    private fun importEvents() {
-        FilePickerDialog(activity as BaseSimpleActivity) {
-            showImportEventsDialog(it)
-        }
-    }
-
-    private fun showImportEventsDialog(path: String) {
-        ImportMessagesDialog(activity as SimpleActivity, path)
-    }
-
-    private fun tryImportMessagesFromFile(uri: Uri) {
-        when (uri.scheme) {
-            "file" -> showImportEventsDialog(uri.path!!)
-            "content" -> {
-                val tempFile = (activity as HomeActivity).getTempFile("messages", "backup.json")
-                if (tempFile == null) {
-                    requireActivity().toast(R.string.unknown_error_occurred)
-                    return
-                }
-
-                try {
-                    val inputStream = requireActivity().contentResolver.openInputStream(uri)
-                    val out = FileOutputStream(tempFile)
-                    inputStream!!.copyTo(out)
-                    showImportEventsDialog(tempFile.absolutePath)
-                } catch (e: Exception) {
-                    requireActivity().showErrorToast(e)
-                }
-            }
-            else -> requireActivity().toast(R.string.invalid_file_format)
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun refreshMessages(event: Events.RefreshMessages) {
-        initMessenger()
-    }
-
-    private fun checkWhatsNewDialog() {
-        arrayListOf<Release>().apply {
-            add(Release(48, R.string.release_48))
-            (activity as HomeActivity).checkWhatsNew(this, BuildConfig.VERSION_CODE)
-        }
     }
 
     companion object {

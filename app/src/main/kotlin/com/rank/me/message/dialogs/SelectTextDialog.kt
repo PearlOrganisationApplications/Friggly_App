@@ -1,9 +1,9 @@
 package com.rank.me.message.dialogs
 
+import com.rank.me.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.rank.me.R
 import kotlinx.android.synthetic.main.dialog_select_text.view.*
 
 // helper dialog for selecting just a part of a message, not copying the whole into clipboard

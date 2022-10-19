@@ -6,13 +6,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.RemoteInput
 import com.klinker.android.send_message.Transaction
-import com.simplemobiletools.commons.extensions.notificationManager
-import com.simplemobiletools.commons.extensions.showErrorToast
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.rank.me.extensions.*
 import com.rank.me.message.helpers.REPLY
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.THREAD_NUMBER
-import com.rank.me.message.extensions.*
+import com.simplemobiletools.commons.extensions.notificationManager
+import com.simplemobiletools.commons.extensions.showErrorToast
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class DirectReplyReceiver : BroadcastReceiver() {
     @SuppressLint("MissingPermission")

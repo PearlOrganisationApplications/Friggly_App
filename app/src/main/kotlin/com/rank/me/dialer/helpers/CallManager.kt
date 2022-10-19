@@ -6,10 +6,10 @@ import android.os.Handler
 import android.telecom.Call
 import android.telecom.InCallService
 import android.telecom.VideoProfile
-import com.rank.me.dialer.extensions.config
-import com.rank.me.dialer.extensions.getStateCompat
-import com.rank.me.dialer.extensions.hasCapability
-import com.rank.me.dialer.extensions.isConference
+import com.rank.me.extensions.config
+import com.rank.me.extensions.getStateCompat
+import com.rank.me.extensions.hasCapability
+import com.rank.me.extensions.isConference
 import java.util.concurrent.CopyOnWriteArraySet
 
 // inspired by https://github.com/Chooloo/call_manage

@@ -15,7 +15,6 @@ class HomeActivity : SimpleActivity() {
     private lateinit var navController:NavController
     private lateinit var sharedViewModel: HomeViewModel
     var cachedContacts = ArrayList<SimpleContact>()
-
     private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

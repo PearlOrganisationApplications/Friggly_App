@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import com.google.gson.Gson
 import com.rank.me.R
 import com.rank.me.dialer.adapters.ContactsAdapter
-import com.rank.me.dialer.extensions.config
 import com.rank.me.dialer.helpers.Converters
 import com.rank.me.dialer.interfaces.RefreshItemsListener
+import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter

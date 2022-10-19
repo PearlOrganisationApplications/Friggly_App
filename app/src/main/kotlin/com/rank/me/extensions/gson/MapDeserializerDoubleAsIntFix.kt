@@ -1,4 +1,4 @@
-package com.rank.me.message.extensions.gson
+package com.rank.me.extensions.gson
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

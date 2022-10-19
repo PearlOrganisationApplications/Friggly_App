@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import com.rank.me.R
 import com.rank.me.dialer.adapters.ContactsAdapter
-import com.rank.me.dialer.extensions.launchCreateNewContactIntent
-import com.rank.me.dialer.extensions.startContactDetailsIntent
+import com.rank.me.extensions.launchCreateNewContactIntent
+import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity

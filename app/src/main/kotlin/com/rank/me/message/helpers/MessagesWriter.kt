@@ -8,13 +8,13 @@ import android.provider.Telephony.Sms
 import android.util.Base64
 import com.google.android.mms.pdu_alt.PduHeaders
 import com.klinker.android.send_message.Utils
-import com.simplemobiletools.commons.extensions.getLongValue
-import com.simplemobiletools.commons.extensions.queryCursor
-import com.simplemobiletools.commons.helpers.isRPlus
 import com.rank.me.message.models.MmsAddress
 import com.rank.me.message.models.MmsBackup
 import com.rank.me.message.models.MmsPart
 import com.rank.me.message.models.SmsBackup
+import com.simplemobiletools.commons.extensions.getLongValue
+import com.simplemobiletools.commons.extensions.queryCursor
+import com.simplemobiletools.commons.helpers.isRPlus
 
 class MessagesWriter(private val context: Context) {
     private val INVALID_ID = -1L

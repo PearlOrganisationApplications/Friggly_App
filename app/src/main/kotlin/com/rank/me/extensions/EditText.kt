@@ -1,4 +1,4 @@
-package com.rank.me.dialer.extensions
+package com.rank.me.extensions
 
 import android.view.KeyEvent
 import android.widget.EditText

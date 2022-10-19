@@ -3,11 +3,14 @@ package com.rank.me.message.helpers
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.rank.me.extensions.config
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_FAIL
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_NOTHING_NEW
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_OK
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_PARTIAL
+import com.rank.me.message.models.ExportedMessage
 import com.simplemobiletools.commons.extensions.showErrorToast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.message.helpers.MessagesImporter.ImportResult.*
-import com.rank.me.message.extensions.config
-import com.rank.me.message.models.ExportedMessage
 import java.io.File
 
 class MessagesImporter(private val context: Context) {

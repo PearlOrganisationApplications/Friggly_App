@@ -18,11 +18,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.rank.me.R
-import com.rank.me.dialer.extensions.areMultipleSIMsAvailable
-import com.rank.me.dialer.extensions.callContactWithSim
-import com.rank.me.dialer.extensions.config
-import com.rank.me.dialer.extensions.startContactDetailsIntent
 import com.rank.me.dialer.interfaces.RefreshItemsListener
+import com.rank.me.extensions.areMultipleSIMsAvailable
+import com.rank.me.extensions.callContactWithSim
+import com.rank.me.extensions.config
+import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.dialogs.ConfirmationDialog

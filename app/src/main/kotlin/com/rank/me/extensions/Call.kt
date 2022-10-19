@@ -1,4 +1,4 @@
-package com.rank.me.dialer.extensions
+package com.rank.me.extensions
 
 import android.telecom.Call
 import android.telecom.Call.STATE_CONNECTING
