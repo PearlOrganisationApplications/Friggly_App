@@ -3,14 +3,14 @@ package com.rank.me.dialer.helpers
 import android.content.Context
 import android.net.Uri
 import android.telecom.Call
+import com.rank.me.R
+import com.rank.me.dialer.models.CallContact
+import com.rank.me.extensions.isConference
 import com.simplemobiletools.commons.extensions.getMyContactsCursor
 import com.simplemobiletools.commons.extensions.getPhoneNumberTypeText
 import com.simplemobiletools.commons.helpers.MyContactsContentProvider
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.R
-import com.rank.me.dialer.extensions.isConference
-import com.rank.me.dialer.models.CallContact
 
 fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Unit) {
     if (call.isConference()) {

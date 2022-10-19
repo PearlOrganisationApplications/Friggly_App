@@ -16,17 +16,17 @@ import android.os.Looper
 import android.provider.Telephony
 import androidx.core.app.NotificationCompat
 import com.klinker.android.send_message.SentReceiver
+import com.rank.me.R
+import com.rank.me.extensions.*
+import com.rank.me.message.activities.ThreadActivity
+import com.rank.me.message.helpers.NOTIFICATION_CHANNEL
+import com.rank.me.message.helpers.THREAD_ID
+import com.rank.me.message.helpers.refreshMessages
 import com.simplemobiletools.commons.extensions.getMyContactsCursor
 import com.simplemobiletools.commons.extensions.getProperPrimaryColor
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.helpers.isOreoPlus
-import com.rank.me.R
-import com.rank.me.message.activities.ThreadActivity
-import com.rank.me.message.helpers.NOTIFICATION_CHANNEL
-import com.rank.me.message.helpers.THREAD_ID
-import com.rank.me.message.helpers.refreshMessages
-import com.rank.me.message.extensions.*
 
 class SmsStatusSentReceiver : SentReceiver() {
 

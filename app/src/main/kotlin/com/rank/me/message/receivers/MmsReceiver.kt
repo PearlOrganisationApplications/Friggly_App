@@ -5,11 +5,11 @@ import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import com.bumptech.glide.Glide
+import com.rank.me.R
+import com.rank.me.extensions.*
 import com.simplemobiletools.commons.extensions.isNumberBlocked
 import com.simplemobiletools.commons.extensions.normalizePhoneNumber
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.R
-import com.rank.me.message.extensions.*
 
 // more info at https://github.com/klinker41/android-smsmms
 class MmsReceiver : com.klinker.android.send_message.MmsReceivedReceiver() {

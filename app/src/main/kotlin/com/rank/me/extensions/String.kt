@@ -1,4 +1,4 @@
-package com.rank.me.message.extensions
+package com.rank.me.extensions
 
 fun String.getExtensionFromMimeType(): String {
     return when (lowercase()) {

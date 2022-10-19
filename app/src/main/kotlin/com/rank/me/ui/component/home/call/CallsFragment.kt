@@ -11,23 +11,28 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import com.rank.me.BuildConfig
 import com.rank.me.R
-import com.rank.me.databinding.FragmentRecentsBinding
+import com.rank.me.databinding.FragmentCallsBinding
 import com.rank.me.dialer.activities.DialpadActivity
+import com.rank.me.dialer.activities.SettingsActivity
 import com.rank.me.dialer.adapters.RecentCallsAdapter
-import com.rank.me.dialer.extensions.config
+import com.rank.me.dialer.dialogs.ChangeSortingDialog
 import com.rank.me.dialer.helpers.OPEN_DIAL_PAD_AT_LAUNCH
 import com.rank.me.dialer.helpers.RecentsHelper
 import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.dialer.models.RecentCall
+import com.rank.me.extensions.config
+import com.rank.me.extensions.launchCreateNewContactIntent
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.dialogs.CallConfirmationDialog
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.SimpleContact
-import kotlinx.android.synthetic.main.fragment_recents.*
-import kotlinx.android.synthetic.main.fragment_recents.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,17 +46,19 @@ private const val ARG_OBJECT = "object"
  * create an instance of this fragment.
  */
 
-class RecentsFragment : Fragment(), RefreshItemsListener {
+class CallsFragment : Fragment(), RefreshItemsListener {
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     private var param1: String? = null
     private var param2: String? = null
     private val sharedViewModel: CallViewModel by activityViewModels()
+    private var searchQuery = ""
 
     private var launchedDialer = false
+    private var isSearchOpen = false
 
     private var allRecentCalls = ArrayList<RecentCall>()
-    private lateinit var binding: FragmentRecentsBinding
+    private lateinit var binding: FragmentCallsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +73,7 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val fragmentBinding = FragmentRecentsBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentCallsBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -79,7 +86,7 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
             // Assign the view model to a property in the binding class
             viewModel = sharedViewModel
             // Assign the fragment
-            callFragment = this@RecentsFragment
+            callFragment = this@CallsFragment
         }
         launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
         if (requireActivity().isDefaultDialer()) {
@@ -120,32 +127,38 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
                 // Handle the menu selection
                 return when (menuItem.itemId) {
                     R.id.search -> {
-                        Toast.makeText(context, "Menu call search", Toast.LENGTH_SHORT ).show()
+                        Toast.makeText(context, "Menu call search", Toast.LENGTH_SHORT).show()
                         // clearCompletedTasks()
                         true
                     }
                     R.id.sort -> {
-                        Toast.makeText(context, "Menu call sort", Toast.LENGTH_SHORT ).show()
+                        showSortingDialog()
+                        Toast.makeText(context, "Menu call sort", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.create_new_contact -> {
-                        Toast.makeText(context, "create_new_contact", Toast.LENGTH_SHORT ).show()
+                        (activity as HomeActivity).launchCreateNewContactIntent()
+                        Toast.makeText(context, "create_new_contact", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.clear_call_history -> {
-                        Toast.makeText(context, "clear_call_history", Toast.LENGTH_SHORT ).show()
+                        clearCallHistory()
+                        Toast.makeText(context, "clear_call_history", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.settings -> {
-                        Toast.makeText(context, "Menu call settings", Toast.LENGTH_SHORT ).show()
+                        requireActivity().hideKeyboard()
+                        startActivity(Intent(requireContext(), SettingsActivity::class.java))
+                        Toast.makeText(context, "Menu call settings", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.about -> {
-                        Toast.makeText(context, "Menu call about", Toast.LENGTH_SHORT ).show()
+                        launchAbout()
+                        Toast.makeText(context, "Menu call about", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
@@ -241,7 +254,7 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
         (activity as HomeActivity).handlePermission(PERMISSION_READ_CALL_LOG) {
             if (it) {
                 binding.recentsPlaceholder.text = context?.getString(R.string.no_previous_calls)
-                 binding.recentsPlaceholder.beGone()
+                binding.recentsPlaceholder.beGone()
 
                 val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
                 context?.let { it1 ->
@@ -282,5 +295,67 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
         refreshItems()
     }
 
+    private fun showSortingDialog() {
+        ChangeSortingDialog(activity as BaseSimpleActivity, false) {
+            refreshItems {
+                if (isSearchOpen) {
+                    onSearchQueryChanged(searchQuery)
+                }
+            }
+        }
+    }
+
+    fun onSearchClosed() {
+        binding.recentsPlaceholder.beVisibleIf(allRecentCalls.isEmpty())
+        (binding.recentsList.adapter as? RecentCallsAdapter)?.updateItems(allRecentCalls)
+    }
+
+    fun onSearchQueryChanged(text: String) {
+        val recentCalls = allRecentCalls.filter {
+            it.name.contains(text, true) || it.doesContainPhoneNumber(text)
+        }.sortedByDescending {
+            it.name.startsWith(text, true)
+        }.toMutableList() as ArrayList<RecentCall>
+
+        binding.recentsPlaceholder.beVisibleIf(recentCalls.isEmpty())
+        (binding.recentsList.adapter as? RecentCallsAdapter)?.updateItems(recentCalls, text)
+    }
+
+    private fun launchAbout() {
+        closeSearch()
+        val licenses = LICENSE_GLIDE or LICENSE_INDICATOR_FAST_SCROLL or LICENSE_AUTOFITTEXTVIEW
+
+        val faqItems = arrayListOf(
+            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
+        )
+
+        if (!resources.getBoolean(R.bool.hide_google_relations)) {
+            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
+            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
+        }
+
+        (activity as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+    }
+
+    private fun closeSearch() {
+        if (isSearchOpen) {
+//            getAllFragments().forEach {
+//                it?.onSearchQueryChanged("")
+//            }
+//            mSearchMenuItem?.collapseActionView()
+        }
+    }
+
+    private fun clearCallHistory() {
+        if(activity!=null)
+        ConfirmationDialog(requireActivity(), "", R.string.clear_history_confirmation) {
+            RecentsHelper(requireActivity()).removeAllRecentCalls(activity as HomeActivity) {
+                requireActivity().runOnUiThread {
+                    refreshItems()
+                }
+            }
+        }
+    }
 
 }

@@ -10,6 +10,10 @@ import android.provider.Telephony
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.rank.me.R
+import com.rank.me.extensions.*
+import com.rank.me.message.helpers.refreshMessages
+import com.rank.me.message.models.Message
 import com.simplemobiletools.commons.extensions.baseConfig
 import com.simplemobiletools.commons.extensions.getMyContactsCursor
 import com.simplemobiletools.commons.extensions.isNumberBlocked
@@ -17,10 +21,6 @@ import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.simplemobiletools.commons.models.PhoneNumber
 import com.simplemobiletools.commons.models.SimpleContact
-import com.rank.me.R
-import com.rank.me.message.helpers.refreshMessages
-import com.rank.me.message.extensions.*
-import com.rank.me.message.models.Message
 
 class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

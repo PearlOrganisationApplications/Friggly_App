@@ -11,18 +11,19 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuItemCompat
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import com.rank.me.R
+import com.rank.me.extensions.conversationsDB
+import com.rank.me.extensions.messagesDB
 import com.rank.me.message.adapters.SearchResultsAdapter
-import com.rank.me.message.extensions.conversationsDB
-import com.rank.me.message.extensions.messagesDB
 import com.rank.me.message.helpers.SEARCHED_MESSAGE_ID
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.models.Conversation
 import com.rank.me.message.models.Message
 import com.rank.me.message.models.SearchResult
+import com.rank.me.ui.base.SimpleActivity
+import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : SimpleActivity() {

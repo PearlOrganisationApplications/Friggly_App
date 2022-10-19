@@ -5,12 +5,12 @@ import android.content.Context
 import android.telecom.Call
 import android.telecom.InCallService
 import com.rank.me.dialer.activities.CallActivity
-import com.rank.me.dialer.extensions.config
-import com.rank.me.dialer.extensions.isOutgoing
-import com.rank.me.dialer.extensions.powerManager
 import com.rank.me.dialer.helpers.CallManager
 import com.rank.me.dialer.helpers.CallNotificationManager
 import com.rank.me.dialer.helpers.NoCall
+import com.rank.me.extensions.config
+import com.rank.me.extensions.isOutgoing
+import com.rank.me.extensions.powerManager
 
 class CallService : InCallService() {
     private val callNotificationManager by lazy { CallNotificationManager(this) }

@@ -2,16 +2,16 @@ package com.rank.me.message.dialogs
 
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import com.rank.me.R
+import com.rank.me.extensions.config
+import com.rank.me.message.helpers.MessagesImporter
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_OK
+import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_PARTIAL
+import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
 import com.simplemobiletools.commons.extensions.toast
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
-import com.rank.me.message.extensions.config
-import com.rank.me.message.helpers.MessagesImporter
-import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_OK
-import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_PARTIAL
 import kotlinx.android.synthetic.main.dialog_import_messages.view.*
 
 class ImportMessagesDialog(

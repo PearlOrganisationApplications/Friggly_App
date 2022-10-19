@@ -2,12 +2,11 @@ package com.rank.me.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.rank.*
+import com.rank.me.*
 import com.rank.me.data.Resource
 import com.rank.me.data.dto.login.LoginRequest
 import com.rank.me.data.dto.login.LoginResponse
 import com.rank.me.data.dto.login.RegisterRequest
-import com.rank.me.*
 import com.rank.me.utils.LocaleUtil
 import javax.inject.Inject
 

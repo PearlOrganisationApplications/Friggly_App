@@ -1,4 +1,4 @@
-package com.rank.me.message.extensions
+package com.rank.me.extensions
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -19,6 +19,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.PowerManager
 import android.provider.ContactsContract.PhoneLookup
 import android.provider.OpenableColumns
 import android.provider.Telephony.*
@@ -28,25 +29,27 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput
 import com.klinker.android.send_message.Settings
 import com.klinker.android.send_message.Transaction.getAddressSeparator
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.PhoneNumber
-import com.simplemobiletools.commons.models.SimpleContact
 import com.rank.me.R
+import com.rank.me.dialer.models.SIMAccount
 import com.rank.me.message.activities.ThreadActivity
 import com.rank.me.message.databases.MessagesDatabase
+import com.rank.me.message.helpers.*
 import com.rank.me.message.interfaces.AttachmentsDao
 import com.rank.me.message.interfaces.ConversationsDao
 import com.rank.me.message.interfaces.MessageAttachmentsDao
 import com.rank.me.message.interfaces.MessagesDao
-import com.rank.me.message.helpers.*
 import com.rank.me.message.models.*
 import com.rank.me.message.receivers.DirectReplyReceiver
 import com.rank.me.message.receivers.MarkAsReadReceiver
+import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.PhoneNumber
+import com.simplemobiletools.commons.models.SimpleContact
 import me.leolin.shortcutbadger.ShortcutBadger
 import java.io.FileNotFoundException
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
+
 
 fun Context.getMessagesDB() = MessagesDatabase.getInstance(this)
 
@@ -1002,4 +1005,41 @@ fun Context.subscriptionManagerCompat(): SubscriptionManager {
         @Suppress("DEPRECATION")
         SubscriptionManager.from(this)
     }
+}
+
+
+////CALLS////
+
+val Context.powerManager: PowerManager get() = getSystemService(Context.POWER_SERVICE) as PowerManager
+
+val Context.audioManager: AudioManager get() = getSystemService(Context.AUDIO_SERVICE) as AudioManager
+
+@SuppressLint("MissingPermission")
+fun Context.areMultipleSIMsAvailable(): Boolean {
+    return try {
+        telecomManager.callCapablePhoneAccounts.size > 1
+    } catch (ignored: Exception) {
+        false
+    }
+}
+
+@SuppressLint("MissingPermission")
+fun Context.getAvailableSIMCardLabels(): ArrayList<SIMAccount> {
+    val SIMAccounts = ArrayList<SIMAccount>()
+    try {
+        telecomManager.callCapablePhoneAccounts.forEachIndexed { index, account ->
+            val phoneAccount = telecomManager.getPhoneAccount(account)
+            var label = phoneAccount.label.toString()
+            var address = phoneAccount.address.toString()
+            if (address.startsWith("tel:") && address.substringAfter("tel:").isNotEmpty()) {
+                address = Uri.decode(address.substringAfter("tel:"))
+                label += " ($address)"
+            }
+
+            val SIM = SIMAccount(index + 1, phoneAccount.accountHandle, label, address.substringAfter("tel:"))
+            SIMAccounts.add(SIM)
+        }
+    } catch (ignored: Exception) {
+    }
+    return SIMAccounts
 }

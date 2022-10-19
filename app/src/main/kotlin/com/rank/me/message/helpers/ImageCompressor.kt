@@ -6,13 +6,13 @@ import android.graphics.BitmapFactory
 import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
+import com.rank.me.extensions.extension
+import com.rank.me.extensions.getExtensionFromMimeType
+import com.rank.me.extensions.getFileSizeFromUri
+import com.rank.me.extensions.isImageMimeType
 import com.simplemobiletools.commons.extensions.getCompressionFormat
 import com.simplemobiletools.commons.extensions.getMyFileUri
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.message.extensions.extension
-import com.rank.me.message.extensions.getExtensionFromMimeType
-import com.rank.me.message.extensions.getFileSizeFromUri
-import com.rank.me.message.extensions.isImageMimeType
 import java.io.File
 import java.io.FileOutputStream
 

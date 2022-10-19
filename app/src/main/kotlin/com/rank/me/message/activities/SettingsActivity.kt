@@ -4,15 +4,16 @@ import android.annotation.TargetApi
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import com.rank.me.R
+import com.rank.me.extensions.config
+import com.rank.me.message.helpers.*
+import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.activities.ManageBlockedNumbersActivity
 import com.simplemobiletools.commons.dialogs.ChangeDateTimeFormatDialog
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.RadioItem
-import com.rank.me.R
-import com.rank.me.message.extensions.config
-import com.rank.me.message.helpers.*
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.util.*
 

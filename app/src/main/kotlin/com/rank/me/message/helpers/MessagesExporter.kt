@@ -3,9 +3,9 @@ package com.rank.me.message.helpers
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.stream.JsonWriter
+import com.rank.me.extensions.config
+import com.rank.me.extensions.getConversationIds
 import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.message.extensions.config
-import com.rank.me.message.extensions.getConversationIds
 import java.io.OutputStream
 
 class MessagesExporter(private val context: Context) {

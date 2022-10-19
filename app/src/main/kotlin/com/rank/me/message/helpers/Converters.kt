@@ -3,9 +3,9 @@ package com.rank.me.message.helpers
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.simplemobiletools.commons.models.SimpleContact
 import com.rank.me.message.models.Attachment
 import com.rank.me.message.models.MessageAttachment
+import com.simplemobiletools.commons.models.SimpleContact
 
 class Converters {
     private val gson = Gson()

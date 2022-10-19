@@ -4,7 +4,7 @@ import android.app.Service
 import android.content.Intent
 import android.net.Uri
 import com.klinker.android.send_message.Transaction
-import com.rank.me.message.extensions.getSendMessageSettings
+import com.rank.me.extensions.getSendMessageSettings
 import com.rank.me.message.receivers.SmsStatusDeliveredReceiver
 import com.rank.me.message.receivers.SmsStatusSentReceiver
 

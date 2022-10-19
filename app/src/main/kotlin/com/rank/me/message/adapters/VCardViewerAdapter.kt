@@ -10,12 +10,12 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
 import com.rank.me.message.models.VCardPropertyWrapper
 import com.rank.me.message.models.VCardWrapper
+import com.rank.me.ui.base.SimpleActivity
+import com.simplemobiletools.commons.extensions.*
+import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import kotlinx.android.synthetic.main.item_vcard_contact.view.*
 import kotlinx.android.synthetic.main.item_vcard_contact_property.view.*
 

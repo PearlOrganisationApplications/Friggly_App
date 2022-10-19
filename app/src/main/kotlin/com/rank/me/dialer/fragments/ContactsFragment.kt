@@ -2,27 +2,24 @@ package com.rank.me.dialer.fragments
 
 import android.content.Context
 import android.util.AttributeSet
-import com.google.gson.Gson
 import com.rank.me.R
 import com.rank.me.dialer.adapters.ContactsAdapter
-import com.rank.me.dialer.helpers.Converters
+import com.rank.me.extensions.launchCreateNewContactIntent
+import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.dialer.interfaces.RefreshItemsListener
-import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
+import com.rank.me.ui.component.home.HomeActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.dialogs.CallConfirmationDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.MyContactsContentProvider
 import com.simplemobiletools.commons.helpers.PERMISSION_READ_CONTACTS
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.fragment_letters_layout.view.*
 import java.util.*
 
-class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment(context, attributeSet), RefreshItemsListener {
+class ContactsFragment(context: Context, attributeSet: AttributeSet) : MyViewPagerFragment(context, attributeSet), RefreshItemsListener {
     private var allContacts = ArrayList<SimpleContact>()
 
     override fun setupFragment() {
@@ -33,12 +30,30 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
         }
 
         fragment_placeholder.text = context.getString(placeholderResId)
-        fragment_placeholder_2.beGone()
+
+        val placeholderActionResId = if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+            R.string.create_new_contact
+        } else {
+            R.string.request_access
+        }
+
+        fragment_placeholder_2.apply {
+            text = context.getString(placeholderActionResId)
+            underlineText()
+            setOnClickListener {
+                if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+                    activity?.launchCreateNewContactIntent()
+                } else {
+                    requestReadContactsPermission()
+                }
+            }
+        }
     }
 
     override fun setupColors(textColor: Int, primaryColor: Int, properPrimaryColor: Int) {
-        fragment_placeholder.setTextColor(textColor)
         (fragment_list?.adapter as? MyRecyclerViewAdapter)?.updateTextColor(textColor)
+        fragment_placeholder.setTextColor(textColor)
+        fragment_placeholder_2.setTextColor(properPrimaryColor)
 
         letter_fastscroller.textColor = textColor.getColorStateList()
         letter_fastscroller.pressedTextColor = properPrimaryColor
@@ -48,8 +63,8 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
     }
 
     override fun refreshItems(callback: (() -> Unit)?) {
-        val privateCursor = context?.getMyContactsCursor(true, true)
-        SimpleContactsHelper(context).getAvailableContacts(true) { contacts ->
+        val privateCursor = context?.getMyContactsCursor(false, true)
+        SimpleContactsHelper(context).getAvailableContacts(false) { contacts ->
             allContacts = contacts
 
             val privateContacts = MyContactsContentProvider.getSimpleContacts(context, privateCursor)
@@ -58,12 +73,10 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 allContacts.sort()
             }
 
-            if (activity!!.config.isCustomOrderSelected) {
-                allContacts = sortByCustomOrder(allContacts)
-            }
+            (activity as HomeActivity).cacheContacts(allContacts)
 
             activity?.runOnUiThread {
-                gotContacts(allContacts)
+                gotContacts(contacts)
                 callback?.invoke()
             }
         }
@@ -73,39 +86,20 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
         setupLetterFastscroller(contacts)
         if (contacts.isEmpty()) {
             fragment_placeholder.beVisible()
+            fragment_placeholder_2.beVisible()
             fragment_list.beGone()
         } else {
             fragment_placeholder.beGone()
+            fragment_placeholder_2.beGone()
             fragment_list.beVisible()
 
             val currAdapter = fragment_list.adapter
             if (currAdapter == null) {
-                ContactsAdapter(
-                    activity = activity as SimpleActivity,
-                    contacts = contacts,
-                    recyclerView = fragment_list,
-                    refreshItemsListener = this,
-                    showDeleteButton = false,
-                    enableDrag = true,
-                ) {
-                    if (context.config.showCallConfirmation) {
-                        CallConfirmationDialog(activity as SimpleActivity, (it as SimpleContact).name) {
-                            callContact(it)
-                        }
-                    } else {
-                        callContact(it as SimpleContact)
-                    }
+                ContactsAdapter(activity as SimpleActivity, contacts, fragment_list, this) {
+                    val contact = it as SimpleContact
+                    activity?.startContactDetailsIntent(contact)
                 }.apply {
                     fragment_list.adapter = this
-
-                    onDragEndListener = {
-                        val adapter = fragment_list?.adapter
-                        if (adapter is ContactsAdapter) {
-                            val items = adapter.contacts
-                            saveCustomOrderToPrefs(items)
-                            setupLetterFastscroller(items)
-                        }
-                    }
                 }
 
                 if (context.areSystemAnimationsEnabled) {
@@ -113,50 +107,6 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
                 }
             } else {
                 (currAdapter as ContactsAdapter).updateItems(contacts)
-            }
-        }
-    }
-
-    private fun sortByCustomOrder(favorites: List<SimpleContact>): ArrayList<SimpleContact> {
-        val favoritesOrder = activity!!.config.favoritesContactsOrder
-
-        if (favoritesOrder.isEmpty()) {
-            return ArrayList(favorites)
-        }
-
-        val orderList = Converters().jsonToStringList(favoritesOrder)
-        val map = orderList.withIndex().associate { it.value to it.index }
-        val sorted = favorites.sortedBy { map[it.contactId.toString()] }
-
-        return ArrayList(sorted)
-    }
-
-    private fun saveCustomOrderToPrefs(items: ArrayList<SimpleContact>) {
-        activity?.apply {
-            val orderIds = items.map { it.contactId }
-            val orderGsonString = Gson().toJson(orderIds)
-            config.favoritesContactsOrder = orderGsonString
-        }
-    }
-
-    private fun callContact(simpleContact: SimpleContact) {
-        val phoneNumbers = simpleContact.phoneNumbers
-        if (phoneNumbers.size <= 1) {
-            activity?.launchCallIntent(phoneNumbers.first().normalizedNumber)
-        } else {
-            val primaryNumber = simpleContact.phoneNumbers.find { it.isPrimary }
-            if (primaryNumber != null) {
-                activity?.launchCallIntent(primaryNumber.value)
-            } else {
-                val items = ArrayList<RadioItem>()
-                phoneNumbers.forEachIndexed { index, phoneNumber ->
-                    val type = context.getPhoneNumberTypeText(phoneNumber.type, phoneNumber.label)
-                    items.add(RadioItem(index, "${phoneNumber.normalizedNumber} ($type)", phoneNumber.normalizedNumber))
-                }
-
-                RadioGroupDialog(activity!!, items) {
-                    activity?.launchCallIntent(it as String)
-                }
             }
         }
     }
@@ -181,7 +131,10 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
 
     override fun onSearchQueryChanged(text: String) {
         val contacts = allContacts.filter {
-            it.name.contains(text, true) || it.doesContainPhoneNumber(text)
+            it.doesContainPhoneNumber(text) ||
+                it.name.contains(text, true) ||
+                it.name.normalizeString().contains(text, true) ||
+                it.name.contains(text.normalizeString(), true)
         }.sortedByDescending {
             it.name.startsWith(text, true)
         }.toMutableList() as ArrayList<SimpleContact>
@@ -189,5 +142,19 @@ class FavoritesFragment(context: Context, attributeSet: AttributeSet) : MyViewPa
         fragment_placeholder.beVisibleIf(contacts.isEmpty())
         (fragment_list.adapter as? ContactsAdapter)?.updateItems(contacts, text)
         setupLetterFastscroller(contacts)
+    }
+
+    private fun requestReadContactsPermission() {
+        activity?.handlePermission(PERMISSION_READ_CONTACTS) {
+            if (it) {
+                fragment_placeholder.text = context.getString(R.string.no_contacts_found)
+                fragment_placeholder_2.text = context.getString(R.string.create_new_contact)
+                SimpleContactsHelper(context).getAvailableContacts(false) { contacts ->
+                    activity?.runOnUiThread {
+                        gotContacts(contacts)
+                    }
+                }
+            }
+        }
     }
 }

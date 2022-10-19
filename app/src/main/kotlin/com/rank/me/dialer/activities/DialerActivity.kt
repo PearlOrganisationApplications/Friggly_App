@@ -8,7 +8,7 @@ import android.provider.Settings
 import android.telecom.TelecomManager
 import android.widget.Toast
 import com.rank.me.R
-import com.rank.me.dialer.extensions.getHandleToUse
+import com.rank.me.extensions.getHandleToUse
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER

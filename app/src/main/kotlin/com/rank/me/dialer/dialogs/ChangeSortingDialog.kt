@@ -1,6 +1,7 @@
 package com.rank.me.dialer.dialogs
 
-import androidx.appcompat.app.AlertDialog
+import com.rank.me.R
+import com.rank.me.extensions.config
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.beGoneIf
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
@@ -10,8 +11,6 @@ import com.simplemobiletools.commons.helpers.SORT_BY_DATE_CREATED
 import com.simplemobiletools.commons.helpers.SORT_BY_FULL_NAME
 import com.simplemobiletools.commons.helpers.SORT_DESCENDING
 import com.simplemobiletools.commons.models.SimpleContact
-import com.rank.me.R
-import com.rank.me.dialer.extensions.config
 import kotlinx.android.synthetic.main.dialog_change_sorting.view.*
 
 class ChangeSortingDialog(

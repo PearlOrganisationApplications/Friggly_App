@@ -7,10 +7,10 @@ import android.os.Handler
 import android.os.Looper
 import android.provider.Telephony
 import com.klinker.android.send_message.DeliveredReceiver
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.rank.me.message.extensions.messagesDB
-import com.rank.me.message.extensions.updateMessageStatus
+import com.rank.me.extensions.messagesDB
+import com.rank.me.extensions.updateMessageStatus
 import com.rank.me.message.helpers.refreshMessages
+import com.simplemobiletools.commons.helpers.ensureBackgroundThread
 
 class SmsStatusDeliveredReceiver : DeliveredReceiver() {
 

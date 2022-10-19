@@ -20,9 +20,9 @@ import android.view.WindowManager
 import android.widget.ImageView
 import androidx.core.view.children
 import com.rank.me.R
-import com.rank.me.dialer.extensions.*
 import com.rank.me.dialer.helpers.*
 import com.rank.me.dialer.models.CallContact
+import com.rank.me.extensions.*
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.LOWER_ALPHA
@@ -664,7 +664,7 @@ class CallActivity : SimpleActivity() {
 
         try {
             val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            screenOnWakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "com.rank.me.dialer.pro:full_wake_lock")
+            screenOnWakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK, "com.simplemobiletools.dialer.pro:full_wake_lock")
             screenOnWakeLock!!.acquire(5 * 1000L)
         } catch (e: Exception) {
         }
@@ -673,7 +673,7 @@ class CallActivity : SimpleActivity() {
     private fun enableProximitySensor() {
         if (!config.disableProximitySensor && (proximityWakeLock == null || proximityWakeLock?.isHeld == false)) {
             val powerManager = getSystemService(Context.POWER_SERVICE) as PowerManager
-            proximityWakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "com.rank.me.dialer.pro:wake_lock")
+            proximityWakeLock = powerManager.newWakeLock(PowerManager.PROXIMITY_SCREEN_OFF_WAKE_LOCK, "com.simplemobiletools.dialer.pro:wake_lock")
             proximityWakeLock!!.acquire(60 * MINUTE_SECONDS * 1000L)
         }
     }

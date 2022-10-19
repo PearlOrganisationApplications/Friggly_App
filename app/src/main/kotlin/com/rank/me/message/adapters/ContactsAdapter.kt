@@ -8,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.rank.me.R
+import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
 import com.simplemobiletools.commons.extensions.getTextSize
 import com.simplemobiletools.commons.helpers.SimpleContactsHelper
 import com.simplemobiletools.commons.models.SimpleContact
 import com.simplemobiletools.commons.views.MyRecyclerView
-import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
-import java.util.*
 
 class ContactsAdapter(
     activity: SimpleActivity, var contacts: ArrayList<SimpleContact>, recyclerView: MyRecyclerView, itemClick: (Any) -> Unit

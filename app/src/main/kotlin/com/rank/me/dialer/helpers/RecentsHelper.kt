@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.provider.CallLog.Calls
 import com.rank.me.R
-import com.rank.me.dialer.extensions.getAvailableSIMCardLabels
+import com.rank.me.extensions.getAvailableSIMCardLabels
 import com.rank.me.dialer.models.RecentCall
 import com.rank.me.ui.component.home.HomeActivity
 import com.simplemobiletools.commons.extensions.*

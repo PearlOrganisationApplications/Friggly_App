@@ -2,12 +2,12 @@ package com.rank.me.message.dialogs
 
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import com.rank.me.R
+import com.rank.me.extensions.config
+import com.rank.me.message.helpers.EXPORT_FILE_EXT
+import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.dialogs.FilePickerDialog
 import com.simplemobiletools.commons.extensions.*
-import com.rank.me.R
-import com.rank.me.message.activities.SimpleActivity
-import com.rank.me.message.extensions.config
-import com.rank.me.message.helpers.EXPORT_FILE_EXT
 import kotlinx.android.synthetic.main.dialog_export_messages.view.*
 import java.io.File
 

@@ -2,7 +2,6 @@ package com.rank.me.ui.component.home.message.promotion
 
 import android.os.Bundle
 import android.view.View
-import androidx.viewpager2.widget.ViewPager2
 import com.rank.me.databinding.PromotionFragmentBinding
 import com.rank.me.ui.base.BaseFragment
 

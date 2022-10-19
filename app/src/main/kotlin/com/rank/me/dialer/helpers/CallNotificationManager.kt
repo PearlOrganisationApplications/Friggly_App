@@ -10,14 +10,14 @@ import android.content.Intent
 import android.telecom.Call
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
+import com.rank.me.R
+import com.rank.me.dialer.activities.CallActivity
+import com.rank.me.dialer.receivers.CallActionReceiver
+import com.rank.me.extensions.powerManager
 import com.simplemobiletools.commons.extensions.notificationManager
 import com.simplemobiletools.commons.extensions.setText
 import com.simplemobiletools.commons.extensions.setVisibleIf
 import com.simplemobiletools.commons.helpers.isOreoPlus
-import com.rank.me.R
-import com.rank.me.dialer.activities.CallActivity
-import com.rank.me.dialer.extensions.powerManager
-import com.rank.me.dialer.receivers.CallActionReceiver
 
 class CallNotificationManager(private val context: Context) {
     private val CALL_NOTIFICATION_ID = 1

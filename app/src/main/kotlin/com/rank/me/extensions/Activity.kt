@@ -1,19 +1,37 @@
-package com.rank.me.dialer.extensions
+package com.rank.me.extensions
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.provider.ContactsContract
 import android.telecom.PhoneAccount
 import android.telecom.PhoneAccountHandle
 import android.telecom.TelecomManager
+import com.rank.me.R
 import com.rank.me.dialer.dialogs.SelectSIMDialog
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.*
 import com.simplemobiletools.commons.helpers.*
 import com.simplemobiletools.commons.models.SimpleContact
+
+fun Activity.dialNumber(phoneNumber: String, callback: (() -> Unit)? = null) {
+    hideKeyboard()
+    Intent(Intent.ACTION_DIAL).apply {
+        data = Uri.fromParts("tel", phoneNumber, null)
+
+        try {
+            startActivity(this)
+            callback?.invoke()
+        } catch (e: ActivityNotFoundException) {
+            toast(R.string.no_app_found)
+        } catch (e: Exception) {
+            showErrorToast(e)
+        }
+    }
+}
 
 fun SimpleActivity.startCallIntent(recipient: String) {
     if (isDefaultDialer()) {
@@ -70,7 +88,7 @@ fun Activity.startContactDetailsIntent(contact: SimpleContact) {
 // used at devices with multiple SIM cards
 @SuppressLint("MissingPermission")
 fun SimpleActivity.getHandleToUse(intent: Intent?, phoneNumber: String, callback: (handle: PhoneAccountHandle?) -> Unit) {
-    handlePermission(PERMISSION_READ_PHONE_STATE) {
+    handlePermission(PERMISSION_READ_PHONE_STATE) { it ->
         if (it) {
             val defaultHandle = telecomManager.getDefaultOutgoingPhoneAccount(PhoneAccount.SCHEME_TEL)
             when {
@@ -91,3 +109,4 @@ fun SimpleActivity.getHandleToUse(intent: Intent?, phoneNumber: String, callback
         }
     }
 }
+

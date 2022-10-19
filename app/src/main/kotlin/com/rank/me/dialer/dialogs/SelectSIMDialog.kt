@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AlertDialog
+import com.rank.me.R
+import com.rank.me.extensions.config
+import com.rank.me.extensions.getAvailableSIMCardLabels
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
-import com.rank.me.R
-import com.rank.me.dialer.extensions.config
-import com.rank.me.dialer.extensions.getAvailableSIMCardLabels
 import kotlinx.android.synthetic.main.dialog_select_sim.view.*
 
 @SuppressLint("MissingPermission")

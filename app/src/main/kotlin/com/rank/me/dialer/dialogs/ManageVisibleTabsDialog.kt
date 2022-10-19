@@ -1,5 +1,8 @@
 package com.rank.me.dialer.dialogs
 
+import com.rank.me.R
+import com.rank.me.dialer.helpers.ALL_TABS_MASK
+import com.rank.me.extensions.config
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
 import com.simplemobiletools.commons.extensions.setupDialogStuff
@@ -7,9 +10,6 @@ import com.simplemobiletools.commons.helpers.TAB_CALL_HISTORY
 import com.simplemobiletools.commons.helpers.TAB_CONTACTS
 import com.simplemobiletools.commons.helpers.TAB_FAVORITES
 import com.simplemobiletools.commons.views.MyAppCompatCheckbox
-import com.rank.me.R
-import com.rank.me.dialer.extensions.config
-import com.rank.me.dialer.helpers.ALL_TABS_MASK
 
 class ManageVisibleTabsDialog(val activity: BaseSimpleActivity) {
     private var view = activity.layoutInflater.inflate(R.layout.dialog_manage_visible_tabs, null)

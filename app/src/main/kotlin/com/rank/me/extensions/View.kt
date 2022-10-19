@@ -1,4 +1,4 @@
-package com.rank.me.dialer.extensions
+package com.rank.me.extensions
 
 import android.graphics.Rect
 import android.view.View

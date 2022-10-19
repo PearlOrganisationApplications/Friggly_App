@@ -5,9 +5,9 @@ import com.google.gson.Gson
 import com.rank.me.R
 import com.rank.me.dialer.adapters.SpeedDialAdapter
 import com.rank.me.dialer.dialogs.SelectContactDialog
-import com.rank.me.dialer.extensions.config
 import com.rank.me.dialer.interfaces.RemoveSpeedDialListener
 import com.rank.me.dialer.models.SpeedDial
+import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.NavigationIcon
