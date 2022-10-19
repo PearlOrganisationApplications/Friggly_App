@@ -13,10 +13,10 @@ You can customize which part of the message is visible on the lockscreen too. Yo
 
 It comes with material design and dark theme by default, provides great user experience for easy usage. This messaging app also provides users with the ability to search messages quickly and efficiently. Gone are the days when you have to scroll down through all the private messaging and group messaging conversations to reach your required message. Simply search and get what you want with this text messaging app.
 
-Contains no ads or unnecessary permissions. It is fully opensource, provides customizable colors. You can also customize the font of your text message in both group messaging and private messaging. 
-
-Check out the full suite of Simple Tools here:  
+Contains no ads or unnecessary permissions. It is fully opensource, proviCheck out the full suite of Simple Tools here:  
 https://www.simplemobiletools.com
+des customizable colors. You can also customize the font of your text message in both group messaging and private messaging. 
+
 
 Facebook:  
 https://www.facebook.com/simplemobiletools

@@ -184,7 +184,6 @@ class RecentsFragment : Fragment(), RefreshItemsListener {
                                 wasNameFilled = true
                             }
                         }
-
                         if (!wasNameFilled) {
                             val contact = contacts.firstOrNull { it.phoneNumbers.first().normalizedNumber == recent.phoneNumber }
                             if (contact != null) {
