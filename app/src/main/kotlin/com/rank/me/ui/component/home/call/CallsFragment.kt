@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
+import androidx.core.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -40,6 +39,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 private const val ARG_OBJECT = "object"
 
+var refresh_count  = 0;
 /**
  * A simple [Fragment] subclass.
  * Use the [call.newInstance] factory method to
@@ -60,6 +60,8 @@ class CallsFragment : Fragment(), RefreshItemsListener {
     private var allRecentCalls = ArrayList<RecentCall>()
     private lateinit var binding: FragmentCallsBinding
 
+    private val window = activity?.window
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -67,7 +69,6 @@ class CallsFragment : Fragment(), RefreshItemsListener {
             param2 = it.getString(ARG_PARAM2)
         }
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -168,6 +169,8 @@ class CallsFragment : Fragment(), RefreshItemsListener {
                 return true
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        setupFragment()
+        refreshItems()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -181,6 +184,8 @@ class CallsFragment : Fragment(), RefreshItemsListener {
     }
 
     override fun refreshItems(callback: (() -> Unit)?) {
+        Toast.makeText(requireContext(), "Refresh Items ${refresh_count++}", Toast.LENGTH_SHORT ).show()
+        Log.e("TAG", "refreshItems: $refresh_count", )
         val privateCursor = context?.getMyContactsCursor(false, true)
         val groupSubsequentCalls = context?.config?.groupSubsequentCalls ?: false
         context?.let {
@@ -217,13 +222,11 @@ class CallsFragment : Fragment(), RefreshItemsListener {
     private fun gotRecents(recents: ArrayList<RecentCall>) {
         if (recents.isEmpty()) {
             binding.recentsPlaceholder.beVisible()
-            if (context?.hasPermission(PERMISSION_READ_CALL_LOG) == true) binding.recentsPlaceholder.beGone() else requestCallLogPermission()
+            context?.let { binding.recentsPlaceholder2.beGoneIf(it.hasPermission(PERMISSION_READ_CALL_LOG)) }
             binding.recentsList.beGone()
-        } else {
-            binding.run {
-                recentsPlaceholder.beGone()
-                recentsPlaceholder.beGone()
-            }
+        }  else {
+            binding.recentsPlaceholder.beGone()
+            binding.recentsPlaceholder2.beGone()
             binding.recentsList.beVisible()
 
             val currAdapter = binding.recentsList.adapter
@@ -246,6 +249,22 @@ class CallsFragment : Fragment(), RefreshItemsListener {
                 }
             } else {
                 (currAdapter as RecentCallsAdapter).updateItems(recents)
+            }
+        }
+    }
+
+    fun setupFragment() {
+        val placeholderResId = if (context?.hasPermission(PERMISSION_READ_CALL_LOG) == true) {
+            R.string.no_previous_calls
+        } else {
+            R.string.could_not_access_the_call_history
+        }
+
+        binding.recentsPlaceholder.text = context?.getString(placeholderResId) ?: "Error"
+        binding.recentsPlaceholder2.apply {
+            underlineText()
+            setOnClickListener {
+                requestCallLogPermission()
             }
         }
     }
@@ -348,11 +367,12 @@ class CallsFragment : Fragment(), RefreshItemsListener {
     }
 
     private fun clearCallHistory() {
-        if(activity!=null)
-        ConfirmationDialog(requireActivity(), "", R.string.clear_history_confirmation) {
-            RecentsHelper(requireActivity()).removeAllRecentCalls(activity as HomeActivity) {
-                requireActivity().runOnUiThread {
-                    refreshItems()
+        if(activity!=null) {
+            ConfirmationDialog(requireActivity(), "", R.string.clear_history_confirmation) {
+                RecentsHelper(requireActivity()).removeAllRecentCalls(activity as HomeActivity) {
+                    requireActivity().runOnUiThread {
+                        refreshItems()
+                    }
                 }
             }
         }

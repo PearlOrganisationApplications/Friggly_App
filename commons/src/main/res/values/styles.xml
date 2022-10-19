@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme.Base" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/color_primary</item>
@@ -373,6 +373,16 @@
 
     <style name="SettingsTextLabelStyle">
         <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="ToolbarTextStyle">
+        <item name="android:textSize">@dimen/middle_text_size</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FFC039</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="SettingsTextValueStyle">

@@ -1,6 +1,5 @@
 package com.rank.me.ui.component.home.contact
 
-import android.Manifest
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -12,19 +11,27 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import com.rank.me.BuildConfig
 import com.rank.me.R
-import com.rank.me.databinding.FragmentContactsMainBinding
+import com.rank.me.databinding.FragmentContactsBinding
+import com.rank.me.dialer.activities.SettingsActivity
 import com.rank.me.dialer.adapters.ContactsAdapter
-import com.rank.me.dialer.extensions.startContactDetailsIntent
+import com.rank.me.dialer.dialogs.ChangeSortingDialog
+import com.rank.me.dialer.helpers.OPEN_DIAL_PAD_AT_LAUNCH
+import com.rank.me.dialer.helpers.RecentsHelper
 import com.rank.me.dialer.interfaces.RefreshItemsListener
+import com.rank.me.extensions.launchCreateNewContactIntent
+import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
+import com.rank.me.ui.component.home.call.refresh_count
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
+import com.simplemobiletools.commons.activities.BaseSimpleActivity
+import com.simplemobiletools.commons.dialogs.ConfirmationDialog
 import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.MyContactsContentProvider
-import com.simplemobiletools.commons.helpers.PERMISSION_READ_CONTACTS
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
+import com.simplemobiletools.commons.helpers.*
+import com.simplemobiletools.commons.models.FAQItem
 import com.simplemobiletools.commons.models.SimpleContact
 import java.util.*
 
@@ -40,11 +47,14 @@ class ContactFragment : Fragment(), RefreshItemsListener {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var searchQuery = ""
+    private var launchedDialer = false
+    private var isSearchOpen = false
     private var allContacts = ArrayList<SimpleContact>()
 
     // Use the 'by activityViewModels()' Kotlin property delegate from the fragment-ktx artifact
     private val sharedViewModel: HomeViewModel by activityViewModels()
-    private lateinit var binding: FragmentContactsMainBinding
+    private lateinit var binding: FragmentContactsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +68,7 @@ class ContactFragment : Fragment(), RefreshItemsListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val fragmentBinding = FragmentContactsMainBinding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentContactsBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -75,20 +85,14 @@ class ContactFragment : Fragment(), RefreshItemsListener {
             // Assign the fragment
             contactFragment = this@ContactFragment
         }
-        //TODO shift this Permission request to somewhere else maybe
-//        PermissionManager.requestPermissions(
-//            this,
-//            4,
-//            Manifest.permission.READ_SMS
-//        )
+        launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 // Add menu items here
                 menuInflater.inflate(R.menu.menu, menu)
             }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 Log.e("TAG", "onMenuItemSelected: $menuItem")
                 // Handle the menu selection
                 return when (menuItem.itemId) {
@@ -98,26 +102,32 @@ class ContactFragment : Fragment(), RefreshItemsListener {
                         true
                     }
                     R.id.sort -> {
+                        showSortingDialog()
                         Toast.makeText(context, "Menu call sort", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.create_new_contact -> {
+                        (activity as HomeActivity).launchCreateNewContactIntent()
                         Toast.makeText(context, "create_new_contact", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.clear_call_history -> {
+                        clearCallHistory()
                         Toast.makeText(context, "clear_call_history", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.settings -> {
+                        requireActivity().hideKeyboard()
+                        startActivity(Intent(requireContext(), SettingsActivity::class.java))
                         Toast.makeText(context, "Menu call settings", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
                     }
                     R.id.about -> {
+                        launchAbout()
                         Toast.makeText(context, "Menu call about", Toast.LENGTH_SHORT).show()
                         // loadTasks(true)
                         true
@@ -128,6 +138,13 @@ class ContactFragment : Fragment(), RefreshItemsListener {
                 return true
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+        setupFragment()
+        refreshItems()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(OPEN_DIAL_PAD_AT_LAUNCH, launchedDialer)
     }
 
     companion object {
@@ -150,11 +167,39 @@ class ContactFragment : Fragment(), RefreshItemsListener {
             }
     }
 
+    fun setupFragment() {
+        val placeholderResId = if (context?.hasPermission(PERMISSION_READ_CONTACTS) == true) {
+            R.string.no_contacts_found
+        } else {
+            R.string.could_not_access_contacts
+        }
+
+        binding.fragmentPlaceholder.text = context?.getString(placeholderResId) ?: "Error"
+
+        val placeholderActionResId = if (context?.hasPermission(PERMISSION_READ_CONTACTS) == true) {
+            R.string.create_new_contact
+        } else {
+            R.string.request_access
+        }
+
+        binding.fragmentPlaceholder2.apply {
+            text = context.getString(placeholderActionResId)
+            underlineText()
+            setOnClickListener {
+                if (context.hasPermission(PERMISSION_READ_CONTACTS)) {
+                    (activity as HomeActivity).launchCreateNewContactIntent()
+                } else {
+                    requestReadContactsPermission()
+                }
+            }
+        }
+    }
+
     override fun refreshItems(callback: (() -> Unit)?) {
+        Toast.makeText(requireContext(), "Refresh Items ${refresh_count++}", Toast.LENGTH_SHORT ).show()
         val privateCursor = context?.getMyContactsCursor(false, true)
         SimpleContactsHelper(requireContext()).getAvailableContacts(false) { contacts ->
             allContacts = contacts
-
 
             val privateContacts = MyContactsContentProvider.getSimpleContacts(requireContext(), privateCursor)
             if (privateContacts.isNotEmpty()) {
@@ -177,10 +222,12 @@ class ContactFragment : Fragment(), RefreshItemsListener {
             binding.fragmentPlaceholder.beVisible()
             binding.fragmentPlaceholder2.beVisible()
             binding.fragmentList.beGone()
+            Toast.makeText(requireContext(), "has no contacts", Toast.LENGTH_SHORT ).show()
         } else {
             binding.fragmentPlaceholder.beGone()
             binding.fragmentPlaceholder2.beGone()
             binding.fragmentList.beVisible()
+            Toast.makeText(requireContext(), "has contacts", Toast.LENGTH_SHORT ).show()
 
             val currAdapter = binding.fragmentList.adapter
             if (currAdapter == null) {
@@ -250,6 +297,53 @@ class ContactFragment : Fragment(), RefreshItemsListener {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         refreshItems()
+    }
+
+    private fun showSortingDialog() {
+        ChangeSortingDialog(activity as BaseSimpleActivity, false) {
+            refreshItems {
+                if (isSearchOpen) {
+                    onSearchQueryChanged(searchQuery)
+                }
+            }
+        }
+    }
+
+    private fun launchAbout() {
+        closeSearch()
+        val licenses = LICENSE_GLIDE or LICENSE_INDICATOR_FAST_SCROLL or LICENSE_AUTOFITTEXTVIEW
+
+        val faqItems = arrayListOf(
+            FAQItem(R.string.faq_1_title, R.string.faq_1_text),
+            FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons)
+        )
+
+        if (!resources.getBoolean(R.bool.hide_google_relations)) {
+            faqItems.add(FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons))
+            faqItems.add(FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons))
+        }
+
+        (activity as HomeActivity).startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+    }
+
+    private fun closeSearch() {
+        if (isSearchOpen) {
+//            getAllFragments().forEach {
+//                it?.onSearchQueryChanged("")
+//            }
+//            mSearchMenuItem?.collapseActionView()
+        }
+    }
+
+    private fun clearCallHistory() {
+        if(activity!=null)
+            ConfirmationDialog(requireActivity(), "", R.string.clear_history_confirmation) {
+                RecentsHelper(requireActivity()).removeAllRecentCalls(activity as HomeActivity) {
+                    requireActivity().runOnUiThread {
+                        refreshItems()
+                    }
+                }
+            }
     }
 
 }

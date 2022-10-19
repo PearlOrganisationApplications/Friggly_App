@@ -23,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/top_corner_gradient"
-            android:paddingHorizontal="15dp">
+            android:paddingVertical="5dp"
+            android:paddingHorizontal="10dp">
 
             <!-- ToolBar widget -->
             <androidx.appcompat.widget.Toolbar
@@ -57,18 +58,15 @@
                 app:srcCompat="@drawable/profile_placeholder" />
 
             <!-- ImageView beside title of ToolBar -->
-            <TextView
+
+            <TextSwitcher
                 android:id="@+id/searchView"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/montserrat_bold"
-                android:gravity="center"
-                android:shadowColor="@color/black"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:text="@string/app_name"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
+                android:drawableStart="@drawable/ic_search_vector"
+                android:background="@drawable/toolbar_bg_box"
+                android:foregroundGravity="center"
+                android:layout_marginHorizontal="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/menu_btn"
                 app:layout_constraintStart_toEndOf="@+id/imageView"

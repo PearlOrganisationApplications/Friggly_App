@@ -1,6 +1,10 @@
 package com.rank.me.ui.component.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.ContextThemeWrapper
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -25,6 +29,30 @@ class HomeActivity : SimpleActivity() {
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.navigation_bar)
         setupWithNavController(bottomNavigationView,navController)
         setSupportActionBar(binding.toolbar.getToolBar)
+        binding.toolbar.searchView.setFactory { TextView(ContextThemeWrapper(this@HomeActivity, R.style.ToolbarTextStyle), null, 0) }
+        changeSearchText()
+        binding.toolbar.searchView.setOnClickListener { showSearch() }
+    }
+
+    private fun showSearch() {
+//        TODO("Not yet implemented")
+    }
+
+    private fun changeSearchText() {
+        binding.toolbar.searchView.setText(resources.getString(R.string.app_name))
+        Handler().postDelayed({ setTextSecond() }, 4000)
+    }
+    private fun setTextSecond() {
+        val inAnim = AnimationUtils.loadAnimation(this,
+            android.R.anim.slide_in_left)
+        val outAnim = AnimationUtils.loadAnimation(this,
+            android.R.anim.slide_out_right)
+        inAnim.duration = 700
+        outAnim.duration = 700
+        binding.toolbar.searchView.inAnimation = inAnim
+        binding.toolbar.searchView.outAnimation = outAnim
+
+        binding.toolbar.searchView.setText("Search for calls, sms, people and more...")
     }
 
     fun cacheContacts(contacts: List<SimpleContact>) {
