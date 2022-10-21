@@ -27,13 +27,13 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <com.pearltools.commons.views.MyRecyclerView
             android:id="@+id/conference_calls_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager"
             tools:listitem="@layout/item_conference_call" />
 
     </FrameLayout>

@@ -41,10 +41,10 @@ import com.rank.me.message.interfaces.MessagesDao
 import com.rank.me.message.models.*
 import com.rank.me.message.receivers.DirectReplyReceiver
 import com.rank.me.message.receivers.MarkAsReadReceiver
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.PhoneNumber
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.PhoneNumber
+import com.pearltools.commons.models.SimpleContact
 import me.leolin.shortcutbadger.ShortcutBadger
 import java.io.FileNotFoundException
 

@@ -10,9 +10,9 @@ import com.rank.me.message.models.MmsAddress
 import com.rank.me.message.models.MmsBackup
 import com.rank.me.message.models.MmsPart
 import com.rank.me.message.models.SmsBackup
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.isQPlus
-import com.simplemobiletools.commons.helpers.isRPlus
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.isQPlus
+import com.pearltools.commons.helpers.isRPlus
 import java.io.IOException
 import java.io.InputStream
 

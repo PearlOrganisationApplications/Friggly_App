@@ -301,7 +301,7 @@
         Po uruchomieniu aplikacji ustaw domyślny kolor ikony (#F57C00). W najgorszym przypadku konieczne może być przeinstalowanie aplikacji.</string>
     <string name="share_colors_success">Kolory zostały zmienione. Dodano nowy motyw o nazwie „wspólny” — użyj go do aktualizacji kolorystyki we wszystkich Prostych aplikacjach w przyszłości.</string>
     <string name="shared_theme_note">Pamiętaj, że nawet jeśli używasz wersji Pro aplikacji, nadal potrzebujesz aplikacji „Proste podziękowanie” z powodów technicznych. Zajmuje się ona synchronizacją kolorów.</string>
-    <string name="purchase_thank_you">Aby odblokować tę funkcję (i przy okazji wesprzeć rozwój niniejszej aplikacji), kup aplikację &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Proste podziękowanie&lt;/a&gt;. Dzięki!</string>
+    <string name="purchase_thank_you">Aby odblokować tę funkcję (i przy okazji wesprzeć rozwój niniejszej aplikacji), kup aplikację &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Proste podziękowanie&lt;/a&gt;. Dzięki!</string>
     <!-- Themes -->
     <string name="light_theme">Jasny</string>
     <string name="dark_theme">Ciemny</string>
@@ -818,11 +818,11 @@
     <string name="donate_please">
         <![CDATA[
             Witaj!<br><br>
-            Mamy nadzieję, że aplikacja przypadła Ci do gustu. Jak można zauważyć, nie zawiera reklam, prosimy więc o wsparcie jej rozwoju przez zakup specjalnej aplikacji <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Proste podziękowanie</a>, co poskutkuje również wyłączeniem tego komunikatu.<br><br>
+            Mamy nadzieję, że aplikacja przypadła Ci do gustu. Jak można zauważyć, nie zawiera reklam, prosimy więc o wsparcie jej rozwoju przez zakup specjalnej aplikacji <a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Proste podziękowanie</a>, co poskutkuje również wyłączeniem tego komunikatu.<br><br>
             Dziękujemy!
         ]]>
     </string>
-    <string name="donate_new">Witaj,&lt;br&gt;&lt;br&gt;Mamy nadzieję, że aplikacja przypadła Ci do gustu. Nie zawiera reklam oraz nie zbieramy Twoich danych, dlatego wesprzyj jej rozwój, kupując &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Proste podziękowanie&lt;/a&gt;. Będziesz także mieć odblokowane wszystkie funkcje aplikacji i dostosowywanie kolorów.&lt;br&gt;&lt;br&gt;Dziękujemy!</string>
+    <string name="donate_new">Witaj,&lt;br&gt;&lt;br&gt;Mamy nadzieję, że aplikacja przypadła Ci do gustu. Nie zawiera reklam oraz nie zbieramy Twoich danych, dlatego wesprzyj jej rozwój, kupując &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Proste podziękowanie&lt;/a&gt;. Będziesz także mieć odblokowane wszystkie funkcje aplikacji i dostosowywanie kolorów.&lt;br&gt;&lt;br&gt;Dziękujemy!</string>
     <string name="purchase">Kup</string>
     <string name="get_simple_phone">Zamów urządzenie Prosty Telefon</string>
     <string name="update_thank_you">Zaktualizuj aplikację Proste podziękowanie do najnowszej wersji</string>
@@ -844,7 +844,7 @@
     <string name="rate_our_app">Oceń naszą aplikację :)</string>
     <string name="thank_you">Dziękujemy</string>
     <string name="widget_locked_pro">Widżet jest zablokowany.\nUaktualnij do wersji Pro, aby go odblokować.</string>
-    <string name="features_locked">Ta funkcja jest zablokowana. Kup &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Proste podziękowanie&lt;/a&gt;, aby odblokować pełną wersję aplikacji.&lt;br&gt;&lt;br&gt;Jest to płatność jednorazowa, a jeśli nie będziesz zadowolony(-a), możemy Ci zwrócić pieniądze.</string>
+    <string name="features_locked">Ta funkcja jest zablokowana. Kup &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Proste podziękowanie&lt;/a&gt;, aby odblokować pełną wersję aplikacji.&lt;br&gt;&lt;br&gt;Jest to płatność jednorazowa, a jeśli nie będziesz zadowolony(-a), możemy Ci zwrócić pieniądze.</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">Cześć!&lt;br&gt;&lt;br&gt; Dajemy Ci znać, że ostatnio zostało wydanych kilka nowych aplikacji:&lt;br&gt;&lt;br&gt; &lt;a href=%1$s&gt;%2$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%3$s&gt;%4$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%5$s&gt;%6$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; Możesz je pobrać, naciskając ich nazwy lub ikony.&lt;br&gt;&lt;br&gt; Dzięki!</string>
     <string name="simple_app_launcher">Prosty launcher aplikacji</string>
@@ -1049,7 +1049,7 @@
     <string name="m3u_parser_title">M3U Parser (obsługa plików playlist M3U)</string>
     <string name="android_lame_title">AndroidLame (koder MP3)</string>
     <!-- Google Play listing -->
-    <string name="deprecated_app">PRZESTARZAŁA: Ta wersja aplikacji nie jest już utrzymywana. Pobierz wersję Pro z https://play.google.com/store/apps/details\?id=com.simplemobiletools.xxx.pro</string>
+    <string name="deprecated_app">PRZESTARZAŁA: Ta wersja aplikacji nie jest już utrzymywana. Pobierz wersję Pro z https://play.google.com/store/apps/details\?id=com.pearltools.xxx.pro</string>
     <string name="pro_app_refund">Pamiętaj, że jeśli odinstalujesz którąkolwiek z płatnych aplikacji w ciągu 2 godzin, automatycznie otrzymasz zwrot pieniędzy. Jeśli chcesz zwrotu pieniędzy w dowolnym momencie później, wystarczy skontaktować się z nami na hello@simplemobiletools.com, a otrzymasz go. To sprawia, że aplikacje są łatwe do wypróbowania :)</string>
     <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
     <string name="developer_description">Zestaw prostych, otwartoźródłowych aplikacji na Androida z konfigurowalnymi widżetami, bez reklam i zbędnych uprawnień.</string>

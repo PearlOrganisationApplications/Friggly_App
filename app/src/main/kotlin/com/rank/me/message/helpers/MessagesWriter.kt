@@ -12,9 +12,9 @@ import com.rank.me.message.models.MmsAddress
 import com.rank.me.message.models.MmsBackup
 import com.rank.me.message.models.MmsPart
 import com.rank.me.message.models.SmsBackup
-import com.simplemobiletools.commons.extensions.getLongValue
-import com.simplemobiletools.commons.extensions.queryCursor
-import com.simplemobiletools.commons.helpers.isRPlus
+import com.pearltools.commons.extensions.getLongValue
+import com.pearltools.commons.extensions.queryCursor
+import com.pearltools.commons.helpers.isRPlus
 
 class MessagesWriter(private val context: Context) {
     private val INVALID_ID = -1L

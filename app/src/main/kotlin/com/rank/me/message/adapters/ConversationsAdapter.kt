@@ -15,14 +15,14 @@ import com.rank.me.extensions.*
 import com.rank.me.message.helpers.refreshMessages
 import com.rank.me.message.models.Conversation
 import com.rank.me.ui.component.home.HomeActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.KEY_PHONE
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.helpers.isNougatPlus
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.KEY_PHONE
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.helpers.isNougatPlus
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_conversation.view.*
 
 class ConversationsAdapter(

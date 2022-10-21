@@ -12,10 +12,10 @@ import android.telecom.TelecomManager
 import com.rank.me.R
 import com.rank.me.dialer.dialogs.SelectSIMDialog
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.SimpleContact
 
 fun Activity.dialNumber(phoneNumber: String, callback: (() -> Unit)? = null) {
     hideKeyboard()
@@ -61,8 +61,8 @@ fun BaseSimpleActivity.callContactWithSim(recipient: String, useMainSIM: Boolean
 
 // handle private contacts differently, only Simple Contacts Pro can open them
 fun Activity.startContactDetailsIntent(contact: SimpleContact) {
-    val simpleContacts = "com.simplemobiletools.contacts.pro"
-    val simpleContactsDebug = "com.simplemobiletools.contacts.pro.debug"
+    val simpleContacts = "com.pearltools.contacts.pro"
+    val simpleContactsDebug = "com.pearltools.contacts.pro.debug"
     if (contact.rawId > 1000000 && contact.contactId > 1000000 && contact.rawId == contact.contactId &&
         (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))
     ) {

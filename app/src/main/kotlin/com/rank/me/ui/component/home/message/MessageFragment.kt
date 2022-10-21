@@ -1,7 +1,6 @@
 package com.rank.me.ui.component.home.message
 
 import android.Manifest
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -19,14 +18,12 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.rank.me.R
 import com.rank.me.databinding.FragmentMsgBinding
 import com.rank.me.extensions.config
-import com.rank.me.extensions.conversationsDB
 import com.rank.me.message.activities.NewConversationActivity
 import com.rank.me.message.activities.SettingsActivity
 import com.rank.me.message.dialogs.ExportMessagesDialog
 import com.rank.me.message.dialogs.ImportMessagesDialog
 import com.rank.me.message.helpers.EXPORT_MIME_TYPE
 import com.rank.me.message.helpers.MessagesExporter
-import com.rank.me.message.models.Conversation
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
@@ -36,14 +33,12 @@ import com.rank.me.ui.component.home.message.promotion.MessagePromotionFragment
 import com.rank.me.ui.component.home.message.spam.MessageSpamFragment
 import com.rank.me.utils.livedatapermission.PermissionManager
 import com.rank.me.utils.livedatapermission.model.PermissionResult
-import com.simplemobiletools.commons.dialogs.FilePickerDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.Release
+import com.pearltools.commons.dialogs.FilePickerDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
 import org.greenrobot.eventbus.EventBus
 import java.io.FileOutputStream
 import java.io.OutputStream
-import java.util.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

@@ -12,11 +12,11 @@ import com.rank.me.message.adapters.ContactsAdapter
 import com.rank.me.message.helpers.*
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.dialogs.RadioGroupDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.RadioItem
+import com.pearltools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_new_conversation.*
 import kotlinx.android.synthetic.main.item_suggested_contact.view.*
 import java.net.URLDecoder

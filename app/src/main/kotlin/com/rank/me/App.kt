@@ -1,7 +1,7 @@
 package com.rank.me
 
 import android.app.Application
-import com.simplemobiletools.commons.extensions.checkUseEnglish
+import com.pearltools.commons.extensions.checkUseEnglish
 import dagger.hilt.android.HiltAndroidApp
 
 /**

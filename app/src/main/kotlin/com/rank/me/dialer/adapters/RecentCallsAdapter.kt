@@ -17,12 +17,12 @@ import com.rank.me.dialer.models.RecentCall
 import com.rank.me.extensions.*
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.SimpleContact
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.SimpleContact
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_recent_call.view.*
 
 class RecentCallsAdapter(

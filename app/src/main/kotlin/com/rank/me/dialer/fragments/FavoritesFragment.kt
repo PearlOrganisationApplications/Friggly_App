@@ -10,15 +10,15 @@ import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.dialogs.CallConfirmationDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.MyContactsContentProvider
-import com.simplemobiletools.commons.helpers.PERMISSION_READ_CONTACTS
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.dialogs.CallConfirmationDialog
+import com.pearltools.commons.dialogs.RadioGroupDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.MyContactsContentProvider
+import com.pearltools.commons.helpers.PERMISSION_READ_CONTACTS
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.models.RadioItem
+import com.pearltools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.fragment_letters_layout.view.*
 import java.util.*
 

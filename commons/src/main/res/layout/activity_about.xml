@@ -68,7 +68,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_question_mark_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_faq"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -98,7 +98,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_mail_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_email"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -146,7 +146,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_star_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_rate_us"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -176,7 +176,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_add_person_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_invite"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -206,7 +206,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_face_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_contributors"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -237,7 +237,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_dollar_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_donate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -285,7 +285,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_facebook_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_facebook"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -315,7 +315,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_reddit_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_reddit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -345,7 +345,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_telegram_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_telegram"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -393,7 +393,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_simple_phone_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_get_simple_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -423,7 +423,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_heart_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_more_apps"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -454,7 +454,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_link_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_website"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -484,7 +484,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_unhide_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_privacy_policy"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -514,7 +514,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_article_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_licenses"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -544,7 +544,7 @@
                         android:padding="@dimen/medium_margin"
                         android:src="@drawable/ic_info_vector" />
 
-                    <com.simplemobiletools.commons.views.MyTextView
+                    <com.pearltools.commons.views.MyTextView
                         android:id="@+id/about_version"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -560,7 +560,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <com.simplemobiletools.commons.views.MyTextView
+            <com.pearltools.commons.views.MyTextView
                 android:id="@+id/footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

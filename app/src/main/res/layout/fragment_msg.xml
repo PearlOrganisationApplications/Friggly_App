@@ -41,7 +41,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
-        <com.simplemobiletools.commons.views.MyFloatingActionButton
+        <com.pearltools.commons.views.MyFloatingActionButton
             android:id="@+id/message_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

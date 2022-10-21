@@ -8,11 +8,11 @@ import com.bumptech.glide.Glide
 import com.rank.me.R
 import com.rank.me.message.models.SearchResult
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.getTextSize
-import com.simplemobiletools.commons.extensions.highlightTextPart
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.extensions.getTextSize
+import com.pearltools.commons.extensions.highlightTextPart
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_search_result.view.*
 
 class SearchResultsAdapter(

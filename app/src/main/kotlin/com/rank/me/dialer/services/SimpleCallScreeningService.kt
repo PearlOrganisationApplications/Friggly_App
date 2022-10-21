@@ -5,11 +5,11 @@ import android.os.Build
 import android.telecom.Call
 import android.telecom.CallScreeningService
 import androidx.annotation.RequiresApi
-import com.simplemobiletools.commons.extensions.baseConfig
-import com.simplemobiletools.commons.extensions.getMyContactsCursor
-import com.simplemobiletools.commons.extensions.isNumberBlocked
-import com.simplemobiletools.commons.extensions.normalizePhoneNumber
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.extensions.baseConfig
+import com.pearltools.commons.extensions.getMyContactsCursor
+import com.pearltools.commons.extensions.isNumberBlocked
+import com.pearltools.commons.extensions.normalizePhoneNumber
+import com.pearltools.commons.helpers.SimpleContactsHelper
 
 @RequiresApi(Build.VERSION_CODES.N)
 class SimpleCallScreeningService : CallScreeningService() {

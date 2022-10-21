@@ -9,12 +9,12 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.rank.me.R
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.darkenColor
-import com.simplemobiletools.commons.extensions.getContrastColor
-import com.simplemobiletools.commons.extensions.getProperBackgroundColor
-import com.simplemobiletools.commons.extensions.normalizeString
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.darkenColor
+import com.pearltools.commons.extensions.getContrastColor
+import com.pearltools.commons.extensions.getProperBackgroundColor
+import com.pearltools.commons.extensions.normalizeString
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.models.SimpleContact
 
 class AutoCompleteTextViewAdapter(val activity: SimpleActivity, val contacts: ArrayList<SimpleContact>) : ArrayAdapter<SimpleContact>(activity, 0, contacts) {
     var resultList = ArrayList<SimpleContact>()

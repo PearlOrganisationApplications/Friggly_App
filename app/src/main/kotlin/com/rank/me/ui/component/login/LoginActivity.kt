@@ -92,7 +92,7 @@ class LoginActivity : BaseActivity() {
 
     private fun navigateToMainScreen() {
         LocalData(this@LoginActivity).setIsLogin(true)
-        val nextScreenIntent = Intent(this, HomeActivity::class.java)
+        val nextScreenIntent = Intent(this, HomeActivity::class.java).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivity(nextScreenIntent)
         finish()
     }

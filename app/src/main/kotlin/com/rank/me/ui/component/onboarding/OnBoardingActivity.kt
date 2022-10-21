@@ -166,7 +166,6 @@ class OnBoardingActivity : BaseActivity() {
         // we dont really care about the result, the app can work without being the default Dialer too
         if (requestCode == REQUEST_CODE_SET_DEFAULT_DIALER) {
             PermissionsDialog().show(supportFragmentManager, "permissions")
-            Toast.makeText(this@OnBoardingActivity, "test", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -180,7 +179,6 @@ class OnBoardingActivity : BaseActivity() {
             }
             .setPositiveButton("Ok") { dialog, _ ->
                 updateAppLocale(selectedlocale)
-                Toast.makeText(this, "$selectedlocale Selected", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Cancel") { dialog, which ->
                 dialog.dismiss()

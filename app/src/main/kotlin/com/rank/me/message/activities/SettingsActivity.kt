@@ -8,12 +8,12 @@ import com.rank.me.R
 import com.rank.me.extensions.config
 import com.rank.me.message.helpers.*
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.activities.ManageBlockedNumbersActivity
-import com.simplemobiletools.commons.dialogs.ChangeDateTimeFormatDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.RadioItem
+import com.pearltools.commons.activities.ManageBlockedNumbersActivity
+import com.pearltools.commons.dialogs.ChangeDateTimeFormatDialog
+import com.pearltools.commons.dialogs.RadioGroupDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.RadioItem
 import kotlinx.android.synthetic.main.activity_settings.*
 import java.util.*
 

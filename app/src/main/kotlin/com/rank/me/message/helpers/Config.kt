@@ -7,7 +7,7 @@ import com.google.gson.reflect.TypeToken
 import com.rank.me.dialer.helpers.*
 import com.rank.me.dialer.models.SpeedDial
 import com.rank.me.message.models.Conversation
-import com.simplemobiletools.commons.helpers.BaseConfig
+import com.pearltools.commons.helpers.BaseConfig
 
 class Config(context: Context) : BaseConfig(context) {
     companion object {

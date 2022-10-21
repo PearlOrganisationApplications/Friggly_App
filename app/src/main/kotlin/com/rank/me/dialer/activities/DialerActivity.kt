@@ -10,8 +10,8 @@ import android.widget.Toast
 import com.rank.me.R
 import com.rank.me.extensions.getHandleToUse
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.REQUEST_CODE_SET_DEFAULT_DIALER
 
 class DialerActivity : SimpleActivity() {
     private var callNumber: Uri? = null

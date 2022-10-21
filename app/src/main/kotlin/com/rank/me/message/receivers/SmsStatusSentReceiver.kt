@@ -22,11 +22,11 @@ import com.rank.me.message.activities.ThreadActivity
 import com.rank.me.message.helpers.NOTIFICATION_CHANNEL
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.refreshMessages
-import com.simplemobiletools.commons.extensions.getMyContactsCursor
-import com.simplemobiletools.commons.extensions.getProperPrimaryColor
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.helpers.isOreoPlus
+import com.pearltools.commons.extensions.getMyContactsCursor
+import com.pearltools.commons.extensions.getProperPrimaryColor
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.helpers.isOreoPlus
 
 class SmsStatusSentReceiver : SentReceiver() {
 

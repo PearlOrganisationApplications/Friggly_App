@@ -11,9 +11,9 @@ import com.rank.me.message.helpers.parseVCardFromUri
 import com.rank.me.message.models.VCardPropertyWrapper
 import com.rank.me.message.models.VCardWrapper
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.normalizePhoneNumber
-import com.simplemobiletools.commons.extensions.sendEmailIntent
-import com.simplemobiletools.commons.helpers.NavigationIcon
+import com.pearltools.commons.extensions.normalizePhoneNumber
+import com.pearltools.commons.extensions.sendEmailIntent
+import com.pearltools.commons.helpers.NavigationIcon
 import ezvcard.VCard
 import ezvcard.property.Email
 import ezvcard.property.Telephone

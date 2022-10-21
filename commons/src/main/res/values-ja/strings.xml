@@ -292,7 +292,7 @@
     <string name="shared_theme_note">Proアプリ版を使用していても、技術的な理由によりSimple Thank Youが必要であることにご留意下さい。色の同期を処理します。</string>
     <string name="purchase_thank_you">
         <![CDATA[
-            この機能のロックを解除して開発者をサポートするには、<a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a> アプリを購入してください。
+            この機能のロックを解除して開発者をサポートするには、<a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Thank You</a> アプリを購入してください。
         ]]>
     </string>
     <!-- Themes -->
@@ -720,11 +720,11 @@
     <string name="donate_please">
         <![CDATA[
             こんにちは<br><br>
-            アプリを楽しんでいただけているでしょうか。広告無しを続けるため、<a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Thank You</a>アプリを購入し開発の力になってください。購入されれば、この表示も二度と出ません。 <br><br>
+            アプリを楽しんでいただけているでしょうか。広告無しを続けるため、<a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Thank You</a>アプリを購入し開発の力になってください。購入されれば、この表示も二度と出ません。 <br><br>
             ありがとうございます！
         ]]>
     </string>
-    <string name="donate_new">Hello,&lt;br&gt;&lt;br&gt;hope you are enjoying the app. It contains no ads and we aren\'t collecting your data either, please support its development by purchasing &lt;a href=https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou&gt;Simple Thank You&lt;/a&gt;. You will also have all app features and color customization unlocked.&lt;br&gt;&lt;br&gt;Thank you!</string>
+    <string name="donate_new">Hello,&lt;br&gt;&lt;br&gt;hope you are enjoying the app. It contains no ads and we aren\'t collecting your data either, please support its development by purchasing &lt;a href=https://play.google.com/store/apps/details?id=com.pearltools.thankyou&gt;Simple Thank You&lt;/a&gt;. You will also have all app features and color customization unlocked.&lt;br&gt;&lt;br&gt;Thank you!</string>
     <string name="purchase">購入する</string>
     <string name="get_simple_phone">Get Simple Phone</string>
     <string name="update_thank_you">\"Simple Thank You\" アプリを最新版に更新してください</string>
@@ -738,7 +738,7 @@
     <string name="rate_our_app">是非、アプリを評価してください :)</string>
     <string name="thank_you">ありがとうございます</string>
     <string name="widget_locked_pro">ウィジェットはロックされています。\nロックを解除するには、Proバージョンにアップグレードしてください。</string>
-    <string name="features_locked">この機能はロックされています。ロックを解除するには、 &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Simple Thank You&lt;/a&gt; を購入する必要があります。&lt;br&gt;&lt;br&gt;お支払いは1回のみで、ご満足いただけない場合はご返金いたします。</string>
+    <string name="features_locked">この機能はロックされています。ロックを解除するには、 &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Simple Thank You&lt;/a&gt; を購入する必要があります。&lt;br&gt;&lt;br&gt;お支払いは1回のみで、ご満足いただけない場合はご返金いたします。</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
         <![CDATA[
@@ -945,7 +945,7 @@
     <string name="m3u_parser_title">M3U Parser (m3uプレイリストの取り扱い)</string>
     <string name="android_lame_title">AndroidLame (mp3エンコーダ)</string>
     <!-- Google Play listing -->
-    <string name="deprecated_app">非推奨: このバージョンのアプリはメンテナンスが行われなくなります。こちらのURLからPro版を入手してください。https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro</string>
+    <string name="deprecated_app">非推奨: このバージョンのアプリはメンテナンスが行われなくなります。こちらのURLからPro版を入手してください。https://play.google.com/store/apps/details?id=com.pearltools.xxx.pro</string>
     <string name="pro_app_refund">どのアプリでも、購入後２時間以内にアンインストールすると自動的に払い戻しされることを覚えていてください。それ以降に払い戻しが必要な場合は、こちらにお問い合わせください。hello@simplemobiletools.com
 お試ししやすいかと思います :)</string>
     <!-- Description of our developer profile on Google Play, it can have max 140 characters -->

@@ -17,6 +17,18 @@ import android.widget.TextView
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.PERMISSION_CALL_PHONE
+import com.pearltools.commons.helpers.PERMISSION_WRITE_CONTACTS
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.isOreoPlus
+import com.pearltools.commons.interfaces.ItemMoveCallback
+import com.pearltools.commons.interfaces.ItemTouchHelperContract
+import com.pearltools.commons.interfaces.StartReorderDragListener
+import com.pearltools.commons.models.SimpleContact
+import com.pearltools.commons.views.MyRecyclerView
 import com.rank.me.R
 import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.extensions.areMultipleSIMsAvailable
@@ -24,18 +36,6 @@ import com.rank.me.extensions.callContactWithSim
 import com.rank.me.extensions.config
 import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.PERMISSION_CALL_PHONE
-import com.simplemobiletools.commons.helpers.PERMISSION_WRITE_CONTACTS
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.helpers.isOreoPlus
-import com.simplemobiletools.commons.interfaces.ItemMoveCallback
-import com.simplemobiletools.commons.interfaces.ItemTouchHelperContract
-import com.simplemobiletools.commons.interfaces.StartReorderDragListener
-import com.simplemobiletools.commons.models.SimpleContact
-import com.simplemobiletools.commons.views.MyRecyclerView
 import java.util.*
 
 class ContactsAdapter(

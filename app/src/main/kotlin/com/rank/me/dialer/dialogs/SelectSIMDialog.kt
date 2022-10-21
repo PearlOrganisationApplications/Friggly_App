@@ -9,9 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import com.rank.me.R
 import com.rank.me.extensions.config
 import com.rank.me.extensions.getAvailableSIMCardLabels
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.pearltools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.extensions.getAlertDialogBuilder
+import com.pearltools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_select_sim.view.*
 
 @SuppressLint("MissingPermission")

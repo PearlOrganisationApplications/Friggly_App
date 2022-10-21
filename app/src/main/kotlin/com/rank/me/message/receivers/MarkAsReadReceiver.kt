@@ -9,8 +9,8 @@ import com.rank.me.extensions.updateUnreadCountBadge
 import com.rank.me.message.helpers.MARK_AS_READ
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.refreshMessages
-import com.simplemobiletools.commons.extensions.notificationManager
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.notificationManager
+import com.pearltools.commons.helpers.ensureBackgroundThread
 
 class MarkAsReadReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

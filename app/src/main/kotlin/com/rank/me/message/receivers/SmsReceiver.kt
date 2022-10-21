@@ -14,13 +14,13 @@ import com.rank.me.R
 import com.rank.me.extensions.*
 import com.rank.me.message.helpers.refreshMessages
 import com.rank.me.message.models.Message
-import com.simplemobiletools.commons.extensions.baseConfig
-import com.simplemobiletools.commons.extensions.getMyContactsCursor
-import com.simplemobiletools.commons.extensions.isNumberBlocked
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import com.simplemobiletools.commons.models.PhoneNumber
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.baseConfig
+import com.pearltools.commons.extensions.getMyContactsCursor
+import com.pearltools.commons.extensions.isNumberBlocked
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.models.PhoneNumber
+import com.pearltools.commons.models.SimpleContact
 
 class SmsReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {

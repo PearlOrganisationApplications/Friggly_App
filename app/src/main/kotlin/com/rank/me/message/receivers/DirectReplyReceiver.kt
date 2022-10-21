@@ -10,9 +10,9 @@ import com.rank.me.extensions.*
 import com.rank.me.message.helpers.REPLY
 import com.rank.me.message.helpers.THREAD_ID
 import com.rank.me.message.helpers.THREAD_NUMBER
-import com.simplemobiletools.commons.extensions.notificationManager
-import com.simplemobiletools.commons.extensions.showErrorToast
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.notificationManager
+import com.pearltools.commons.extensions.showErrorToast
+import com.pearltools.commons.helpers.ensureBackgroundThread
 
 class DirectReplyReceiver : BroadcastReceiver() {
     @SuppressLint("MissingPermission")

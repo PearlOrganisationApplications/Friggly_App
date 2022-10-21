@@ -6,27 +6,96 @@
 
     </data>
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_home"/>
-
-        <fragment
-            android:id="@+id/mainContainer"
-            android:name="androidx.navigation.fragment.NavHostFragment"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/navigation_bar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/nav_graph" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_bg"
+            android:elevation="2dp"
+            app:elevation="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/top_corner_gradient"
+                    android:paddingVertical="5dp"
+                    android:paddingHorizontal="10dp">
+
+                    <!-- ToolBar widget -->
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/get_tool_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:title=" "
+                        app:menu="@menu/menu"
+                        app:titleTextColor="#ffff"/>
+
+                    <!-- Right most ImageView -->
+                    <View
+                        android:id="@+id/menu_btn"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/get_tool_bar"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- ImageView beside title of ToolBar -->
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/get_tool_bar"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:background="@drawable/profile_placeholder_ripple"
+                        app:srcCompat="@drawable/profile_placeholder" />
+
+                    <!-- ImageView beside title of ToolBar -->
+
+                    <TextView
+                        android:id="@+id/searchView"
+                        android:layout_width="0dp"
+                        android:focusable="false"
+                        android:text="@string/app_name"
+                        android:textColor="@color/colorPrimary"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:paddingHorizontal="5dp"
+                        android:textSize="@dimen/middle_text_size"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/toolbar_bg_box"
+                        android:foregroundGravity="center"
+                        android:layout_marginHorizontal="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/menu_btn"
+                        app:layout_constraintStart_toEndOf="@+id/imageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+            <fragment
+                android:id="@+id/mainContainer"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/nav_graph"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation_bar"
@@ -34,10 +103,13 @@
             app:itemIconTint="@color/mtrl_tabs_icon_color_selector"
             app:itemTextColor="@color/mtrl_tabs_icon_color_selector"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             app:itemPaddingTop="5dp"
+            android:layout_gravity="bottom"
             app:itemPaddingBottom="5dp"
-            app:menu="@menu/bottom_nav_menu" />
+            app:menu="@menu/bottom_nav_menu"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
+            app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"/>
 
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

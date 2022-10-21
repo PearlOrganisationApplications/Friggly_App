@@ -11,6 +11,13 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import com.pearltools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.FAQItem
+import com.pearltools.commons.models.SimpleContact
 import com.rank.me.BuildConfig
 import com.rank.me.R
 import com.rank.me.databinding.FragmentContactsBinding
@@ -27,12 +34,6 @@ import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
 import com.rank.me.ui.component.home.call.refresh_count
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.FAQItem
-import com.simplemobiletools.commons.models.SimpleContact
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -85,6 +86,7 @@ class ContactFragment : Fragment(), RefreshItemsListener {
             // Assign the fragment
             contactFragment = this@ContactFragment
         }
+
         launchedDialer = savedInstanceState?.getBoolean(OPEN_DIAL_PAD_AT_LAUNCH) ?: false
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
@@ -140,6 +142,22 @@ class ContactFragment : Fragment(), RefreshItemsListener {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         setupFragment()
         refreshItems()
+
+        if(activity!=null) {
+            setupColors(requireActivity().getProperTextColor(), requireActivity().getProperPrimaryColor())
+        }
+    }
+
+    private fun setupColors(textColor: Int, properPrimaryColor: Int) {
+        (binding.fragmentList.adapter as? MyRecyclerViewAdapter)?.updateTextColor(textColor)
+        binding.fragmentPlaceholder.setTextColor(textColor)
+        binding.fragmentPlaceholder2.setTextColor(properPrimaryColor)
+
+        binding.letterFastscroller.textColor = textColor.getColorStateList()
+        binding.letterFastscroller.pressedTextColor = properPrimaryColor
+        binding.letterFastscrollerThumb.setupWithFastScroller(binding.letterFastscroller)
+        binding.letterFastscrollerThumb.textColor = properPrimaryColor.getContrastColor()
+        binding.letterFastscrollerThumb.thumbColor = properPrimaryColor.getColorStateList()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -196,7 +214,6 @@ class ContactFragment : Fragment(), RefreshItemsListener {
     }
 
     override fun refreshItems(callback: (() -> Unit)?) {
-        Toast.makeText(requireContext(), "Refresh Items ${refresh_count++}", Toast.LENGTH_SHORT ).show()
         val privateCursor = context?.getMyContactsCursor(false, true)
         SimpleContactsHelper(requireContext()).getAvailableContacts(false) { contacts ->
             allContacts = contacts
@@ -207,6 +224,8 @@ class ContactFragment : Fragment(), RefreshItemsListener {
                 allContacts.sort()
             }
 
+            Log.e("TAG", "refreshItems in contacts 1 : ${contacts.size}", )
+            Log.e("TAG", "refreshItems in contacts 2 : ${privateContacts.size}", )
             (activity as HomeActivity).cacheContacts(allContacts)
 
             activity?.runOnUiThread {
@@ -222,12 +241,10 @@ class ContactFragment : Fragment(), RefreshItemsListener {
             binding.fragmentPlaceholder.beVisible()
             binding.fragmentPlaceholder2.beVisible()
             binding.fragmentList.beGone()
-            Toast.makeText(requireContext(), "has no contacts", Toast.LENGTH_SHORT ).show()
         } else {
             binding.fragmentPlaceholder.beGone()
             binding.fragmentPlaceholder2.beGone()
             binding.fragmentList.beVisible()
-            Toast.makeText(requireContext(), "has contacts", Toast.LENGTH_SHORT ).show()
 
             val currAdapter = binding.fragmentList.adapter
             if (currAdapter == null) {

@@ -14,8 +14,8 @@ import com.rank.me.R
 import com.rank.me.message.models.VCardPropertyWrapper
 import com.rank.me.message.models.VCardWrapper
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.SimpleContactsHelper
 import kotlinx.android.synthetic.main.item_vcard_contact.view.*
 import kotlinx.android.synthetic.main.item_vcard_contact_property.view.*
 

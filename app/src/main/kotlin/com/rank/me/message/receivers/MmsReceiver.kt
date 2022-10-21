@@ -7,9 +7,9 @@ import android.os.Looper
 import com.bumptech.glide.Glide
 import com.rank.me.R
 import com.rank.me.extensions.*
-import com.simplemobiletools.commons.extensions.isNumberBlocked
-import com.simplemobiletools.commons.extensions.normalizePhoneNumber
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.isNumberBlocked
+import com.pearltools.commons.extensions.normalizePhoneNumber
+import com.pearltools.commons.helpers.ensureBackgroundThread
 
 // more info at https://github.com/klinker41/android-smsmms
 class MmsReceiver : com.klinker.android.send_message.MmsReceivedReceiver() {

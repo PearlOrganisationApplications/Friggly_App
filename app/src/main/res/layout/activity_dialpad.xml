@@ -29,7 +29,7 @@
         android:focusableInTouchMode="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,13 +46,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <com.pearltools.commons.views.MyRecyclerView
             android:id="@+id/dialpad_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/dialpad_input"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -82,7 +82,7 @@
             android:background="@drawable/divider"
             app:layout_constraintBottom_toTopOf="@+id/dialpad_input" />
 
-        <com.simplemobiletools.commons.views.MyEditText
+        <com.pearltools.commons.views.MyEditText
             android:id="@+id/dialpad_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

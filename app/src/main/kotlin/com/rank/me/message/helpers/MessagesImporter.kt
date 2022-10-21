@@ -9,8 +9,8 @@ import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_NOTHING_
 import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_OK
 import com.rank.me.message.helpers.MessagesImporter.ImportResult.IMPORT_PARTIAL
 import com.rank.me.message.models.ExportedMessage
-import com.simplemobiletools.commons.extensions.showErrorToast
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.showErrorToast
+import com.pearltools.commons.helpers.ensureBackgroundThread
 import java.io.File
 
 class MessagesImporter(private val context: Context) {

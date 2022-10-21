@@ -6,9 +6,9 @@ import com.rank.me.dialer.adapters.RecentCallsAdapter
 import com.rank.me.dialer.helpers.RecentsHelper
 import com.rank.me.dialer.models.RecentCall
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.extensions.getAlertDialogBuilder
-import com.simplemobiletools.commons.extensions.setupDialogStuff
+import com.pearltools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.extensions.getAlertDialogBuilder
+import com.pearltools.commons.extensions.setupDialogStuff
 import kotlinx.android.synthetic.main.dialog_show_grouped_calls.view.*
 
 class ShowGroupedCallsDialog(val activity: BaseSimpleActivity, callIds: ArrayList<Int>) {

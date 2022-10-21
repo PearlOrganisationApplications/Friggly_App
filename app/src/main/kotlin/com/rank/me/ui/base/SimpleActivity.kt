@@ -1,7 +1,7 @@
 package com.rank.me.ui.base
 
 import com.rank.me.R
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.activities.BaseSimpleActivity
 
 open class SimpleActivity : BaseSimpleActivity() {
     override fun getAppIconIDs() = arrayListOf(

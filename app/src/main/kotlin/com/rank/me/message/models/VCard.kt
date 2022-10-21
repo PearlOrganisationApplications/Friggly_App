@@ -5,7 +5,7 @@ import com.rank.me.R
 import com.rank.me.extensions.config
 import com.rank.me.extensions.format
 import com.rank.me.message.helpers.parseNameFromVCard
-import com.simplemobiletools.commons.extensions.normalizePhoneNumber
+import com.pearltools.commons.extensions.normalizePhoneNumber
 import ezvcard.VCard
 import ezvcard.property.*
 

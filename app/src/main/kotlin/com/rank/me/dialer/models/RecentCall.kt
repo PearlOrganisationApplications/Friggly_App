@@ -1,7 +1,7 @@
 package com.rank.me.dialer.models
 
 import android.telephony.PhoneNumberUtils
-import com.simplemobiletools.commons.extensions.normalizePhoneNumber
+import com.pearltools.commons.extensions.normalizePhoneNumber
 
 // model used at displaying recent calls, for contacts with multiple numbers specifify the number and type
 data class RecentCall(

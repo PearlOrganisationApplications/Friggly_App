@@ -6,6 +6,14 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="titleEnabled">false</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <!-- specify shared element transitions -->
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/change_image_transform</item>
+
     <!--        <item name="android:windowFullscreen">true</item>-->
     <!--        <item name="android:windowContentOverlay">@null</item>-->
     <!--        <item name="android:windowIsTranslucent">true</item>-->
@@ -4536,6 +4544,19 @@
     <style name="DialpadLetterStyle">
         <item name="android:textSize">@dimen/smaller_text_size</item>
         <item name="android:alpha">0.8</item>
+    </style>
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <!-- Text Size -->
+        <item name="android:textSize">@dimen/middle_text_size</item>
+        <!-- Query Text Color -->
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <!-- Hint Color -->
+        <item name="android:textColorHint">@color/hint_white</item>
+        <!-- Icon Color -->
+        <item name="android:tint">@color/colorPrimary</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
     </style>
 
     <!--    /////CALL STYLES//////-->

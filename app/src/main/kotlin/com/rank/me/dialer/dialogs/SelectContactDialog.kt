@@ -5,8 +5,8 @@ import com.rank.me.R
 import com.rank.me.dialer.adapters.ContactsAdapter
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.dialog_select_contact.view.*
 import java.util.*
 

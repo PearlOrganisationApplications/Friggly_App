@@ -306,7 +306,7 @@
     <string name="app_icon_color_warning">Папярэджаньне: некаторыя пускавыя ўстаноўкі няправільна апрацоўваюць наладу значкоў прыкладанняў. У выпадку, калі значок знікне, паспрабуйце запусціць прыкладанне праз Google Play або якой-небудзь віджэт, калі ён даступны. Пасля запуску проста вярніце аранжавы значок па змаўчанні #F57C00. У горшым выпадку вам, магчыма, прыйдзецца пераўсталяваць дадатак.</string>
     <string name="share_colors_success">Колеры паспяхова абноўлены. Была дададзена новая тэма пад назвай \"Агульны доступ\", выкарыстоўвайце яе для абнаўлення ўсіх колераў праграм у будучыні.</string>
     <string name="shared_theme_note">Звярніце ўвагу, што нават калі вы карыстаецеся версіяй праграмы Pro, вам усё роўна патрэбны Simple Thank You па тэхнічных прычынах. Ён клапоціцца аб сінхранізацыі колеру.</string>
-    <string name="purchase_thank_you">Купіце &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Simple Thank You&lt;/a&gt;, каб разблакіраваць гэту функцыю і падтрымаць распрацоўку. Дзякуй!</string>
+    <string name="purchase_thank_you">Купіце &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Simple Thank You&lt;/a&gt;, каб разблакіраваць гэту функцыю і падтрымаць распрацоўку. Дзякуй!</string>
     <!-- Themes -->
     <string name="light_theme">Светлая</string>
     <string name="dark_theme">Цёмная</string>
@@ -816,8 +816,8 @@
     <string name="additional_info">Дадатковая інфармацыя</string>
     <string name="app_version">Версія праграмы: %s</string>
     <string name="device_os">АС прылады: %s</string>
-    <string name="donate_please">Прывітанне,&lt;br&gt; &lt; br&gt; спадзяюся, вам спадабаецца прыкладанне. Ён не ўтрымлівае рэкламы, калі ласка, падтрымайце яго распрацоўку, купіўшы &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.дзякуй&gt; простае прыкладанне Дзякуй&lt;/a&gt;, яно таксама прадухіліць паўторнае адлюстраванне гэтага дыялогавага акна.&lt;br&gt; &lt; br&gt; Дзякуй!</string>
-    <string name="donate_new">Hello,&lt;br&gt;&lt;br&gt;hope you are enjoying the app. It contains no ads and we aren\'t collecting your data either, please support its development by purchasing &lt;a href=https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou&gt;Simple Thank You&lt;/a&gt;. You will also have all app features and color customization unlocked.&lt;br&gt;&lt;br&gt;Thank you!</string>
+    <string name="donate_please">Прывітанне,&lt;br&gt; &lt; br&gt; спадзяюся, вам спадабаецца прыкладанне. Ён не ўтрымлівае рэкламы, калі ласка, падтрымайце яго распрацоўку, купіўшы &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.дзякуй&gt; простае прыкладанне Дзякуй&lt;/a&gt;, яно таксама прадухіліць паўторнае адлюстраванне гэтага дыялогавага акна.&lt;br&gt; &lt; br&gt; Дзякуй!</string>
+    <string name="donate_new">Hello,&lt;br&gt;&lt;br&gt;hope you are enjoying the app. It contains no ads and we aren\'t collecting your data either, please support its development by purchasing &lt;a href=https://play.google.com/store/apps/details?id=com.pearltools.thankyou&gt;Simple Thank You&lt;/a&gt;. You will also have all app features and color customization unlocked.&lt;br&gt;&lt;br&gt;Thank you!</string>
     <string name="purchase">Купіць</string>
     <string name="get_simple_phone">Get Simple Phone</string>
     <string name="update_thank_you">Калі ласка, абнавіце Simple Thank You да апошняй версіі</string>
@@ -839,7 +839,7 @@
     <string name="rate_our_app">Калі ласка, ацаніце наша дадатак :)</string>
     <string name="thank_you">Дзякуй</string>
     <string name="widget_locked_pro">Віджэт заблакіраваны.\nАбнавіце яго да версіі Pro, каб разблакіраваць яго.</string>
-    <string name="features_locked">Гэта функцыя заблакіравана, купіце &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Просты дзякуй&lt;/a&gt; за разблакіроўку поўнай праграмы. &lt;br&gt;&lt;br&gt;Гэта аднаразовая аплата, і калі вы не будзеце задаволены, мы можам вярнуць вам грошы.</string>
+    <string name="features_locked">Гэта функцыя заблакіравана, купіце &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Просты дзякуй&lt;/a&gt; за разблакіроўку поўнай праграмы. &lt;br&gt;&lt;br&gt;Гэта аднаразовая аплата, і калі вы не будзеце задаволены, мы можам вярнуць вам грошы.</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">Гэй,&lt;br&gt;&lt;br&gt;проста паведамляю вам, што нядаўна былі выпушчаны некаторыя новыя праграмы:&lt;br&gt;&lt;br&gt; &lt;a href=%1$s&gt;%2$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%3$s&gt;%4$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%5$s&gt;%6$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; Вы можаце загрузіць іх, націснуўшы іх загалоўкі або значкі.&lt;br&gt;&lt;br&gt; дзякуй</string>
 
@@ -1032,7 +1032,7 @@
     <string name="m3u_parser_title">M3U Parser (апрацоўка файла спісу прайгравання m3u)</string>
     <string name="android_lame_title">AndroidLame (кадавальнік mp3)</string>
     <!-- Google Play listing -->
-    <string name="deprecated_app">САСТАРЕЛА: гэтая версія праграмы больш не падтрымліваецца, атрымайце версію Pro па адрасе https://play.google.com/store/apps/details\?id=com.simplemobiletools.xxx.pro</string>
+    <string name="deprecated_app">САСТАРЕЛА: гэтая версія праграмы больш не падтрымліваецца, атрымайце версію Pro па адрасе https://play.google.com/store/apps/details\?id=com.pearltools.xxx.pro</string>
     <string name="pro_app_refund">Не забывайце, што калі вы выдаліце любую платную праграму на працягу 2 гадзін, вам аўтаматычна вернуць грошы. Калі вы хочаце вярнуць грошы ў любы час пазней, проста звяжыцеся з намі па адрасе hello@simplemobiletools.com, і вы атрымаеце іх. Гэта дазваляе лёгка паспрабаваць :)</string>
     <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
     <string name="developer_description">Група простых праграм для Android з адкрытым зыходным кодам і віджэтамі, якія можна наладзіць, без рэкламы і непатрэбных дазволаў.</string>

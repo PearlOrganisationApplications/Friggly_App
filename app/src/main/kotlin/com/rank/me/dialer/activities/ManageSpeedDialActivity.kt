@@ -9,10 +9,10 @@ import com.rank.me.dialer.interfaces.RemoveSpeedDialListener
 import com.rank.me.dialer.models.SpeedDial
 import com.rank.me.extensions.config
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.updateTextColors
-import com.simplemobiletools.commons.helpers.NavigationIcon
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.updateTextColors
+import com.pearltools.commons.helpers.NavigationIcon
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_manage_speed_dial.*
 
 class ManageSpeedDialActivity : SimpleActivity(), RemoveSpeedDialListener {

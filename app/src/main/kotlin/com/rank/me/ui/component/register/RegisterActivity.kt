@@ -95,7 +95,7 @@ class RegisterActivity : BaseActivity() {
     }
 
     private fun navigateToMainScreen() {
-        val nextScreenIntent = Intent(this, HomeActivity::class.java)
+        val nextScreenIntent = Intent(this, HomeActivity::class.java).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         startActivity(nextScreenIntent)
         finish()
     }

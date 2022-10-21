@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.stream.JsonWriter
 import com.rank.me.extensions.config
 import com.rank.me.extensions.getConversationIds
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.helpers.ensureBackgroundThread
 import java.io.OutputStream
 
 class MessagesExporter(private val context: Context) {

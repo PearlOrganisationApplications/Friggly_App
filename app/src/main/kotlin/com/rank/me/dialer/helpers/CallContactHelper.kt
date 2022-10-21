@@ -6,11 +6,11 @@ import android.telecom.Call
 import com.rank.me.R
 import com.rank.me.dialer.models.CallContact
 import com.rank.me.extensions.isConference
-import com.simplemobiletools.commons.extensions.getMyContactsCursor
-import com.simplemobiletools.commons.extensions.getPhoneNumberTypeText
-import com.simplemobiletools.commons.helpers.MyContactsContentProvider
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.getMyContactsCursor
+import com.pearltools.commons.extensions.getPhoneNumberTypeText
+import com.pearltools.commons.helpers.MyContactsContentProvider
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.ensureBackgroundThread
 
 fun getCallContact(context: Context, call: Call?, callback: (CallContact) -> Unit) {
     if (call.isConference()) {

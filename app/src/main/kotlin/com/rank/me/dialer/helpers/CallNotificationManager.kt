@@ -14,10 +14,10 @@ import com.rank.me.R
 import com.rank.me.dialer.activities.CallActivity
 import com.rank.me.dialer.receivers.CallActionReceiver
 import com.rank.me.extensions.powerManager
-import com.simplemobiletools.commons.extensions.notificationManager
-import com.simplemobiletools.commons.extensions.setText
-import com.simplemobiletools.commons.extensions.setVisibleIf
-import com.simplemobiletools.commons.helpers.isOreoPlus
+import com.pearltools.commons.extensions.notificationManager
+import com.pearltools.commons.extensions.setText
+import com.pearltools.commons.extensions.setVisibleIf
+import com.pearltools.commons.helpers.isOreoPlus
 
 class CallNotificationManager(private val context: Context) {
     private val CALL_NOTIFICATION_ID = 1

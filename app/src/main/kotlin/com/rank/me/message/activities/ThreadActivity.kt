@@ -49,14 +49,14 @@ import com.rank.me.message.receivers.SmsStatusDeliveredReceiver
 import com.rank.me.message.receivers.SmsStatusSentReceiver
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.dialogs.RadioGroupDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.PhoneNumber
-import com.simplemobiletools.commons.models.RadioItem
-import com.simplemobiletools.commons.models.SimpleContact
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.dialogs.RadioGroupDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.PhoneNumber
+import com.pearltools.commons.models.RadioItem
+import com.pearltools.commons.models.SimpleContact
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.activity_thread.*
 import kotlinx.android.synthetic.main.item_attachment.view.*
 import kotlinx.android.synthetic.main.item_selected_contact.view.*
@@ -217,6 +217,7 @@ class ThreadActivity : SimpleActivity() {
         hideKeyboard()
         Intent(this, HomeActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             startActivity(this)
         }
         finish()
@@ -1074,8 +1075,8 @@ class ThreadActivity : SimpleActivity() {
     }
 
     fun startContactDetailsIntent(contact: SimpleContact) {
-        val simpleContacts = "com.simplemobiletools.contacts.pro"
-        val simpleContactsDebug = "com.simplemobiletools.contacts.pro.debug"
+        val simpleContacts = "com.pearltools.contacts.pro"
+        val simpleContactsDebug = "com.pearltools.contacts.pro.debug"
         if (contact.rawId > 1000000 && contact.contactId > 1000000 && contact.rawId == contact.contactId &&
             (isPackageInstalled(simpleContacts) || isPackageInstalled(simpleContactsDebug))
         ) {

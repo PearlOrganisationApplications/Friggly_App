@@ -8,11 +8,11 @@ import com.rank.me.R
 import com.rank.me.dialer.helpers.getCallContact
 import com.rank.me.extensions.hasCapability
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.toast
-import com.simplemobiletools.commons.helpers.LOWER_ALPHA
-import com.simplemobiletools.commons.helpers.SimpleContactsHelper
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.extensions.toast
+import com.pearltools.commons.helpers.LOWER_ALPHA
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_conference_call.view.*
 
 class ConferenceCallsAdapter(

@@ -1,8 +1,8 @@
 package com.rank.me.dialer.helpers
 
-import com.simplemobiletools.commons.helpers.TAB_CALL_HISTORY
-import com.simplemobiletools.commons.helpers.TAB_CONTACTS
-import com.simplemobiletools.commons.helpers.TAB_FAVORITES
+import com.pearltools.commons.helpers.TAB_CALL_HISTORY
+import com.pearltools.commons.helpers.TAB_CONTACTS
+import com.pearltools.commons.helpers.TAB_FAVORITES
 
 // shared prefs
 const val SPEED_DIAL = "speed_dial"

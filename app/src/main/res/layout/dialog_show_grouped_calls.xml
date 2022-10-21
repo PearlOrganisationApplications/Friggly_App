@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.simplemobiletools.commons.views.MyRecyclerView
+    <com.pearltools.commons.views.MyRecyclerView
         android:id="@+id/select_grouped_calls_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:scrollbars="none"
-        app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager" />
+        app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager" />
 
 </RelativeLayout>

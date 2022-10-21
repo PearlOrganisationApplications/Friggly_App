@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dialpad_2_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_1"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toStartOf="@+id/dialpad_3_holder"
         app:layout_constraintStart_toEndOf="@+id/dialpad_1_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_2"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
             android:layout_centerHorizontal="true"
             android:text="2" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_2_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toEndOf="@+id/dialpad_2_holder"
         app:layout_constraintTop_toTopOf="@+id/dialpad_2_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_3"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -84,7 +84,7 @@
             android:layout_centerHorizontal="true"
             android:text="3" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_3_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dialpad_5_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_4"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
             android:layout_centerHorizontal="true"
             android:text="4" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_4_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toStartOf="@+id/dialpad_6_holder"
         app:layout_constraintStart_toEndOf="@+id/dialpad_4_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_5"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
             android:layout_centerHorizontal="true"
             android:text="5" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_5_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -171,7 +171,7 @@
         app:layout_constraintStart_toEndOf="@+id/dialpad_5_holder"
         app:layout_constraintTop_toTopOf="@+id/dialpad_5_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_6"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -179,7 +179,7 @@
             android:layout_centerHorizontal="true"
             android:text="6" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_6_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -203,7 +203,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dialpad_8_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_7"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
             android:layout_centerHorizontal="true"
             android:text="7" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_7_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -234,7 +234,7 @@
         app:layout_constraintEnd_toStartOf="@+id/dialpad_9_holder"
         app:layout_constraintStart_toEndOf="@+id/dialpad_7_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_8"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -242,7 +242,7 @@
             android:layout_centerHorizontal="true"
             android:text="8" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_8_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -266,7 +266,7 @@
         app:layout_constraintStart_toEndOf="@+id/dialpad_8_holder"
         app:layout_constraintTop_toTopOf="@+id/dialpad_8_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_9"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -274,7 +274,7 @@
             android:layout_centerHorizontal="true"
             android:text="9" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_9_letters"
             style="@style/DialpadLetterStyle"
             android:layout_width="wrap_content"
@@ -298,7 +298,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dialpad_0_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_asterisk"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -319,7 +319,7 @@
         app:layout_constraintEnd_toStartOf="@+id/dialpad_hashtag_holder"
         app:layout_constraintStart_toEndOf="@+id/dialpad_asterisk_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_0"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"
@@ -327,7 +327,7 @@
             android:layout_centerHorizontal="true"
             android:text="0" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -355,7 +355,7 @@
         app:layout_constraintStart_toEndOf="@+id/dialpad_0_holder"
         app:layout_constraintTop_toTopOf="@+id/dialpad_0_holder">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/dialpad_hashtag"
             style="@style/DialpadNumberStyle"
             android:layout_width="wrap_content"

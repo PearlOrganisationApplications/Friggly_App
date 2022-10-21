@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/recents_placeholder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,41 +33,41 @@
             android:text="@string/no_previous_calls"
             android:textSize="@dimen/bigger_text_size"
             android:textStyle="italic"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
 
-            <com.simplemobiletools.commons.views.MyTextView
-                android:id="@+id/recents_placeholder_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/recents_placeholder"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/ripple_all_corners"
-                android:gravity="center"
-                android:padding="@dimen/activity_margin"
-                android:text="@string/request_access"
-                android:textSize="@dimen/bigger_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:visibility="gone" />
+        <com.pearltools.commons.views.MyTextView
+            android:id="@+id/recents_placeholder_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recents_placeholder"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/ripple_all_corners"
+            android:gravity="center"
+            android:padding="@dimen/activity_margin"
+            android:text="@string/request_access"
+            android:textSize="@dimen/bigger_text_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recents_placeholder"
+            android:visibility="gone" />
 
-        <com.simplemobiletools.commons.views.MyRecyclerView
+        <com.pearltools.commons.views.MyRecyclerView
             android:id="@+id/recents_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
             android:layoutAnimation="@anim/layout_animation"
             android:scrollbars="none"
-            app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+            app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-            <com.simplemobiletools.commons.views.MyFloatingActionButton
+            <com.pearltools.commons.views.MyFloatingActionButton
                 android:id="@+id/main_dialpad_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,14 +76,12 @@
                 android:contentDescription="@string/dialpad"
                 android:elevation="@dimen/medium_margin"
                 android:padding="@dimen/activity_margin"
-                android:layout_margin="@dimen/activity_margin"
+                android:layout_marginBottom="70dp"
                 android:src="@drawable/ic_dialpad_vector"
                 app:layout_constraintBottom_toBottomOf="@+id/recents_fragment"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:backgroundTint="@color/colorAccent"
                 app:rippleColor="@color/colorPrimary" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

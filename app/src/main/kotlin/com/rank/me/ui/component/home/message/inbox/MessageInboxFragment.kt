@@ -21,8 +21,8 @@ import com.rank.me.message.helpers.THREAD_TITLE
 import com.rank.me.message.models.Conversation
 import com.rank.me.ui.component.home.HomeActivity
 import com.rank.me.ui.component.home.HomeViewModel
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
 import org.greenrobot.eventbus.EventBus
 
 // TODO: Rename parameter arguments, choose names that match

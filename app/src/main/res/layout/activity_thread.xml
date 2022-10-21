@@ -63,7 +63,7 @@
                 android:background="@color/divider_grey"
                 android:importantForAccessibility="no" />
 
-            <com.simplemobiletools.commons.views.MyAutoCompleteTextView
+            <com.pearltools.commons.views.MyAutoCompleteTextView
                 android:id="@+id/add_contact_or_number"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/normal_icon_size"
@@ -111,14 +111,14 @@
             android:layout_below="@+id/thread_add_contacts"
             app:supportSwipeToRefresh="true">
 
-            <com.simplemobiletools.commons.views.MyRecyclerView
+            <com.pearltools.commons.views.MyRecyclerView
                 android:id="@+id/thread_messages_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:overScrollMode="ifContentScrolls"
                 android:scrollbars="none"
-                app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+                app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager"
                 app:stackFromEnd="true" />
 
         </com.qtalk.recyclerviewfastscroller.RecyclerViewFastScroller>
@@ -167,7 +167,7 @@
                 android:showDividers="middle" />
         </HorizontalScrollView>
 
-        <com.simplemobiletools.commons.views.MyEditText
+        <com.pearltools.commons.views.MyEditText
             android:id="@+id/thread_type_message"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
             android:visibility="gone"
             tools:text="1" />
 
-        <com.simplemobiletools.commons.views.MyTextView
+        <com.pearltools.commons.views.MyTextView
             android:id="@+id/thread_character_counter"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -225,7 +225,7 @@
             android:visibility="gone"
             tools:ignore="HardcodedText" />
 
-        <com.simplemobiletools.commons.views.MyButton
+        <com.pearltools.commons.views.MyButton
             android:id="@+id/thread_send_message"
             android:layout_width="@dimen/normal_icon_size"
             android:layout_height="@dimen/normal_icon_size"

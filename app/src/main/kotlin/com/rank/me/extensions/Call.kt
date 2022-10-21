@@ -4,8 +4,8 @@ import android.telecom.Call
 import android.telecom.Call.STATE_CONNECTING
 import android.telecom.Call.STATE_DIALING
 import android.telecom.Call.STATE_SELECT_PHONE_ACCOUNT
-import com.simplemobiletools.commons.helpers.isQPlus
-import com.simplemobiletools.commons.helpers.isSPlus
+import com.pearltools.commons.helpers.isQPlus
+import com.pearltools.commons.helpers.isSPlus
 
 private val OUTGOING_CALL_STATES = arrayOf(STATE_CONNECTING, STATE_DIALING, STATE_SELECT_PHONE_ACCOUNT)
 

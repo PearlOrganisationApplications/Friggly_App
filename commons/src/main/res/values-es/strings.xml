@@ -300,7 +300,7 @@
     <string name="shared_theme_note">Tenga en cuenta que aunque esté utilizando la versión de la aplicación Pro, aún necesita Simple Gracias por razones técnicas. Se encarga de la sincronización del color.</string>
     <string name="purchase_thank_you">
         <![CDATA[
-            Por favor compra <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Gracias</a> para desbloquear esta función y ayudar al desarrollo. ¡Gracias!
+            Por favor compra <a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Gracias</a> para desbloquear esta función y ayudar al desarrollo. ¡Gracias!
         ]]>
     </string>
     <!-- Themes -->
@@ -791,11 +791,11 @@
     <string name="donate_please">
         <![CDATA[
             Hola,<br><br>
-            Espero que estés disfrutando de la aplicación. No contiene anuncios, por lo que debe respaldar su desarrollo comprando la aplicación <a href="https://play.google.com/store/apps/details?id=com.simplemobiletools.thankyou">Simple Gracias</a>, también evitará que este diálogo vuelva a aparecer.<br><br>
+            Espero que estés disfrutando de la aplicación. No contiene anuncios, por lo que debe respaldar su desarrollo comprando la aplicación <a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Gracias</a>, también evitará que este diálogo vuelva a aparecer.<br><br>
             ¡Gracias!
         ]]>
     </string>
-    <string name="donate_new">Hola,&lt;br&gt;&lt;br&gt;Espero que estés disfrutando de la aplicación. No contiene anuncios y tampoco recopilamos sus datos. Apoye su desarrollo comprando &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Simplemente Gracias&lt;/a&gt;. También desbloqueará todas las funciones de la aplicación y la personalización del color.&lt;br&gt;&lt;br&gt;¡Gracias!</string>
+    <string name="donate_new">Hola,&lt;br&gt;&lt;br&gt;Espero que estés disfrutando de la aplicación. No contiene anuncios y tampoco recopilamos sus datos. Apoye su desarrollo comprando &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Simplemente Gracias&lt;/a&gt;. También desbloqueará todas las funciones de la aplicación y la personalización del color.&lt;br&gt;&lt;br&gt;¡Gracias!</string>
     <string name="purchase">Comprar</string>
     <string name="get_simple_phone">Conseguir un teléfono sencillo</string>
     <string name="update_thank_you">Por favor, actualice Simple Gracias a la última versión</string>
@@ -809,7 +809,7 @@
     <string name="rate_our_app">Califica nuestra aplicación por favor :)</string>
     <string name="thank_you">Gracias</string>
     <string name="widget_locked_pro">El widget está bloqueado.\nActualice a la versión Pro para desbloquearlo.</string>
-    <string name="features_locked">Esta función está bloqueada, compre &lt;a href=https://play.google.com/store/apps/details\?id=com.simplemobiletools.thankyou&gt;Simple Gracias&lt;/a&gt; por desbloquear la aplicación completa.&lt;br &lt;br&gt;Es un pago único y si no está satisfecho, podemos reembolsarselo.</string>
+    <string name="features_locked">Esta función está bloqueada, compre &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Simple Gracias&lt;/a&gt; por desbloquear la aplicación completa.&lt;br &lt;br&gt;Es un pago único y si no está satisfecho, podemos reembolsarselo.</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
         <![CDATA[
@@ -1030,7 +1030,7 @@
     <string name="m3u_parser_title">M3U Parser (manejo de archivos de listas de reproducción m3u)</string>
     <string name="android_lame_title">AndroidLame (codificador de mp3)</string>
     <!-- Google Play listing -->
-    <string name="deprecated_app">OBSOLETO: Esta versión de la aplicación ya no es mantenida, obtén la versión Pro en https://play.google.com/store/apps/details?id=com.simplemobiletools.xxx.pro</string>
+    <string name="deprecated_app">OBSOLETO: Esta versión de la aplicación ya no es mantenida, obtén la versión Pro en https://play.google.com/store/apps/details?id=com.pearltools.xxx.pro</string>
     <string name="pro_app_refund">No olvides que si desinstalas cualquier aplicación de paga dentro de un periodo de 2 horas, automáticamente recibirás un rembolso. Si quieres un rembolso en cualquier otro momento, solo contáctanos en hello@simplemobiletools.com y lo recibirás. Eso hace que sea fácil probarlo :)</string>
     <!-- Description of our developer profile on Google Play, it can have max 140 characters -->
     <string name="developer_description">Un grupo de aplicaciones de Android simples y de código abierto con widgets personalizables, sin anuncios y permisos innecesarios.</string>

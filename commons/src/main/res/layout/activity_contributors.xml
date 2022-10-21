@@ -61,7 +61,7 @@
                     android:padding="@dimen/medium_margin"
                     android:src="@drawable/ic_code_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_development"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -104,7 +104,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_arabic_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_arabic_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -117,7 +117,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_arabic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -140,7 +140,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_azerbaijani_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_azerbaijani_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -153,7 +153,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_azerbaijani"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -176,7 +176,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_bengali_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_bengali_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -189,7 +189,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_bengali"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -212,7 +212,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_catalan_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_catalan_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -225,7 +225,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_catalan"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -248,7 +248,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_czech_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_czech_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -261,7 +261,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_czech"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -284,7 +284,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_welsh_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_welsh_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -297,7 +297,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_welsh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -320,7 +320,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_danish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_danish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -333,7 +333,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_danish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -356,7 +356,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_german_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_german_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -369,7 +369,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_german"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -392,7 +392,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_greek_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_greek_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -405,7 +405,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_greek"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -428,7 +428,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_spanish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_spanish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -441,7 +441,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_spanish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -464,7 +464,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_basque_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_basque_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -477,7 +477,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_basque"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -500,7 +500,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_persian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_persian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -513,7 +513,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_persian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -536,7 +536,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_finnish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_finnish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -549,7 +549,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_finnish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -572,7 +572,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_french_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_french_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -585,7 +585,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_french"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -608,7 +608,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_galician_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_galician_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -621,7 +621,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_galician"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -644,7 +644,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_hindi_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hindi_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -657,7 +657,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hindi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -680,7 +680,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_croatian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_croatian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -693,7 +693,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_croatian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -716,7 +716,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_hungarian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hungarian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -729,7 +729,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hungarian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -752,7 +752,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_indonesian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_indonesian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -765,7 +765,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_indonesian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -788,7 +788,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_italian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_italian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -801,7 +801,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_italian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -824,7 +824,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_hebrew_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hebrew_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -837,7 +837,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_hebrew"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -860,7 +860,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_japanese_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_japanese_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -873,7 +873,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_japanese"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -896,7 +896,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_korean_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_korean_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -909,7 +909,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_korean"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -932,7 +932,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_lithuanian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_lithuanian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -945,7 +945,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_lithuanian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -967,7 +967,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_nepali_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_nepali_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -980,7 +980,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_nepali"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1003,7 +1003,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_norwegian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_norwegian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1016,7 +1016,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_norwegian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1039,7 +1039,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_dutch_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_dutch_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1052,7 +1052,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_dutch"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1075,7 +1075,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_polish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_polish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1088,7 +1088,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_polish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1111,7 +1111,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_portuguese_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_portuguese_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1124,7 +1124,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_portuguese"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1147,7 +1147,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_romanian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_romanian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1160,7 +1160,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_romanian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1183,7 +1183,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_russian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_russian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1196,7 +1196,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_russian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1219,7 +1219,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_slovak_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_slovak_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1232,7 +1232,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_slovak"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1255,7 +1255,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_slovenian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_slovenian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1268,7 +1268,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_slovenian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1291,7 +1291,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_swedish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_swedish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1304,7 +1304,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_swedish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1327,7 +1327,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_tamil_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_tamil_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1340,7 +1340,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_tamil"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1363,7 +1363,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_turkish_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_turkish_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1376,7 +1376,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_turkish"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1399,7 +1399,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_ukrainian_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_ukrainian_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1412,7 +1412,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_ukrainian"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1435,7 +1435,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_chinese_hk_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_hk_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1448,7 +1448,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_hk"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1471,7 +1471,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_chinese_cn_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_cn_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1484,7 +1484,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_cn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1507,7 +1507,7 @@
                     android:padding="6dp"
                     android:src="@drawable/ic_flag_chinese_tw_vector" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_tw_label"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -1520,7 +1520,7 @@
                     android:textSize="@dimen/bigger_text_size"
                     android:textStyle="bold" />
 
-                <com.simplemobiletools.commons.views.MyTextView
+                <com.pearltools.commons.views.MyTextView
                     android:id="@+id/contributors_chinese_tw"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

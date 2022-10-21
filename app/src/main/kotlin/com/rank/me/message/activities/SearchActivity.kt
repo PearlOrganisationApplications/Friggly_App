@@ -3,72 +3,62 @@ package com.rank.me.message.activities
 import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.TypedValue
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuItemCompat
+import androidx.databinding.DataBindingUtil
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.MyContactsContentProvider
+import com.pearltools.commons.helpers.SimpleContactsHelper
+import com.pearltools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.models.SimpleContact
 import com.rank.me.R
+import com.rank.me.databinding.ActivitySearchBinding
+import com.rank.me.dialer.adapters.ContactsAdapter
+import com.rank.me.dialer.interfaces.RefreshItemsListener
 import com.rank.me.extensions.conversationsDB
 import com.rank.me.extensions.messagesDB
-import com.rank.me.message.adapters.SearchResultsAdapter
-import com.rank.me.message.helpers.SEARCHED_MESSAGE_ID
-import com.rank.me.message.helpers.THREAD_ID
-import com.rank.me.message.helpers.THREAD_TITLE
+import com.rank.me.extensions.startContactDetailsIntent
 import com.rank.me.message.models.Conversation
 import com.rank.me.message.models.Message
 import com.rank.me.message.models.SearchResult
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
-import kotlinx.android.synthetic.main.activity_search.*
 
-class SearchActivity : SimpleActivity() {
-    private var mIsSearchOpen = false
+class SearchActivity : SimpleActivity(), RefreshItemsListener {
+    private var mIsSearchOpen = true
     private var mLastSearchedText = ""
-    private var mSearchMenuItem: MenuItem? = null
+    private lateinit var binding: ActivitySearchBinding
+
+    private lateinit var  currAdapter : ContactsAdapter
+
+    private var allContacts = ArrayList<SimpleContact>()
+    private var searchedContacts: ArrayList<SimpleContact> = ArrayList()
 
     @SuppressLint("InlinedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_search)
-        updateTextColors(search_holder)
-        search_placeholder.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
-        search_placeholder_2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
-        setupSearch(search_toolbar.menu)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_search)
+        updateTextColors(binding.searchHolder)
+        binding.searchPlaceholder.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
+        binding.searchPlaceholder2.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
+        setupSearch(binding.searchView)
+        refreshItems()
+        binding.imageView.setOnClickListener {
+            supportFinishAfterTransition()
+        }
     }
 
-    override fun onResume() {
-        super.onResume()
-        setupToolbar(search_toolbar, searchMenuItem = mSearchMenuItem)
+    @Deprecated("Deprecated in Java", ReplaceWith("supportFinishAfterTransition()"))
+    override fun onBackPressed() {
+        supportFinishAfterTransition()
     }
 
-    private fun setupSearch(menu: Menu) {
+    private fun setupSearch(searchView: SearchView) {
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        mSearchMenuItem = menu.findItem(R.id.search)
-
-        MenuItemCompat.setOnActionExpandListener(mSearchMenuItem, object : MenuItemCompat.OnActionExpandListener {
-            override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                mIsSearchOpen = true
-                return true
-            }
-
-            // this triggers on device rotation too, avoid doing anything
-            override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                if (mIsSearchOpen) {
-                    mIsSearchOpen = false
-                    mLastSearchedText = ""
-                    finish()
-                }
-                return true
-            }
-        })
-
-        mSearchMenuItem?.expandActionView()
-        (mSearchMenuItem?.actionView as? SearchView)?.apply {
+        searchView.requestFocus()
+        searchView.apply {
             setSearchableInfo(searchManager.getSearchableInfo(componentName))
             isSubmitButtonEnabled = false
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -77,7 +67,14 @@ class SearchActivity : SimpleActivity() {
                 override fun onQueryTextChange(newText: String): Boolean {
                     if (mIsSearchOpen) {
                         mLastSearchedText = newText
-                        textChanged(newText)
+                        if (newText.isNotEmpty()) {
+                            textChanged(newText)
+                            onSearchQueryChanged(newText)
+                        } else {
+                            binding.searchPlaceholder.beVisible()
+                            binding.messageList.beGone()
+                            binding.contactList.beGone()
+                        }
                     }
                     return true
                 }
@@ -85,24 +82,30 @@ class SearchActivity : SimpleActivity() {
         }
     }
 
+    fun onSearchQueryChanged(text: String) {
+            searchedContacts.clear()
+            searchedContacts = allContacts.filter {
+                it.doesContainPhoneNumber(text) || it.name.contains(text, true) || it.name.normalizeString()
+                    .contains(text, true) || it.name.contains(text.normalizeString(), true)
+            }.sortedByDescending {
+                it.name.startsWith(text, true)
+            }.toMutableList() as java.util.ArrayList<SimpleContact>
+            gotContacts(searchedContacts)
+    }
+
     private fun textChanged(text: String) {
-        search_placeholder_2.beGoneIf(text.length >= 2)
-        if (text.length >= 2) {
-            ensureBackgroundThread {
-                val searchQuery = "%$text%"
-                val messages = messagesDB.getMessagesWithText(searchQuery)
-                val conversations = conversationsDB.getConversationsWithText(searchQuery)
-                if (text == mLastSearchedText) {
-                    showSearchResults(messages, conversations, text)
-                }
+        binding.searchPlaceholder2.beGoneIf(true)
+        ensureBackgroundThread {
+            val searchQuery = "%$text%"
+            val messages = messagesDB.getMessagesWithText(searchQuery)
+            val conversations = conversationsDB.getConversationsWithText(searchQuery)
+            if (text == mLastSearchedText) {
+                showSearchResults(messages, conversations)
             }
-        } else {
-            search_placeholder.beVisible()
-            search_results_list.beGone()
         }
     }
 
-    private fun showSearchResults(messages: List<Message>, conversations: List<Conversation>, searchedText: String) {
+    private fun showSearchResults(messages: List<Message>, conversations: List<Conversation>) {
         val searchResults = ArrayList<SearchResult>()
         conversations.forEach { conversation ->
             val date = conversation.date.formatDateOrTime(this, true, true)
@@ -121,26 +124,43 @@ class SearchActivity : SimpleActivity() {
             val searchResult = SearchResult(message.id, recipient, message.body, date, message.threadId, message.senderPhotoUri)
             searchResults.add(searchResult)
         }
-
         runOnUiThread {
-            search_results_list.beVisibleIf(searchResults.isNotEmpty())
-            search_placeholder.beVisibleIf(searchResults.isEmpty())
+            //TODO HIDE binding.searchPlaceholder.beGoneIf(true)
+            // BUT HIDE based on both results ie message and contact results together...
+            binding.messageList.beVisibleIf(searchResults.isNotEmpty())
+        }
+    }
 
-            val currAdapter = search_results_list.adapter
-            if (currAdapter == null) {
-                SearchResultsAdapter(this, searchResults, search_results_list, searchedText) {
-                    hideKeyboard()
-                    Intent(this, ThreadActivity::class.java).apply {
-                        putExtra(THREAD_ID, (it as SearchResult).threadId)
-                        putExtra(THREAD_TITLE, it.title)
-                        putExtra(SEARCHED_MESSAGE_ID, it.messageId)
-                        startActivity(this)
-                    }
-                }.apply {
-                    search_results_list.adapter = this
-                }
-            } else {
-                (currAdapter as SearchResultsAdapter).updateItems(searchResults, searchedText)
+    override fun refreshItems(callback: (() -> Unit)?) {
+        val privateCursor = this@SearchActivity.getMyContactsCursor(false, true)
+        SimpleContactsHelper(this@SearchActivity).getAvailableContacts(false) { contacts ->
+            allContacts = contacts
+            val privateContacts = MyContactsContentProvider.getSimpleContacts(this@SearchActivity, privateCursor)
+            if (privateContacts.isNotEmpty()) {
+                allContacts.addAll(privateContacts)
+                allContacts.sort()
+            }
+            currAdapter = ContactsAdapter(this@SearchActivity, searchedContacts, binding.messageList, this) {
+                val contact = it as SimpleContact
+                startContactDetailsIntent(contact)
+            }.apply {
+                binding.contactList.adapter = this
+            }
+            if (areSystemAnimationsEnabled) {
+                binding.contactList.scheduleLayoutAnimation()
+            }
+        }
+    }
+
+    private fun gotContacts(contacts: ArrayList<SimpleContact>) {
+        if (contacts.isEmpty()) {
+            Toast.makeText(this@SearchActivity, "empty list", Toast.LENGTH_SHORT).show()
+            //TODO show user no contact found somehow
+        } else {
+            Toast.makeText(this@SearchActivity, "updated items", Toast.LENGTH_SHORT).show()
+                currAdapter.updateItems(contacts)
+            runOnUiThread {
+                binding.contactList.beVisibleIf(contacts.isNotEmpty())
             }
         }
     }

@@ -25,13 +25,13 @@ import com.rank.me.extensions.config
 import com.rank.me.extensions.launchCreateNewContactIntent
 import com.rank.me.ui.base.SimpleActivity
 import com.rank.me.ui.component.home.HomeActivity
-import com.simplemobiletools.commons.activities.BaseSimpleActivity
-import com.simplemobiletools.commons.dialogs.CallConfirmationDialog
-import com.simplemobiletools.commons.dialogs.ConfirmationDialog
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.FAQItem
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.activities.BaseSimpleActivity
+import com.pearltools.commons.dialogs.CallConfirmationDialog
+import com.pearltools.commons.dialogs.ConfirmationDialog
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.FAQItem
+import com.pearltools.commons.models.SimpleContact
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

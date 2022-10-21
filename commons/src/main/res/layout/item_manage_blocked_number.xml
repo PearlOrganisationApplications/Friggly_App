@@ -8,7 +8,7 @@
     android:focusable="true"
     android:foreground="@drawable/selector">
 
-    <com.simplemobiletools.commons.views.MyTextView
+    <com.pearltools.commons.views.MyTextView
         android:id="@+id/manage_blocked_number_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

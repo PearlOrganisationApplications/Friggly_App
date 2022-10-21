@@ -25,9 +25,9 @@ import com.rank.me.dialer.models.SpeedDial
 import com.rank.me.extensions.*
 import com.rank.me.ui.base.SimpleActivity
 import com.reddit.indicatorfastscroll.FastScrollItemIndicator
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.SimpleContact
 import kotlinx.android.synthetic.main.activity_dialpad.*
 import kotlinx.android.synthetic.main.activity_dialpad.dialpad_holder
 import kotlinx.android.synthetic.main.dialpad.*

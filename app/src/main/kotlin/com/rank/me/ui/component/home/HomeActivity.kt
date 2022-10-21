@@ -1,19 +1,24 @@
 package com.rank.me.ui.component.home
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.ContextThemeWrapper
+import android.util.Log
 import android.view.animation.AnimationUtils
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.pearltools.commons.models.SimpleContact
+import com.rank.me.ProfileActivity
 import com.rank.me.R
+import com.rank.me.data.local.LocalData
 import com.rank.me.databinding.ActivityHomeBinding
+import com.rank.me.message.activities.SearchActivity
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.models.SimpleContact
+import android.util.Pair as UtilPair
 
 class HomeActivity : SimpleActivity() {
     private lateinit var navController:NavController
@@ -28,20 +33,37 @@ class HomeActivity : SimpleActivity() {
         navController=navHostFragment.navController
         val bottomNavigationView=findViewById<BottomNavigationView>(R.id.navigation_bar)
         setupWithNavController(bottomNavigationView,navController)
-        setSupportActionBar(binding.toolbar.getToolBar)
-        binding.toolbar.searchView.setFactory { TextView(ContextThemeWrapper(this@HomeActivity, R.style.ToolbarTextStyle), null, 0) }
+        setSupportActionBar(binding.getToolBar)
         changeSearchText()
-        binding.toolbar.searchView.setOnClickListener { showSearch() }
+        binding.searchView.setOnClickListener { showSearch() }
+        binding.imageView.setOnClickListener{ showProfile() }
+    }
+
+    private fun showProfile() {
+        Log.e("TAG", "showProfile: ${LocalData(this@HomeActivity).getUser().data.toString()}", )
+        val intent = Intent(this@HomeActivity, ProfileActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showSearch() {
-//        TODO("Not yet implemented")
+        val intent = Intent(this@HomeActivity, SearchActivity::class.java).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        val options = ActivityOptions.makeSceneTransitionAnimation(this,
+            UtilPair.create(binding.searchView, "agreedName1"),
+            UtilPair.create(binding.imageView, "agreedName2"))
+        startActivity(intent, options.toBundle())
+        binding.searchView.text = resources.getString(R.string.app_name)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        changeSearchText()
     }
 
     private fun changeSearchText() {
-        binding.toolbar.searchView.setText(resources.getString(R.string.app_name))
-        Handler().postDelayed({ setTextSecond() }, 4000)
+        binding.searchView.text = resources.getString(R.string.app_name)
+        Handler().postDelayed({ setTextSecond() }, 3000)
     }
+
     private fun setTextSecond() {
         val inAnim = AnimationUtils.loadAnimation(this,
             android.R.anim.slide_in_left)
@@ -49,10 +71,7 @@ class HomeActivity : SimpleActivity() {
             android.R.anim.slide_out_right)
         inAnim.duration = 700
         outAnim.duration = 700
-        binding.toolbar.searchView.inAnimation = inAnim
-        binding.toolbar.searchView.outAnimation = outAnim
-
-        binding.toolbar.searchView.setText("Search for calls, sms, people and more...")
+        binding.searchView.text = "Search for calls, sms, people and more..."
     }
 
     fun cacheContacts(contacts: List<SimpleContact>) {

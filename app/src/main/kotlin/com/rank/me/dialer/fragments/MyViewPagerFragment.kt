@@ -6,9 +6,9 @@ import android.widget.RelativeLayout
 import com.rank.me.extensions.config
 import com.rank.me.message.helpers.Config
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.extensions.getProperPrimaryColor
-import com.simplemobiletools.commons.extensions.getProperTextColor
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.extensions.getProperPrimaryColor
+import com.pearltools.commons.extensions.getProperTextColor
 import kotlinx.android.synthetic.main.fragment_letters_layout.view.*
 
 abstract class MyViewPagerFragment(context: Context, attributeSet: AttributeSet) : RelativeLayout(context, attributeSet) {

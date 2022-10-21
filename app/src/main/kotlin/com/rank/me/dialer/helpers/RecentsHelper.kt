@@ -7,9 +7,9 @@ import com.rank.me.R
 import com.rank.me.extensions.getAvailableSIMCardLabels
 import com.rank.me.dialer.models.RecentCall
 import com.rank.me.ui.component.home.HomeActivity
-import com.simplemobiletools.commons.extensions.*
-import com.simplemobiletools.commons.helpers.*
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.extensions.*
+import com.pearltools.commons.helpers.*
+import com.pearltools.commons.models.SimpleContact
 
 class RecentsHelper(private val context: Context) {
     private val COMPARABLE_PHONE_NUMBER_LENGTH = 9

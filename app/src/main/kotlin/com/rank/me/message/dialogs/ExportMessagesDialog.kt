@@ -6,8 +6,8 @@ import com.rank.me.R
 import com.rank.me.extensions.config
 import com.rank.me.message.helpers.EXPORT_FILE_EXT
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.dialogs.FilePickerDialog
-import com.simplemobiletools.commons.extensions.*
+import com.pearltools.commons.dialogs.FilePickerDialog
+import com.pearltools.commons.extensions.*
 import kotlinx.android.synthetic.main.dialog_export_messages.view.*
 import java.io.File
 

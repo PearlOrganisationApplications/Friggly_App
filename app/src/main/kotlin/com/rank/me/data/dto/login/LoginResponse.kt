@@ -19,7 +19,7 @@ data class LoginResponse(
     val countryCode: String,
     val email: String,
     val otp: String? = null,
-    val isNewUser: Boolean? = false
+    var isNewUser: Boolean? = false
 
 
 ) : Parcelable {

@@ -40,7 +40,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun navigateToMainScreen() {
-        var nextScreenIntent = Intent(this, HomeActivity::class.java)
+        var nextScreenIntent = Intent(this, HomeActivity::class.java).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         if (!LocalData(this@SplashActivity).isLogin())
             nextScreenIntent = Intent(this, LoginActivity::class.java)
         Handler().postDelayed({

@@ -20,6 +20,9 @@ android {
         versionCode 1
         versionName "1.0.0"
         setProperty("archivesBaseName", "sms-messenger")
+        vectorDrawables {
+            useSupportLibrary true
+        }
     }
 
     signingConfigs {
@@ -35,6 +38,7 @@ android {
     //enable DataBinding
     buildFeatures {
         dataBinding true
+        compose true
     }
 
     buildTypes {
@@ -57,6 +61,21 @@ android {
     lintOptions {
         checkReleaseBuilds false
         abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion "1.3.2"
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
     }
 }
 
@@ -82,6 +101,17 @@ dependencies {
     implementation "com.google.dagger:hilt-android:2.42"
     implementation 'androidx.test.espresso:espresso-idling-resource:3.4.0'
     implementation project(path: ':commons')
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.activity:activity-compose:1.6.0'
+
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation 'androidx.compose.material3:material3:1.0.0-rc01'
+    implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    
+    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
+    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
     kapt "com.google.dagger:hilt-compiler:2.42"
     androidTestImplementation "com.google.dagger:hilt-android-testing:2.42"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.42"

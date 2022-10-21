@@ -7,8 +7,8 @@ import com.rank.me.R
 import com.rank.me.dialer.interfaces.RemoveSpeedDialListener
 import com.rank.me.dialer.models.SpeedDial
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.adapters.MyRecyclerViewAdapter
-import com.simplemobiletools.commons.views.MyRecyclerView
+import com.pearltools.commons.adapters.MyRecyclerViewAdapter
+import com.pearltools.commons.views.MyRecyclerView
 import kotlinx.android.synthetic.main.item_speed_dial.view.*
 
 class SpeedDialAdapter(

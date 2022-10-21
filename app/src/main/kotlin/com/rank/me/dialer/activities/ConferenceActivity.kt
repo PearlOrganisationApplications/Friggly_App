@@ -5,7 +5,7 @@ import com.rank.me.R
 import com.rank.me.dialer.adapters.ConferenceCallsAdapter
 import com.rank.me.dialer.helpers.CallManager
 import com.rank.me.ui.base.SimpleActivity
-import com.simplemobiletools.commons.helpers.NavigationIcon
+import com.pearltools.commons.helpers.NavigationIcon
 import kotlinx.android.synthetic.main.activity_conference.*
 
 class ConferenceActivity : SimpleActivity() {

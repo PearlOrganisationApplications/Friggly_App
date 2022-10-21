@@ -10,9 +10,9 @@ import com.rank.me.extensions.extension
 import com.rank.me.extensions.getExtensionFromMimeType
 import com.rank.me.extensions.getFileSizeFromUri
 import com.rank.me.extensions.isImageMimeType
-import com.simplemobiletools.commons.extensions.getCompressionFormat
-import com.simplemobiletools.commons.extensions.getMyFileUri
-import com.simplemobiletools.commons.helpers.ensureBackgroundThread
+import com.pearltools.commons.extensions.getCompressionFormat
+import com.pearltools.commons.extensions.getMyFileUri
+import com.pearltools.commons.helpers.ensureBackgroundThread
 import java.io.File
 import java.io.FileOutputStream
 

@@ -8,7 +8,7 @@ import android.provider.MediaStore
 import android.util.Size
 import com.rank.me.R
 import com.rank.me.dialer.models.CallContact
-import com.simplemobiletools.commons.helpers.isQPlus
+import com.pearltools.commons.helpers.isQPlus
 
 class CallContactAvatarHelper(private val context: Context) {
     @SuppressLint("NewApi")

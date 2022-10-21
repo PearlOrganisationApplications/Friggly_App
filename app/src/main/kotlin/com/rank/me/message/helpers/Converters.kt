@@ -5,7 +5,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.rank.me.message.models.Attachment
 import com.rank.me.message.models.MessageAttachment
-import com.simplemobiletools.commons.models.SimpleContact
+import com.pearltools.commons.models.SimpleContact
 
 class Converters {
     private val gson = Gson()

@@ -43,7 +43,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <com.simplemobiletools.commons.views.MyAppCompatCheckbox
+                <com.pearltools.commons.views.MyAppCompatCheckbox
                     android:id="@+id/block_unknown"
                     style="@style/SettingsCheckboxStyle"
                     android:layout_width="match_parent"
@@ -61,20 +61,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/block_unknown_holder" />
 
-            <com.simplemobiletools.commons.views.MyRecyclerView
+            <com.pearltools.commons.views.MyRecyclerView
                 android:id="@+id/manage_blocked_numbers_list"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:clipToPadding="false"
                 android:scrollbars="vertical"
-                app:layoutManager="com.simplemobiletools.commons.views.MyLinearLayoutManager"
+                app:layoutManager="com.pearltools.commons.views.MyLinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/block_numbers_divider"
                 tools:listitem="@layout/item_manage_blocked_number" />
 
-            <com.simplemobiletools.commons.views.MyTextView
+            <com.pearltools.commons.views.MyTextView
                 android:id="@+id/manage_blocked_numbers_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                 android:visibility="gone"
                 app:layout_constraintTop_toBottomOf="@+id/block_unknown_holder" />
 
-            <com.simplemobiletools.commons.views.MyTextView
+            <com.pearltools.commons.views.MyTextView
                 android:id="@+id/manage_blocked_numbers_placeholder_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
