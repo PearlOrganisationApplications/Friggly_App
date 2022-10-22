@@ -41,7 +41,7 @@ class PermissionsDialog : BlurDialogFragment(), PermissionManager.PermissionObse
                 PermissionManager.requestPermissions(
                     this,
                     4,
-                    Manifest.permission.READ_CONTACTS
+                    Manifest.permission.READ_CONTACTS, Manifest.permission.READ_SMS
                 )
             }
         }

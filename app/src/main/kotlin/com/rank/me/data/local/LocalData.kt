@@ -75,7 +75,7 @@ class LocalData @Inject constructor(val context: Context) {
 
     fun removeFromFavourites(id: String): Resource<Boolean> {
         val sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, 0)
-        var set = sharedPref.getStringSet(FAVOURITES_KEY, mutableSetOf<String>())?.toMutableSet()
+        val set = sharedPref.getStringSet(FAVOURITES_KEY, mutableSetOf<String>())?.toMutableSet()
             ?: mutableSetOf()
         if (set.contains(id)) {
             set.remove(id)
@@ -137,9 +137,13 @@ class LocalData @Inject constructor(val context: Context) {
         editor.putString(USER_INFO, Gson().toJson(user)).apply()
     }
 
-    fun getUser() : Resource<LoginResponse> {
+    fun getUser() : Resource<LoginResponse?> {
         val sharedPref = context.getSharedPreferences(SHARED_PREFERENCES_FILE_NAME, 0)
-        return Resource.Success(Gson().fromJson(sharedPref.getString(USER_INFO, ""), LoginResponse :: class.java))
+        return if(sharedPref.getString(USER_INFO, "") != null) {
+            Resource.Success(Gson().fromJson(sharedPref.getString(USER_INFO, ""), LoginResponse::class.java))
+        } else {
+            Resource.Success(null)
+        }
     }
 }
 

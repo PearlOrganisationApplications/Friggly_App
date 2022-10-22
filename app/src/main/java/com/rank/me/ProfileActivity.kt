@@ -33,6 +33,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.rank.me.data.local.LocalData
 import com.rank.me.ui.theme.Friggly_AppTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -94,7 +95,6 @@ fun ProfileEcommerce(context: Context = LocalContext.current.applicationContext)
     LaunchedEffect(Unit) {
         withContext(Dispatchers.Default) {
             optionsList.clear()
-
             // Add the data to optionsList
             prepareOptionsData()
 
@@ -126,6 +126,7 @@ fun ProfileEcommerce(context: Context = LocalContext.current.applicationContext)
 
 @Composable
 private fun UserDetails(context: Context) {
+    val user = LocalData(context).getUser()
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -142,6 +143,7 @@ private fun UserDetails(context: Context) {
             contentDescription = "Your Image"
         )
 
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -152,10 +154,9 @@ private fun UserDetails(context: Context) {
                     .weight(weight = 3f, fill = false)
                     .padding(start = 16.dp)
             ) {
-
                 // User's name
                 Text(
-                    text = "John Doe",
+                    text = (user.data?.firstName ?: "John") +" "+ (user.data?.lastName ?: "Doe"),
                     style = TextStyle(
                         fontSize = 22.sp,
                         fontFamily = FontFamily(Font(R.font.montserrat_semibold, FontWeight.SemiBold)),
@@ -168,7 +169,7 @@ private fun UserDetails(context: Context) {
 
                 // User's email
                 Text(
-                    text = "email123@email.com",
+                    text = user.data?.email ?:"email123@email.com",
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.montserrat_semibold, FontWeight.Normal)),
@@ -205,9 +206,15 @@ private fun OptionsItemStyle(item: OptionsData, context: Context) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable(enabled = true) {
-                Toast
-                    .makeText(context, item.title, Toast.LENGTH_SHORT)
-                    .show()
+                when (item.id) {
+                    1 -> {
+                        Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+                    }
+                   2 -> {
+                        Toast.makeText(context, item.subTitle, Toast.LENGTH_SHORT).show()
+                    }
+                    else -> Toast.makeText(context, item.id.toString(), Toast.LENGTH_SHORT).show()
+                }
             }
             .padding(all = 16.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -277,6 +284,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id = 1,
             icon = appIcons.Person,
             title = "Account",
             subTitle = "Manage your account"
@@ -285,6 +293,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =2,
             icon = appIcons.Shield,
             title = "Manage Blocking",
             subTitle = "23 block contacts"
@@ -293,6 +302,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =3,
             icon = appIcons.PanoramaFishEye,
             title = "Who viewed my profile",
             subTitle = "2 new notifications"
@@ -301,6 +311,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =4,
             icon = appIcons.Payments,
             title = "Saved Cards",
             subTitle = "Your saved debit/credit cards"
@@ -309,6 +320,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =5,
             icon = appIcons.Notifications,
             title = "Notifications",
             subTitle = "1 new notification"
@@ -317,6 +329,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =6,
             icon = appIcons.Help,
             title = "Help Center",
             subTitle = "FAQs and customer support"
@@ -325,6 +338,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =7,
             icon = appIcons.LocalOffer,
             title = "Friggly News",
             subTitle = "New app update release in..."
@@ -333,6 +347,7 @@ private fun prepareOptionsData() {
 
     optionsList.add(
         OptionsData(
+            id =8,
             icon = appIcons.FavoriteBorder,
             title = "Wishlist",
             subTitle = "Items you saved"
@@ -340,5 +355,5 @@ private fun prepareOptionsData() {
     )
 }
 
-data class OptionsData(val icon: ImageVector, val title: String, val subTitle: String)
+data class OptionsData(val id: Int, val icon: ImageVector, val title: String, val subTitle: String)
 

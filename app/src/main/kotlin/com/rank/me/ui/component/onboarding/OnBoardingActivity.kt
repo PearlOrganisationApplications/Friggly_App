@@ -36,7 +36,6 @@ class OnBoardingActivity : BaseActivity() {
         Color.parseColor("#66CB8080")
     )
 
-
     override fun observeViewModel() {
 
     }
@@ -177,10 +176,13 @@ class OnBoardingActivity : BaseActivity() {
                 selectedLocaleIndex = which
                 selectedlocale = supportedLocales[which]
             }
+
             .setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
                 updateAppLocale(selectedlocale)
             }
-            .setNegativeButton("Cancel") { dialog, which ->
+
+            .setNegativeButton("Cancel") { dialog, _ ->
                 dialog.dismiss()
             }
             .show()
