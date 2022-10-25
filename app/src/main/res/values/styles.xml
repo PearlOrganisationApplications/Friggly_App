@@ -1,12 +1,15 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowActionBar">false</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="titleEnabled">false</item>
         <item name="android:windowContentTransitions">true</item>
+        <item name="iconTint">@color/colorPrimary</item>
+        <item name="android:windowBackground">@drawable/black_dialog_background</item>
+        <item name="background">@drawable/black_dialog_background</item>
 
         <!-- specify shared element transitions -->
         <item name="android:windowSharedElementEnterTransition">
@@ -2582,7 +2585,7 @@
     </style>
 
     <style name="TestStyleWithThemeLineHeightAttribute" parent="@style/TestStyleWithoutLineHeight">
-        <item name="lineHeight">?themeLineHeight</item>
+        <item name="lineHeight">@dimen/material_text_view_test_line_height</item>
     </style>
 
     <style name="TestStyleWithoutLineHeight" parent="@style/TextAppearance.AppCompat.Title">
@@ -2590,7 +2593,7 @@
     </style>
 
     <style name="TestThemeWithLineHeight" parent="@style/Theme.AppCompat.Light">
-        <item name="themeLineHeight">@dimen/material_text_view_test_line_height</item>
+        <item name="lineHeight">@dimen/material_text_view_test_line_height</item>
     </style>
 
     <style name="TestThemeWithLineHeightDisabled" parent="@style/TestThemeWithLineHeight">
