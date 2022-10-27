@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pearltools.commons.models.SimpleContact
-import com.rank.me.ProfileActivity
+import com.rank.me.ui.component.profile.ProfileActivity
 import com.rank.me.R
 import com.rank.me.data.local.LocalData
 import com.rank.me.databinding.ActivityHomeBinding

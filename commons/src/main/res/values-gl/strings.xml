@@ -302,7 +302,7 @@
     <string name="shared_theme_note">Ten en conta que, aínda que use a versión pro do aplicativo, segue necesitando Simple Thank You para controlar a sincronización da cor.</string>
     <string name="purchase_thank_you">
         <![CDATA[
-            Por favor, compra <a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Thank You</a> para desbloquear esta función e axudar co desenvolvemento. Grazas!
+            Por favor, compra <a href="https://play.google.com/store/apps/details?id=com.rank.me.premium">Simple Thank You</a> para desbloquear esta función e axudar co desenvolvemento. Grazas!
         ]]>
     </string>
     <!-- Themes -->
@@ -762,11 +762,11 @@
     <string name="donate_please">
         <![CDATA[
             Ola,<br><br>
-            Espero que esteas disfrutando do aplicativo. Non contén anuncios, polo que che agradecemos que respaldes o seu desenvolvemento comprando o aplicativo <a href="https://play.google.com/store/apps/details?id=com.pearltools.thankyou">Simple Thank You</a>, e tamén evitará que este diálogo volva a aparecer.<br><br>
+            Espero que esteas disfrutando do aplicativo. Non contén anuncios, polo que che agradecemos que respaldes o seu desenvolvemento comprando o aplicativo <a href="https://play.google.com/store/apps/details?id=com.rank.me.premium">Simple Thank You</a>, e tamén evitará que este diálogo volva a aparecer.<br><br>
             Grazas!
         ]]>
     </string>
-    <string name="donate_new">Ola,&lt;br&gt;&lt;br&gt;espero que che guste a aplicación. Non contén anuncios e tampouco estamos a recompilar os teus datos; apoia o seu desenvolvemento comprando &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Agradecemento sinxelo Ti&lt;/a&gt;. Tamén terás todas as funcións da aplicación e as personalizacions dos cores desbloqueados.&lt;br&gt;&lt;br&gt;Grazas!</string>
+    <string name="donate_new">Ola,&lt;br&gt;&lt;br&gt;espero que che guste a aplicación. Non contén anuncios e tampouco estamos a recompilar os teus datos; apoia o seu desenvolvemento comprando &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Agradecemento sinxelo Ti&lt;/a&gt;. Tamén terás todas as funcións da aplicación e as personalizacions dos cores desbloqueados.&lt;br&gt;&lt;br&gt;Grazas!</string>
     <string name="purchase">Comprar</string>
     <string name="get_simple_phone">Obter un teléfono sinxelo</string>
     <string name="update_thank_you">Actualiza Simple Thank You á última versión</string>
@@ -781,7 +781,7 @@
     <string name="thank_you">Grazas</string>
     <string name="widget_locked_pro">O widget estopaze bloqueado. 
 \nActualiza á versión Pro para desbloquealo.</string>
-    <string name="features_locked">Esta función está bloqueada. Compra &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Grazas simples&lt;/a&gt; por desbloquear a aplicación completa.&lt;br &gt;&lt;br&gt;É un pago único e se non estás satisfeito, devolvemosche o diñeiro.</string>
+    <string name="features_locked">Esta función está bloqueada. Compra &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Grazas simples&lt;/a&gt; por desbloquear a aplicación completa.&lt;br &gt;&lt;br&gt;É un pago único e se non estás satisfeito, devolvemosche o diñeiro.</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">
         <![CDATA[

@@ -298,7 +298,7 @@
     <string name="app_icon_color_warning">HOIATUS: Mõned käivitajad ei käsitse rakenduste ikoonide kohandamist korralikult. Kui ikoon kaob, proovige käivitada rakendus Google Play või mõne vidina kaudu, kui see on saadaval. Kui olete käivitanud rakenduse, seadistage lihtsalt vaikimisi oranž ikoon #F57C00 tagasi. Halvemal juhul peate rakenduse võib-olla uuesti installima.</string>
     <string name="share_colors_success">Värvide uuendamine õnnestus. Lisasime uue „Jagatud“ teema - edaspidisel värvide muutmisel palun kasuta seda.</string>
     <string name="shared_theme_note">Kuigi sa kasutad rakenduse Pro-versiooni, palun siiski tehnilistel põhjustel paigalda rakendus „Lihtne tänuavaldus“. Muu hulgas tema haldab värvide sünkroniseerimist kõikide meie rakenduste vahel.</string>
-    <string name="purchase_thank_you">Selle funktsionaalsuse kasutamiseks ja meie toetamiseks palun osta &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Lihtne tänuavaldus&lt;/a&gt;. Tänud juba ette!</string>
+    <string name="purchase_thank_you">Selle funktsionaalsuse kasutamiseks ja meie toetamiseks palun osta &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Lihtne tänuavaldus&lt;/a&gt;. Tänud juba ette!</string>
     <!-- Themes -->
     <string name="light_theme">Hele</string>
     <string name="dark_theme">Tume</string>
@@ -754,8 +754,8 @@
     <string name="additional_info">Lisateave</string>
     <string name="app_version">Rakenduse versioon: %s</string>
     <string name="device_os">Seadme operatsioonisüsteem: %s</string>
-    <string name="donate_please">Tere,&lt;br&gt;&lt;br&gt; loodan, et naudite rakendust. See ei sisalda reklaame, palun toetage selle arendamist, ostes &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Limple Aitäh&lt;/a&gt; rakendus, see takistab ka selle dialoogi uuesti ilmumist. &lt;br&gt;&lt;br&gt; Täname!</string>
-    <string name="donate_new">Tere!&lt;br&gt;&lt;br&gt;Loodan, et teile meeldib rakendus. See ei sisalda reklaame ja me ei kogu ka teie andmeid. Palun toetage selle arendamist, ostes &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Lihtne aitäh Sina&lt;/a&gt;. Samuti on teil lukustamata kõik rakenduse funktsioonid ja värvide kohandamine.&lt;br&gt;&lt;br&gt;Täname!</string>
+    <string name="donate_please">Tere,&lt;br&gt;&lt;br&gt; loodan, et naudite rakendust. See ei sisalda reklaame, palun toetage selle arendamist, ostes &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Limple Aitäh&lt;/a&gt; rakendus, see takistab ka selle dialoogi uuesti ilmumist. &lt;br&gt;&lt;br&gt; Täname!</string>
+    <string name="donate_new">Tere!&lt;br&gt;&lt;br&gt;Loodan, et teile meeldib rakendus. See ei sisalda reklaame ja me ei kogu ka teie andmeid. Palun toetage selle arendamist, ostes &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Lihtne aitäh Sina&lt;/a&gt;. Samuti on teil lukustamata kõik rakenduse funktsioonid ja värvide kohandamine.&lt;br&gt;&lt;br&gt;Täname!</string>
     <string name="purchase">Osta</string>
     <string name="get_simple_phone">Telli rakendus Lihtne telefon</string>
     <string name="update_thank_you">Palun uuenda raklendus Lihtne tänuavaldus viimase versioonini</string>
@@ -778,7 +778,7 @@
     <string name="thank_you">Suur tänu</string>
     <string name="widget_locked_pro">Rakendus on lukustatud.
 \nLukustuse eemaldamiseks palun uuenda ta Pro-versioonini.</string>
-    <string name="features_locked">See funktsioon on lukus, palun ostke &lt;a href=https://play.google.com/store/apps/details\?id=com.pearltools.thankyou&gt;Limple Aitäh&lt;/a&gt; kogu rakenduse avamise &lt;br&gt;&lt;br&gt;eest.See on ainult ühekordne makse ja kui te ei jää rahule, saame teile raha tagasi maksta.</string>
+    <string name="features_locked">See funktsioon on lukus, palun ostke &lt;a href=https://play.google.com/store/apps/details\?id=com.rank.me.premium&gt;Limple Aitäh&lt;/a&gt; kogu rakenduse avamise &lt;br&gt;&lt;br&gt;eest.See on ainult ühekordne makse ja kui te ei jää rahule, saame teile raha tagasi maksta.</string>
     <!-- New app (do not translate anything on the 4th line) -->
     <string name="new_app">Hei,&lt;br&gt;&lt;br&gt; tahtsime lihtsalt teada anda, et oleme teinud mõned uued rakendused :&lt;br&gt;&lt;br&gt; &lt;a href=%1$s&gt;%2$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%3$s&gt;%4$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; &lt;a href=%5$s&gt;%6$s&lt;/a&gt;&lt;br&gt;&lt;br&gt; Klõpsides ikooni või nimel saad sa neid alla laadida.&lt;br&gt;&lt;br&gt; Tänud</string>
     <string name="simple_app_launcher">Lihtne rakenduste käivitaja</string>

@@ -4,8 +4,8 @@
     package="com.pearltools.commons">
 
     <queries>
-        <package android:name="com.pearltools.thankyou.debug" />
-        <package android:name="com.pearltools.thankyou" />
+        <package android:name="com.rank.me.premium.debug" />
+        <package android:name="com.rank.me.premium" />
     </queries>
 
     <uses-feature

@@ -5,6 +5,9 @@
     <color name="colorAccent">#FFC039</color>
     <color name="image_background">#123</color>
 
+    <color name="colorPrimary50">#8031B6A5</color>
+    <color name="colorAccent50">#80FFC039</color>
+
     <!-- Other colors -->
     <color name="color_transparent">#00000000</color>
     <color name="color_white">#FFFFFF</color>

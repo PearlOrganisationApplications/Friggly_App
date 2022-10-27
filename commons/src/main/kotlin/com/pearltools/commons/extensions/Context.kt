@@ -444,7 +444,7 @@ fun Context.getUriMimeType(path: String, newUri: Uri): String {
     return mimeType
 }
 
-fun Context.isThankYouInstalled() = isPackageInstalled("com.pearltools.thankyou")
+fun Context.isThankYouInstalled() = isPackageInstalled("com.rank.me.premium")
 
 fun Context.isOrWasThankYouInstalled(): Boolean {
     return when {

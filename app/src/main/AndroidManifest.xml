@@ -58,7 +58,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.component.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName=".ui.component.home.HomeActivity">

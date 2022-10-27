@@ -295,7 +295,7 @@ fun BaseSimpleActivity.showOTGPermissionDialog(path: String) {
 fun Activity.launchPurchaseThankYouIntent() {
     hideKeyboard()
     try {
-        launchViewIntent("market://details?id=com.pearltools.thankyou")
+        launchViewIntent("market://details?id=com.rank.me.premium")
     } catch (ignored: Exception) {
         launchViewIntent(getString(R.string.thank_you_url))
     }

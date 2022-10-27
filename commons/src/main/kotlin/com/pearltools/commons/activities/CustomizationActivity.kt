@@ -58,7 +58,7 @@ class CustomizationActivity : BaseSimpleActivity() {
 
         setupOptionsMenu()
         refreshMenuItems()
-        isThankYou = packageName.removeSuffix(".debug") == "com.pearltools.thankyou"
+        isThankYou = packageName.removeSuffix(".debug") == "com.rank.me.premium"
         initColorVariables()
 
         if (isThankYouInstalled()) {
