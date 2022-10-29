@@ -10,6 +10,7 @@ import android.os.Build
 import android.os.Bundle
 import android.telecom.TelecomManager
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -31,9 +32,10 @@ class OnBoardingActivity : BaseActivity() {
     private lateinit var binding: ActivityOnboardingBinding
     private val valueAnimator = ValueAnimator.ofObject(
         ArgbEvaluator(),
-        Color.parseColor("#6680cbc4"),
-        Color.parseColor("#669A80CB"),
-        Color.parseColor("#66CB8080")
+        Color.parseColor("#70B29ACF"),
+        Color.parseColor("#7064C5EB"),
+        Color.parseColor("#70f5b7d0"),
+        Color.parseColor("#70FEB326")
     )
 
     override fun observeViewModel() {
@@ -48,6 +50,8 @@ class OnBoardingActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Hide the status bar.
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         localRepository = LocalData(this@OnBoardingActivity)
         binding.btnCreateAccount.setOnClickListener {
             launchSetDefaultDialerIntent()
@@ -79,8 +83,12 @@ class OnBoardingActivity : BaseActivity() {
                         binding.imageOnboarding.setMinAndMaxFrame(112, 203)
                         binding.imageOnboarding.playAnimation()
                     }
-                    else -> {
+                    2-> {
                         binding.imageOnboarding.setMinAndMaxFrame(201, 380)
+                        binding.imageOnboarding.playAnimation()
+                    }
+                    else -> {
+                        binding.imageOnboarding.setMinAndMaxFrame(380, 450)
                         binding.imageOnboarding.playAnimation()
                     }
                 }
@@ -97,7 +105,8 @@ class OnBoardingActivity : BaseActivity() {
                 valueAnimator.currentPlayTime = (((position + positionOffset) * 1000000000).toLong())
             }
         })
-        valueAnimator.duration = (3-1)*1000000000
+
+        valueAnimator.duration = 3000000000
         valueAnimator.addUpdateListener { animator ->
             binding.rootView.setBackgroundColor(animator.animatedValue as Int)
         }

@@ -11,22 +11,17 @@
         android:id="@+id/root_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/highlighted_text_material_dark"
         tools:context=".me.ui.component.onboarding.OnBoardingActivity">
 
-       <TextView
+        <ImageView
             android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
             android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center"
-            android:text="friggly"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp"
-            android:textStyle="italic" />
+            android:src="@drawable/logo_2"
+            android:scaleType="center"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -160,7 +155,6 @@
                 android:layout_marginVertical="10dp"
                 android:text="@string/terms_and_services"
                 android:textAlignment="viewStart"
-                android:textColor="@color/colorGreenDarker"
                 android:textSize="12sp" />
 
 

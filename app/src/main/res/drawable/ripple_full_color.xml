@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/colorAccent">
+    <item android:id="@+id/button_background_holder">
+        <layer-list>
+            <item android:id="@+id/button_background_shape">
+                <shape android:shape="rectangle">
+                    <gradient
+                        android:type="sweep"
+                        android:centerX="0.7"
+                        android:centerY="2"
+                        android:startColor="@color/colorPrimary"
+                        android:centerColor="@color/colorPrimaryDark"
+                        android:endColor="@color/colorPrimary"
+                        />
+                    <corners android:radius="@dimen/material_button_corner_radius" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</ripple>

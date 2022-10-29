@@ -60,8 +60,6 @@ class CallsFragment : Fragment(), RefreshItemsListener {
     private var allRecentCalls = ArrayList<RecentCall>()
     private lateinit var binding: FragmentCallsBinding
 
-    private val window = activity?.window
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

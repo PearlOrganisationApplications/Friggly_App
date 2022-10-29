@@ -175,6 +175,9 @@ class MessageInboxFragment : Fragment(){
     }
 
     private fun getNewConversations(cachedConversations: ArrayList<Conversation>) {
+        if(activity == null ) {
+            return
+        }
         val privateCursor = requireActivity().getMyContactsCursor(false, true)
         ensureBackgroundThread {
             val privateContacts = MyContactsContentProvider.getSimpleContacts(requireActivity(), privateCursor)

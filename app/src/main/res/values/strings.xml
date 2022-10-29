@@ -98,12 +98,12 @@
     <string name="description_on_boarding_fourth_slide">Get your ratings. see other\'s ratings, info and more</string>
     <string name="title_button_get_started">Get Started</string>
     <string name="terms_and_services">
-        <font fgcolor='#808080'>By clicking Get Started if you reside in the EU, EEA or Switzerland you accept the </font>
-        <font fgcolor='#000000'>Terms of service </font>
-        <font fgcolor='#808080'>and if you reside in any other country you accepts the  and Privacy Policy</font>
-        <font fgcolor='#000000'>Terms of Service </font>
-        <font fgcolor='#000000'>Terms of service </font><font fgcolor='#808080'>and </font>
-        <font fgcolor='#000000'>Privacy Policy. </font></string>
+        <font fgcolor='#000000'>By clicking Get Started if you reside in the EU, EEA or Switzerland you accept the </font>
+        <font fgcolor='#ff00574b'>Terms of service </font>
+        <font fgcolor='#000000'>and if you reside in any other country you accepts the  and Privacy Policy</font>
+        <font fgcolor='#ff00574b'>Terms of Service </font>
+        <font fgcolor='#ff00574b'>Terms of service </font><font fgcolor='#000000'>and </font>
+        <font fgcolor='#ff00574b'>Privacy Policy. </font></string>
 
     <!--  Languages-->
     <string name="hindi" translatable="false">" हिन्दी"</string>

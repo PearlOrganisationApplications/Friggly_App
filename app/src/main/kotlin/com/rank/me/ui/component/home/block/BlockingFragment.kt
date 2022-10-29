@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.rank.me.databinding.FragmentBlockingBinding
@@ -33,6 +34,7 @@ private lateinit var binding: FragmentBlockingBinding
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
     }
 
     override fun onCreateView(
@@ -43,6 +45,20 @@ private lateinit var binding: FragmentBlockingBinding
         var fragmentBlockBinding=FragmentBlockingBinding.inflate(inflater,container,false)
         binding=fragmentBlockBinding
         return fragmentBlockBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+            // Assign the view model to a property in the binding class
+            viewModel = sharedViewmodel
+            // Assign the fragment
+            callFragment = this@BlockingFragment
+            // Assign the fragment
+            handlers =Handlers( this@BlockingFragment)
+        }
     }
 
     companion object {
@@ -63,5 +79,15 @@ private lateinit var binding: FragmentBlockingBinding
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    class Handlers(private val fragment: BlockingFragment) {
+        fun onClick(view: View) {
+
+        }
+
+        fun onUpdateClick(view: View) {
+            Toast.makeText(fragment.context, "TODO", Toast.LENGTH_SHORT).show()
+        }
     }
 }

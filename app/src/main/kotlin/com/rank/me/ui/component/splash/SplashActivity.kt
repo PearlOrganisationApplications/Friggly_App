@@ -3,6 +3,7 @@ package com.rank.me.ui.component.splash
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import com.rank.me.SPLASH_DELAY
 import com.rank.me.data.local.LocalData
 import com.rank.me.databinding.SplashLayoutBinding
@@ -28,6 +29,7 @@ class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
         if (LocalData(this@SplashActivity).isFirstTime()) {
             navigateToOnBoardingScreen()
         } else {

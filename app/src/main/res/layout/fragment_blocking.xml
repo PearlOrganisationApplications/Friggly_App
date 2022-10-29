@@ -1,22 +1,1032 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
+        <variable
+            name="handlers"
+            type="com.rank.me.ui.component.home.block.BlockingFragment.Handlers" />
+
+        <variable
+            name="viewModel"
+            type="com.rank.me.ui.component.home.block.BlockViewModel" />
+
+        <variable
+            name="callFragment"
+            type="com.rank.me.ui.component.home.block.BlockingFragment" />
+
     </data>
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:scrollbars="none">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="No Block data"
-            android:textSize="30sp"
-            android:gravity="center" />
+            android:background="@color/black"
+            android:orientation="vertical">
 
-    </FrameLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/bg_gradient"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:padding="10dp"
+                        android:background="@drawable/gradient_background_flipped"
+                        android:layout_weight="1"
+                        android:src="@drawable/security"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Update top spammers"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondary_text_default_material_dark"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Get an updated list of the most reported spam calls newar you to detect them quickly even when offline. Updating this list often is recommended"/>
+
+                    <TextView
+                        android:elevation="5dp"
+                        android:padding="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:drawableTint="@color/colorAccent"
+                        android:drawableStart="@drawable/ic_baseline_refresh_24"
+                        android:text="UPDATE"
+                        android:background="@drawable/ripple_all_corners"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foregroundGravity="center"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="5dp"/>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/toolbar_bg_box"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    android:background="@drawable/gradient_background_flipped"
+                    android:padding="10dp"
+                    android:src="@drawable/cloud_lock"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/textView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Allow Blocking"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toTopOf="@+id/imageView3"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/montserrat_semibold"/>
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:text="You need to set friggly as your default dialer for blocking to work."
+                    android:textColor="@color/secondary_text_default_material_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ripple_full_color"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:text="SET AS DEFAULT DIALER"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/toolbar_bg_box_filled"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Automatically update top spammers  "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView4" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Top spammers will be automatically updated on your phone"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorAccent50"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_playlist_add_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Extend top spammer List "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView14"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView14" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Auto block even more spammers"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorAccent50"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView24"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Block 140 series telemarketers  "
+                        android:maxLines="2"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView24"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView24" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Block registered Indian telemarketers"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat3" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ripple_full_color"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:text="UNLOCK PREMIUM"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/toolbar_bg_box"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView44"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/block"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat21"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Block Top Spammers  "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Protect yourself from calls and messages of most reported numbers"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat21" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorAccent50"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView324"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_device_unknown_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat22"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Block hidden numbers "
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView324"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView324" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Block any number that is shown as Unknown or Private"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat22" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorAccent50"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView224"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_outlined_flag_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat23"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Block numbers from foreign countries  "
+                        android:maxLines="2"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView224"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView224" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Only numbers from your country will be able to call you"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat23" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorAccent50"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imageView2224"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_contact_phone_24"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:id="@+id/mySwitchCompat2223"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:clickable="true"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:text="Block numbers not in the phonebook"
+                        android:maxLines="2"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:trackTint="@color/selectable_switch_track_tint"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView2224"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2224" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:text="Only people in your phonebook will be able to call you"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/mySwitchCompat2223" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/toolbar_bg_box"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.pearltools.commons.views.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:foregroundGravity="center"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:text="Block someone manually"
+                    android:textColor="@color/colorAccent50"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_phone_vector"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MyTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:elevation="5dp"
+                            android:focusable="true"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:foregroundGravity="center"
+                            android:gravity="start"
+                            android:onClick="@{handlers::onUpdateClick}"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:text="Block Top Spammers  "
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            app:trackTint="@color/selectable_switch_track_tint"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_view_contact_details_vector"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorPrimary" />
+
+                        <com.pearltools.commons.views.MyTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:elevation="5dp"
+                            android:focusable="true"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:foregroundGravity="center"
+                            android:gravity="start"
+                            android:onClick="@{handlers::onUpdateClick}"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:text="Contact Name"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            app:trackTint="@color/selectable_switch_track_tint"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_outlined_flag_24"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorPrimary" />
+
+                    <com.pearltools.commons.views.MyTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:elevation="5dp"
+                            android:focusable="true"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:foregroundGravity="center"
+                            android:gravity="start"
+                            android:onClick="@{handlers::onUpdateClick}"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:text="Country Code "
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            app:trackTint="@color/selectable_switch_track_tint"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_baseline_123_24"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:tint="@color/colorPrimary" />
+
+                        <com.pearltools.commons.views.MyTextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:drawablePadding="10dp"
+                            android:elevation="5dp"
+                            android:focusable="true"
+                            android:fontFamily="@font/montserrat_semibold"
+                            android:foregroundGravity="center"
+                            android:gravity="start"
+                            android:onClick="@{handlers::onUpdateClick}"
+                            android:orientation="vertical"
+                            android:padding="10dp"
+                            android:text="Number Series"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp"
+                            app:trackTint="@color/selectable_switch_track_tint"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ripple_full_color"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:text="MANAGE BLOCKED CONTACTS"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/toolbar_bg_box"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.pearltools.commons.views.MyTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:foregroundGravity="center"
+                    android:gravity="start"
+                    android:orientation="vertical"
+                    android:paddingStart="10dp"
+                    android:text="Block settings"
+                    android:textColor="@color/colorAccent50"
+                    android:textSize="14sp"
+                    app:trackTint="@color/selectable_switch_track_tint"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:background="@drawable/ripple_background"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <com.pearltools.commons.views.MyTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:elevation="5dp"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:text="How to block calls"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="10dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView44"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView44" />
+
+                    <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="10dp"
+                            android:text="Reject Automatically"
+                            android:textColor="@color/colorPrimary"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:background="@drawable/ripple_background"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:text="Notiifications for blocked calls"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2224"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trackTint="@color/selectable_switch_track_tint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:text="Receive a notification when a call is blocked"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorAccent50"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:onClick="@{handlers::onUpdateClick}"
+                    android:background="@drawable/ripple_background"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/montserrat_semibold"
+                    android:foregroundGravity="center"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                    <com.pearltools.commons.views.MySwitchCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/montserrat_semibold"
+                        android:foregroundGravity="center"
+                        android:gravity="start"
+                        android:maxLines="2"
+                        android:onClick="@{handlers::onUpdateClick}"
+                        android:orientation="vertical"
+                        android:text="Notiifications for blocked messages"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="14sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageView2224"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:trackTint="@color/selectable_switch_track_tint" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="10dp"
+                        android:text="Receive a notification when a message is blocked"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </layout>
