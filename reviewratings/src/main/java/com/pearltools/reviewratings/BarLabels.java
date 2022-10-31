@@ -11,8 +11,8 @@ public class BarLabels {
 
     public static final String STYPE2[] = new String[]{
             "  ⛧⛧⛧⛧⛧",
-            "  ⛧⛧⛧⛧",
-            "  ⛧⛧⛧",
+            "  ⛧⛧⛧⛧  ",
+            "  ⛧⛧⛧    ",
             "  ⛧⛧",
             "  ⛧"};
 

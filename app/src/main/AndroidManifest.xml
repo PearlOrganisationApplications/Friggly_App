@@ -67,6 +67,16 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".ui.component.rating.RatingActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".ui.component.home.HomeActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
             android:name=".ui.component.onboarding.OnBoardingActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true"

@@ -8,8 +8,8 @@ import android.util.DisplayMetrics;
 
 
 class Utils {
-    static int DEFAULT_BAR_COLOR = Color.parseColor("#333333");
-    static int DEFAULT_BAR_TEXT_COLOR = Color.parseColor("#333333");
+    static int DEFAULT_BAR_COLOR = Color.parseColor("#ffffff");
+    static int DEFAULT_BAR_TEXT_COLOR = Color.parseColor("#ffffff");
     static int DEFAULT_BAR_SPACE = 5;
 
     /**

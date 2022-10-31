@@ -1,4 +1,4 @@
-package com.rank.me.ui.component.profile
+package com.rank.me.ui.component.rating
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,20 +15,17 @@ import com.pearltools.commons.extensions.baseConfig
 import com.pearltools.commons.extensions.launchViewIntent
 import com.pearltools.commons.helpers.APP_ICON_IDS
 import com.pearltools.commons.helpers.APP_LAUNCHER_NAME
-import com.pearltools.reviewratings.Bar
 import com.pearltools.reviewratings.BarLabels
-import com.pearltools.reviewratings.RatingReviews
 import com.rank.me.R
-import com.rank.me.databinding.ActivityProfileBinding
+import com.rank.me.databinding.ActivityRatingBinding
 import com.rank.me.ui.base.SimpleActivity
-import com.rank.me.ui.component.rating.RatingActivity
 import java.util.*
 import kotlin.math.abs
 
 
-class ProfileActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener, RatingReviews.OnBarClickListener {
+class RatingActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener {
 
-    private lateinit var binding: ActivityProfileBinding
+    private lateinit var binding: ActivityRatingBinding
 
     private  val  PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR  = 0.9f;
     private  val   PERCENTAGE_TO_HIDE_TITLE_DETAILS     = 0.3f;
@@ -40,7 +37,7 @@ class ProfileActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener, 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityProfileBinding.inflate(layoutInflater)
+        binding = ActivityRatingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(findViewById(R.id.main_toolbar))
@@ -52,7 +49,7 @@ class ProfileActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener, 
         startAlphaAnimation(binding.settings, 0, View.INVISIBLE)
         startAlphaAnimation(binding.edit, 0, View.INVISIBLE)
         startAlphaAnimation(binding.title, 0, View.INVISIBLE)
-        binding.handlers = Handlers(this@ProfileActivity)
+        binding.handlers = Handlers(this@RatingActivity)
         handleRatingSection()
     }
 
@@ -127,11 +124,10 @@ class ProfileActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener, 
         v.startAnimation(alphaAnimation)
     }
 
-    class Handlers(private val activity: ProfileActivity) {
+    class Handlers(private val activity: RatingActivity) {
         fun onRatingsClicked(view: View) {
             activity.startActivity(Intent(activity, RatingActivity::class.java))
         }
-
         fun onClickUpgrade(view: View) {
             when (view.id) {
                 R.id.blocking -> activity.startActivity(Intent(activity, ManageBlockedNumbersActivity::class.java))
@@ -159,9 +155,5 @@ class ProfileActivity : SimpleActivity(), AppBarLayout.OnOffsetChangedListener, 
                     activity.startActivity(this)
             }
         }
-    }
-
-    override fun onBarClick(bar: Bar?) {
-        Toast.makeText(this@ProfileActivity, "Clicked Bar : ${ bar?.raters }", Toast.LENGTH_SHORT).show()
     }
 }

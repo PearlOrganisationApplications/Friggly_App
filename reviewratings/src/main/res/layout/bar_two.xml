@@ -11,7 +11,7 @@
         android:layout_width="55dp"
         android:layout_height="wrap_content"
         android:rotation="-180"
-        android:textColor="#000000"
+        android:textColor="#ffffff"
         android:typeface="monospace" />
 
     <LinearLayout
@@ -30,6 +30,6 @@
         android:layout_gravity="center"
         android:paddingStart="2dp"
         android:paddingLeft="2dp"
-        android:textColor="#333333"
+        android:textColor="#ffffff"
         android:textSize="10sp" />
 </LinearLayout>

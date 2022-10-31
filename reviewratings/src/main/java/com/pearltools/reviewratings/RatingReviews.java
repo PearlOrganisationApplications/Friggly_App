@@ -25,6 +25,7 @@ import android.animation.LayoutTransition;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -38,6 +39,9 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -171,6 +175,37 @@ public class RatingReviews extends FrameLayout {
         }
     }
 
+    /**
+     * createRatingBars creates the ratingreviews with values given by user.
+     *
+     * @param maxBarValue max value for the Bars.
+     *
+     * @param labels      format and styling of the label texts.
+     *  // @param colors      expects an array of Pairs composed of the start and end color for the gradient.// Removed from this new constructor. cuz of kotlin issues
+     * @param raters      expects an array of the raters for each stars given.
+     */
+    public void createRatingBars(int maxBarValue, String labels[], int raters[]) {
+
+        Pair colors[] = new Pair[]{
+            new Pair<>(Color.parseColor("#0e9d58"), Color.parseColor("#1e88e5")),
+            new Pair<>(Color.parseColor("#bfd047"), Color.parseColor("#5c6bc0")),
+            new Pair<>(Color.parseColor("#ffc105"), Color.parseColor("#d81b60")),
+            new Pair<>(Color.parseColor("#ef7e14"), Color.parseColor("#8bc34a")),
+            new Pair<>(Color.parseColor("#d36259"), Color.parseColor("#ea80fc"))
+        };
+
+        setMaxBarValue(maxBarValue);
+
+        for (int i = 0; i < mNumOfBars; i++) {
+            Bar bar = new Bar();
+            bar.setRaters(raters[i]);
+            bar.setStartColor((int) colors[i].first);
+            bar.setEndColor((int) colors[i].second);
+            bar.setStarLabel(labels[i]);
+            addBar(bar);
+        }
+    }
+
 
     /**
      * createRatingBars creates the ratingreviews with values given by user.
@@ -233,30 +268,27 @@ public class RatingReviews extends FrameLayout {
     private void draw(int dimension, Bar initialBar, final Bar bar, final View view) {
         final int bgColor = bar.getColor() != 0 ? bar.getColor() : mBarColor;
 
-        view.post(new Runnable() {
-            @Override
-            public void run() {
-                int radius = view.getHeight() / 2; //getting height inside post method to ensure view has drawn
+        view.post(() -> {
+            int radius = view.getHeight() / 2; //getting height inside post method to ensure view has drawn
 
-                if (bar.isGradientBar()) {
-                    if (bar.getStartColor() == 0 || bar.getEndColor() == 0) {
-                        throw new RuntimeException("Gradient colors were not provided.");
-                    }
-                    if (isRoundCorner) {
-                        view.findViewById(R.id.linear_bar).setBackground(getRoundedBarGradientDrawable(bar.getStartColor(), bar.getEndColor(), radius));
-                    } else {
-                        GradientDrawable gradientDrawable = new GradientDrawable(
-                                GradientDrawable.Orientation.LEFT_RIGHT,
-                                new int[]{bar.getStartColor(), bar.getEndColor()}
-                        );
-                        view.findViewById(R.id.linear_bar).setBackground(gradientDrawable);
-                    }
+            if (bar.isGradientBar()) {
+                if (bar.getStartColor() == 0 || bar.getEndColor() == 0) {
+                    throw new RuntimeException("Gradient colors were not provided.");
+                }
+                if (isRoundCorner) {
+                    view.findViewById(R.id.linear_bar).setBackground(getRoundedBarGradientDrawable(bar.getStartColor(), bar.getEndColor(), radius));
                 } else {
-                    if (isRoundCorner) {
-                        view.findViewById(R.id.linear_bar).setBackground(getRoundedBarDrawable(bgColor, radius));
-                    } else {
-                        view.findViewById(R.id.linear_bar).setBackgroundColor(bgColor);
-                    }
+                    GradientDrawable gradientDrawable = new GradientDrawable(
+                            GradientDrawable.Orientation.LEFT_RIGHT,
+                            new int[]{bar.getStartColor(), bar.getEndColor()}
+                    );
+                    view.findViewById(R.id.linear_bar).setBackground(gradientDrawable);
+                }
+            } else {
+                if (isRoundCorner) {
+                    view.findViewById(R.id.linear_bar).setBackground(getRoundedBarDrawable(bgColor, radius));
+                } else {
+                    view.findViewById(R.id.linear_bar).setBackgroundColor(bgColor);
                 }
             }
         });
@@ -291,13 +323,10 @@ public class RatingReviews extends FrameLayout {
         ValueAnimator anim = ValueAnimator.ofInt(
                 initialBar == null ? 0 : dimension * initialBar.getRaters() / mBarMaxValue, dimensionBar);
 
-        anim.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                ViewGroup.LayoutParams layoutParams = linearLayoutBar.getLayoutParams();
-                layoutParams.width = (Integer) valueAnimator.getAnimatedValue();
-                linearLayoutBar.setLayoutParams(layoutParams);
-            }
+        anim.addUpdateListener(valueAnimator -> {
+            ViewGroup.LayoutParams layoutParams = linearLayoutBar.getLayoutParams();
+            layoutParams.width = (Integer) valueAnimator.getAnimatedValue();
+            linearLayoutBar.setLayoutParams(layoutParams);
         });
 
         if (isShowAnimation) {
@@ -307,12 +336,9 @@ public class RatingReviews extends FrameLayout {
         }
         anim.start();
 
-        view.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (onBarClickListener != null) {
-                    onBarClickListener.onBarClick(bar);
-                }
+        view.setOnClickListener(view1 -> {
+            if (onBarClickListener != null) {
+                onBarClickListener.onBarClick(bar);
             }
         });
 
@@ -382,12 +408,7 @@ public class RatingReviews extends FrameLayout {
 
         if (bar != null) {
             if (mLinearParentLayout.getHeight() == 0) {
-                getDimension(mLinearParentLayout, new DimensionReceivedCallback() {
-                    @Override
-                    public void onDimensionReceived(int dimension) {
-                        createBar(dimension, bar);
-                    }
-                });
+                getDimension(mLinearParentLayout, dimension -> createBar(dimension, bar));
             } else {
                 createBar(mLinearParentLayout.getWidth(), bar);
             }

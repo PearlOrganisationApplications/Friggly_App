@@ -5,7 +5,7 @@
 
         <variable
             name="handlers"
-            type="com.rank.me.ui.component.profile.ProfileActivity.Handlers" />
+            type="com.rank.me.ui.component.rating.RatingActivity.Handlers" />
 
     </data>
 
@@ -136,21 +136,9 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ripple_all_corners"
-                    android:onClick="@{handlers::onRatingsClicked}"
-                    android:orientation="vertical">
-                    <include
-                        android:id="@+id/rating_lyt"
-                        layout="@layout/rating_lyt"/>
-
-                    <include
-                        android:id="@+id/trait_lyt"
-                        layout="@layout/trait_lyt"/>
-
-                </LinearLayout>
+                <include
+                    android:id="@+id/rating_lyt"
+                    layout="@layout/rating_lyt" />
 
                 <include
                     android:id="@+id/history_lyt"
@@ -334,11 +322,12 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--Change Theme-->
                     <LinearLayout
                         android:id="@+id/change_theme"
@@ -379,11 +368,12 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--  Covid Relief-->
                     <LinearLayout
                         android:id="@+id/covid_relief"
@@ -425,11 +415,12 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--  Family Safety-->
                     <LinearLayout
                         android:id="@+id/family_safety"
@@ -513,11 +504,12 @@
                         </LinearLayout>
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--Friggly news-->
                     <LinearLayout
                         android:id="@+id/news"
@@ -546,11 +538,12 @@
                             app:drawableTint="@color/colorPrimary" />
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--  Send Feedback-->
                     <LinearLayout
                         android:id="@+id/feedback"
@@ -580,11 +573,12 @@
 
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/colorAccent50"
-                        android:layout_marginHorizontal="30dp"/>
+                        android:layout_marginHorizontal="30dp" />
                     <!--  FAQ-->
                     <LinearLayout
                         android:id="@+id/faq"
