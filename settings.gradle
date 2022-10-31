@@ -1,3 +1,4 @@
 include ':app'
 include ':commons'
 include ':reviewratings'
+include ':shinebuttonlib'

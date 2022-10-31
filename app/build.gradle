@@ -72,6 +72,7 @@ android {
 dependencies {
     implementation project(path: ':commons')
     implementation project(path: ':reviewratings')
+    implementation project(path: ':shinebuttonlib')
     implementation 'org.greenrobot:eventbus:3.3.1'
     implementation 'com.github.tibbi:IndicatorFastScroll:4524cd0b61'
     implementation 'com.github.tibbi:android-smsmms:875a46a9c4'
